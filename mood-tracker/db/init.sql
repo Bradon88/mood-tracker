@@ -45,25 +45,26 @@ CREATE TABLE messages (
 
 CREATE TABLE chat (
     chat_id SERIAL PRIMARY KEY,
-    chat_content VARCHAR(500),
     user_id REFERENCES user_id,
     admin_id REFERENCES team_id
+    date TIMESTAMP,
+    chat_content VARCHAR(500)
 )
 
 CREATE TABLE notes (
     notes_id SERIAL PRIMARY KEY,
     notes_content VARCHAR(500),
-    date VARCHAR(50),
+    date TIMESTAMP,
     user_id REFERENCES user_id,
     team_id REFERENCES team_id
 )
 
 CREATE TABLE mood (
     mood_id SERIAL PRIMARY KEY,
-    mood INT,
-    date VARCHAR(50),
-    current_activity VARCHAR(200),
-    activity_notes VARCHAR(200),
     user_id REFERENCES user_id,
     team_id REFERENCES team_id
+    mood INT,
+    date TIMESTAMP,
+    current_activity VARCHAR(200),
+    activity_notes VARCHAR(200),
 )
