@@ -53,10 +53,10 @@ CREATE TABLE chat (
 
 CREATE TABLE notes (
     notes_id SERIAL PRIMARY KEY,
-    notes_content VARCHAR(500),
-    date TIMESTAMP,
     user_id REFERENCES user_id,
-    team_id REFERENCES team_id
+    team_id REFERENCES team_id,
+    date TIMESTAMP,
+    notes_content VARCHAR(500)
 )
 
 CREATE TABLE mood (
