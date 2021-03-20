@@ -10,7 +10,6 @@ const authCtrl = require('./controllers/user');
 //MIDDLEWARE
 const app = express();
 
-app.use(morgan('combined'));
 app.use(express.json());
 
 let {
