@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS notes
 DROP TABLE IF EXISTS mood
 
 
-CREATE TABLE users (
+CREATE TABLE mood_users (
     user_id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50)  NOT NULL,
