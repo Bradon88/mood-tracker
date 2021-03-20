@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -28,17 +28,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
    const classes = useStyles();
-   // const [firstName, setFirstName] = useState("")
-   // const [lastName, setLastName] = useState("")
-   // const [email, setEmail] = useState("")
-   // const [password, setPassword] = useState("")
-   // const {login, register} = useContext(AuthContext)
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   const {login, register} = useContext(AuthContext)
 
    return (
       <Container component="main" maxWidth="xs">
          <CssBaseline />
          <div className={classes.paper}>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} onSubmit={(event)=>{
+               event.preventDefault();
+               login({email, password})
+            }}>
                <Grid container spacing={2}>          
                   <Grid item xs={12}>
                      <TextField
@@ -49,6 +50,8 @@ const Login = (props) => {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -61,6 +64,8 @@ const Login = (props) => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                      />
                   </Grid>
                </Grid>
