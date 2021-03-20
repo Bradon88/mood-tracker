@@ -5,6 +5,7 @@ const massive = require('massive');
 
 
 //CONTROLLERS
+const authCtrl = require('./controllers/user');
 
 //MIDDLEWARE
 const app = express();
@@ -43,3 +44,9 @@ massive({
 
 
 //Endpoints
+
+//Auth Endpoints
+app.post('/auth/register', authCtrl.register);
+app.post('/auth/login', authCtrl.login);
+app.post('/auth/logout', authCtrl.logout);
+app.get('/auth/user', authCtrl.getUser);
