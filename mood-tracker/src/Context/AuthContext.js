@@ -12,14 +12,14 @@ export const AuthProvider=(props) => {
    const login = (body) => {
       axios.post('/auth/login', body).then(res => {
          setUser(res.data)
-         push('/Main')
+         // push('/Main')
       })
       .catch((err) => console.log(err))
    }
    const register = (body) => {
       axios.post('/auth/register', body).then(res => {
          setUser(res.data)
-         push('/Main')
+         // push('/Main')
       })
       .catch((err) => console.log(err))
    }
