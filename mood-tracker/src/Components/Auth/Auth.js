@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {AuthContext} from '../../Context/AuthContext';
+
 
 
 
@@ -28,17 +29,20 @@ const useStyles = makeStyles((theme) => ({
 
 const Auth = (props) => {
    const classes = useStyles();
-   // const [firstName, setFirstName] = useState("")
-   // const [lastName, setLastName] = useState("")
-   // const [email, setEmail] = useState("")
-   // const [password, setPassword] = useState("")
-   // const {login, register} = useContext(AuthContext)
+   const [first_name, setFirstName] = useState("")
+   const [last_name, setLastName] = useState("")
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   const {login, register} = useContext(AuthContext)
 
    return (
       <Container component="main" maxWidth="xs">
          <CssBaseline />
          <div className={classes.paper}>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} onSubmit={(event)=>{
+               event.preventDefault();
+               register({first_name, last_name, email, password})
+            }}>
                <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                      <TextField
@@ -50,6 +54,8 @@ const Auth = (props) => {
                            id="firstName"
                            label="First Name"
                            autoFocus
+                           value={first_name}
+                           onChange={(e) => setFirstName(e.target.value)}
                         />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -60,7 +66,9 @@ const Auth = (props) => {
                         id="lastName"
                         label="Last Name"
                         name="lastName"
-                        autoComplete="lname"
+                        autoComplete="lastname"
+                        value={last_name}
+                        onChange={(e) => setLastName(e.target.value)}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -72,6 +80,8 @@ const Auth = (props) => {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -84,6 +94,8 @@ const Auth = (props) => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                      />
                   </Grid>
                   {/* <Grid item xs={12}>
