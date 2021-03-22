@@ -9,7 +9,7 @@ const Routes = (props) =>{
       <>
          <Breadcrumbs />
          <Switch>
-            <Route path="/Auth" component={Auth} render={props => <Register {...props} />}/>
+            <Route path="/Auth" component={Auth}/>
             <Route path="/Login" component={Login} render={props => <Login {...props} />}/>
             <Route path="/Main" component={Main} render={props => <Main {...props} />}/>
          </Switch>
