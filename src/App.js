@@ -6,11 +6,8 @@ import Footer from './Components/Footer'
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD:mood-tracker/src/App.js
       <Header />
-=======
 
->>>>>>> master:src/App.js
       <Routes/>
       <Footer />
     </div>
