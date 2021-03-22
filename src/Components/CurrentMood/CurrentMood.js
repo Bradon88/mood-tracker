@@ -4,7 +4,9 @@ import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
+
+
 class CurrentMood extends Component{
 
     render(){
@@ -40,12 +42,17 @@ class CurrentMood extends Component{
                     height: "50px",
                     width: "50px"
                 }}>5</SentimentVerySatisfiedIcon>
-
+                
                 <div>
+                    <br></br>
                     <TextField
                     placeholder="Notes">
-                        
                     </TextField>
+                    <br></br>
+                    <br></br>
+                    <button>Submit
+                        {/* add alert with console.log for submission */}
+                    </button>
                 </div>
             </div>
             
