@@ -1,11 +1,10 @@
 DROP TABLE IF EXISTS users
-DROP TABLE IF EXISTS admin_team
 DROP TABLE IF EXISTS user_team
 DROP TABLE IF EXISTS team
-DROP TABLE IF EXISTS messages
 DROP TABLE IF EXISTS chat
 DROP TABLE IF EXISTS notes
 DROP TABLE IF EXISTS mood
+DROP TABLE IF EXISTS mood_users
 
 
 CREATE TABLE mood_users (
@@ -27,7 +26,7 @@ CREATE TABLE user_team (
 CREATE TABLE team (
     team_id SERIAL PRIMARY KEY,
     team_name VARCHAR(200),
-    admin_id REFERENCES user_id
+    admin_id REFERENCES user_id,
 )
 
 CREATE TABLE chat (
