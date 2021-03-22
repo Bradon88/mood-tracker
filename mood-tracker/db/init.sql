@@ -18,12 +18,6 @@ CREATE TABLE mood_users (
     admin VARCHAR(100)
 )
 
-CREATE TABLE admin_team (
-    admin_team_id SERIAL PRIMARY KEY,
-    admin_id REFERENCES user_id,
-    team_id REFERENCES team_id
-)
-
 CREATE TABLE user_team (
     user_team_id SERIAL PRIMARY KEY,
     user_id REFERENCES user_id,
@@ -33,14 +27,7 @@ CREATE TABLE user_team (
 CREATE TABLE team (
     team_id SERIAL PRIMARY KEY,
     team_name VARCHAR(200),
-    admin_id REFERENCES user_id,
-    team_member REFERENCES user_id
-)
-
-CREATE TABLE messages (
-    message_id SERIAL PRIMARY KEY,
-    user_id REFERENCES user_id,
-    chat_id REFERENCES chat_id
+    admin_id REFERENCES user_id
 )
 
 CREATE TABLE chat (
