@@ -8,7 +8,6 @@ const Footer = () => {
             <Link to='/Chat' className='link'>Chat</Link>
             <Link to='/Register' className='link'>Register</Link>
             <Link to='/Login' className='link'>Login</Link>
-
         </div>
     )
 }
