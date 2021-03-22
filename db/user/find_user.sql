@@ -1,3 +1,3 @@
 SELECT *
-FROM mood_users
+FROM users
 WHERE email = $1;
