@@ -2,13 +2,8 @@ import {Link} from 'react-router-dom'
 
 const Header = () => {
     return (
-        <div>
+        <div className='header'>
             <h2>Mood Tracker</h2>
-            <Link to='/Main'>Current Mood</Link>
-            <Link to='/Chat'>Chat</Link>
-            <Link to='/Register'>Register</Link>
-            <Link to='/Login'>Login</Link>
-
         </div>
     )
 }
