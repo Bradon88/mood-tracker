@@ -13,11 +13,11 @@ const Breadcrumbs = props => {
    } = props;
    const pathnames = pathname.split("/").filter(x => x);
    return (
-      <MUIBreadcrumbs aria-label="breadcrumb">
+      <MUIBreadcrumbs aria-label="breadcrumb" className='breadcrumb-parent'>
          {pathnames.length > 0 ? (
             <Link onClick={() => history.push("/")}>Home</Link>
          ) : (
-            <Typography> Home </Typography>
+            <Typography className='breadcrumb-trail'> Home</Typography>
          )}
          {pathnames.map((name, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;

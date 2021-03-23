@@ -1,4 +1,4 @@
-UPDATE mood_users
+UPDATE users
 SET 
 first_name = $2,
 last_name = $3,
