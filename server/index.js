@@ -4,13 +4,14 @@ const session = require('express-session');
 const massive = require('massive');
 const socketio = require("socket.io");
 const auth = require("./middleware/auth");
-const moodCtrl = require('./controllers/mood')
-const teamCtrl = require('./controllers/team')
-const memberCtrl = require('./controllers/members')
 
 
 //CONTROLLERS
 const authCtrl = require('./controllers/user');
+const notesCtrl = require('./controllers/notes')
+const moodCtrl = require('./controllers/mood')
+const teamCtrl = require('./controllers/team')
+const memberCtrl = require('./controllers/members')
 
 //MIDDLEWARE
 const app = express();
@@ -66,7 +67,11 @@ massive({
 })
 
 
-//Endpoints
+//Notes Endpoints
+app.get('/api/notes', notesCtrl.getNotes)
+app.post('/api/notes', notesCtrl.addNotes)
+app.put('/api/notes/:notes_id', notesCtrl.updateNotes)
+app.delete('/api/notes/:notes_id', notesCtrl.deleteNotes)
 
 //Auth Endpoints
 app.post('/auth/register', authCtrl.register);
