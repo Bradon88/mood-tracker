@@ -1,19 +1,39 @@
 import React, {Component} from 'react';
 import {Scatter} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
+import {Link} from 'react-router-dom'
 
 class Chart extends Component {
     render(){
+
+        const data1 = {
+            type: 'doughnut',
+            datasets: [{
+                data: [10,20,30],
+                backgroundColor: ['#e76f51', '#e9c46a']
+            }],
+            labels: [
+                'Red', 'Yellow', 'Blue'
+            ]
+        }
+
 
         const data = {
             type: 'scatter',
             
                 datasets: [{
                     label: 'Scatter Dataset',
-                    pointBorderColor: '#e76f51',
-                    pointBackGroundColor: '#e76f51',
+                    pointBorderColor: '#000',
+                    pointBackgroundColor: '#e76f51',
+                    pointBorderWidth: '1',
+                    radius: '6',
+                   
                     data: [{
                         x: 5,
                         y: 4
+                    },{
+                        x:5,
+                        y:2
                     }, {
                         x: 0,
                         y: 10
@@ -36,12 +56,12 @@ class Chart extends Component {
             }
         };
         return (
-            <div><h1>Moods on Display</h1>
+            <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
             <Scatter
 
             data={data}
-            width={400}
-           
+            width={500}
+            // height={300} for responsive/mobile design
             options={{
              title: {
                  display:true
@@ -50,6 +70,18 @@ class Chart extends Component {
                 display: true
             }
             }}/>
+            <Pie
+            data={data1}
+            height={110}
+            options={
+                {
+                    display: true,
+                    cutoutPercentage: '50'
+                }
+            }
+            />
+
+            <button><Link to='/CurrentMood'>Add Mood</Link></button>
             </div>
         )
     }
