@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 const Header = () => {
     return (
         <div className='header'>
-            <h2>Mood Tracker</h2>
+            <h1 className='title'>Mood Tracker</h1>
         </div>
     )
 }
