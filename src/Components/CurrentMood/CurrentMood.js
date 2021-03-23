@@ -5,7 +5,8 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import TextField from '@material-ui/core/TextField';
-
+import IconButton from '@material-ui/core/IconButton'
+import './CurrentMood.scss'
 
 class CurrentMood extends Component{
 
@@ -15,33 +16,28 @@ class CurrentMood extends Component{
         return(
             <div className="icons">
                 <h1>How are you feeling today?</h1>
-                <SentimentVeryDissatisfiedIcon 
-                style={{
-                    height: "50px",
-                    width: "50px"
-                }}>1</SentimentVeryDissatisfiedIcon>
 
-                <SentimentDissatisfied 
-                style={{
-                    height: "50px",
-                    width: "50px"
-                }}>2</SentimentDissatisfied>
 
-                <SentimentSatisfiedIcon 
-                style={{
-                    height: "50px",
-                    width: "50px"
-                }}>3</SentimentSatisfiedIcon>
-                <SentimentSatisfiedAltIcon
-                style={{
-                    height: "50px",
-                    width: "50px"
-                }}>4</SentimentSatisfiedAltIcon>
-                <SentimentVerySatisfiedIcon
-                style={{
-                    height: "50px",
-                    width: "50px"
-                }}>5</SentimentVerySatisfiedIcon>
+                <IconButton><SentimentVeryDissatisfiedIcon
+                className='sad button' 
+                /></IconButton>
+                   
+                <IconButton><SentimentDissatisfied 
+                className = 'bummed button'
+                /></IconButton>
+
+                <IconButton><SentimentSatisfiedIcon 
+                className = 'meh button'
+                /></IconButton>
+
+                    
+                <IconButton><SentimentSatisfiedAltIcon
+                className = 'happy button'
+                /></IconButton>
+                    
+                <IconButton><SentimentVerySatisfiedIcon
+                className = 'stoked button'
+                /></IconButton>
                 
                 <div>
                     <br></br>
@@ -50,10 +46,12 @@ class CurrentMood extends Component{
                     </TextField>
                     <br></br>
                     <br></br>
-                    <button>Submit
+                    <button className="btn">Submit
                         {/* add alert with console.log for submission */}
                     </button>
                 </div>
+
+                
             </div>
             
         )
