@@ -4,6 +4,9 @@ const session = require('express-session');
 const massive = require('massive');
 const socketio = require("socket.io");
 const auth = require("./middleware/auth");
+const moodCtrl = require('./controllers/mood')
+const teamCtrl = require('./controllers/team')
+const memberCtrl = require('./controllers/members')
 
 
 //CONTROLLERS
@@ -72,3 +75,28 @@ app.post('/auth/logout', authCtrl.logout);
 app.get('/auth/user', authCtrl.getUser);
 // this will use your jwt token to authenticate
 //app.get('/auth/user', auth , authCtrl.getUser);
+
+//MOOD ENDPOINTS
+// user logs a single mood entry
+app.post('/api/mood', moodCtrl.addMood);
+// returns mood entries for one user, based on logged-in user
+app.get('/api/mood', moodCtrl.getMood);
+// returns mood entries for an entire team, based on logged-in user (as admin_id)
+app.get('/api/moods', moodCtrl.getMoods);
+
+//TEAM ENDPOINTS
+// creates a new team
+app.post('/api/team', teamCtrl.addTeam);
+// returns team name and admin_id
+app.get('/api/team', teamCtrl.getTeam);
+// deletes entire team by admin_id
+app.delete('/api/team/:team_id', teamCtrl.deleteTeam)
+
+//TEAM MEMBERS ENDPOINTS
+// adds a member to logged-in user's existing team
+app.post('/api/team_member', memberCtrl.addMember);
+// returns all team member information
+app.get('/api/team_member', memberCtrl.getMembers);
+// deletes an individual team member by team member user_id
+app.delete('/api/team_member/:member_id', memberCtrl.deleteMember);
+
