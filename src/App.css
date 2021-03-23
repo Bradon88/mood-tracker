@@ -1,10 +1,19 @@
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: teal;
   color: white;
   width: 100vw;
+}
+
+title {
+
+}
+
+.welcome {
+  font-size: 70px;
+  margin-left: 35px;
 }
 
 .footer {
@@ -19,17 +28,30 @@
 }
 
 .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
 }
 
-.landing-page {
+.footer-links:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+
+.landing-page-text {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   max-width: fit-content;
   color: white;
-  margin-left: 30px;
+  margin-left: 150px;
 }
 
 .landing-page-link {
@@ -42,7 +64,7 @@
   justify-content: center;
   font-size: larger;
   margin-top: 80px;
-  margin-left: 30px;
+  margin-left: 150px;
   padding: 15px;
   text-decoration: none;
   border-radius: 25px;
@@ -53,9 +75,6 @@
   border: solid white 2px;
 }
 
-.welcome {
-  
-}
 
 .home {
   height: 100vh;

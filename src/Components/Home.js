@@ -7,40 +7,21 @@ const Home = () => {
         <div className='home'>
             <h1 className='welcome'>Welcome to Mood Tracker!</h1>
             <h3>
-                <p className='landing-page'>
+                <h2 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
-                </p>
+                </h2>
                 
-                <p className='landing-page'>
-                With just a minute on this app you can check in to see how you're feeling. 
-                </p>
+                <h2 className='landing-page-text'>
+                Track your daily emotional health. 
+                </h2>
 
-                <p className='landing-page'>
-                For mental and emotional health, seeing any trends can help you identify patterns and possible triggers 
-                in your daily life.
-                </p>
+                <h2 className='landing-page-text'>
+                Identify any patterns or possible triggers.
+                </h2>
 
-                <p className='landing-page'>
-                For both the ups and the downs! It's important to record both the important and mundane days in life.
-                </p>
-
-                <p className='landing-page'>
-                Are you a parent? Or an employer? Here you can create a team and see how your kids or employees are
-                doing overall.
-                </p>
-
-                <p className='landing-page'>
-                Lack of emotional health effects kid's social upbringing, school outcomes, and overall
-                lust for life.
-                </p>
-
-                <p className='landing-page'>
-                In a business setting, it effects an employee's productivity and feeling of fulfillment from their work.
-                </p>
-
-                <p className='landing-page'>
-                As a team leader, you can monitor trends to make needed changes or offer help if appropriate.
-                </p>
+                <h2 className='landing-page-text'>
+                For all the ups and the downs!
+                </h2>
                 
                 <Link to='/Register'className='landing-page-link'>Register for an Account</Link>
                 <Link to='/Login'className='landing-page-link'>Login</Link>
