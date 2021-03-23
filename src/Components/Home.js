@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom'
 const Home = () => {
     return (
         <div className='home'>
+            <div className='welcome-parent'>
             <h1 className='welcome'>Welcome to Mood Tracker!</h1>
-            <h3>
+            </div>
+            <div className='landing-page-text-parent'>
                 <h2 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
                 </h2>
@@ -25,7 +27,7 @@ const Home = () => {
                 
                 <Link to='/Register'className='landing-page-link'>Register for an Account</Link>
                 <Link to='/Login'className='landing-page-link'>Login</Link>
-            </h3>
+            </div>
         </div>
     )
 }
