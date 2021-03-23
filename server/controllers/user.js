@@ -16,7 +16,10 @@ module.exports = {
       const[user] = await db.user.create_user(first_name, last_name, email, hash)
       delete user.password
       //user.team_id = null
-      req.session.user = user
+      req.session.user = {
+         ...user, 
+         team_id: null
+      }
       return res.status(200).send({
          user,
          token: generateJWT(user),
