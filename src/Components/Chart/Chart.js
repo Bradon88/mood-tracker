@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
+
 import {Line} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
 import './Chart.scss'
 
+
+
 class Chart extends Component {
     render(){
+
 
         const donutChart = {
             type: 'doughnut',
@@ -45,11 +49,12 @@ class Chart extends Component {
             width={200}
             // height={300} for responsive/mobile design
             options={{
-            
-            legend: {
-                display: true
-            }
+
+    
+            legend: {display:true}
+          
             }}/>
+
             <Pie
             data={donutChart}
             height={150}
@@ -64,6 +69,7 @@ class Chart extends Component {
             style={{
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
+
             </div>
         )
     }
