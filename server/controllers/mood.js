@@ -3,7 +3,8 @@ module.exports = {
         const db = req.app.get('db')
         if( req.session.user ){
             const { mood, date, current_activity, activity_notes } = req.body
-            await db.mood.create_mood([ ])
+            await db.mood.create_mood([ team_id, mood, date, current_activity, activity_notes ])
+            
         }
     },
     getMood: async ( req, res ) => {
