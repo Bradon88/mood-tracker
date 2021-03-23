@@ -1,16 +1,18 @@
 module.exports = {
     getNotes: (req, res) => {
         const db = req.app.get('db')
-        db.notes.get_notes().then((notes) => {
+        const {user_id} = req.session.user
+        db.notes.get_notes(user_id).then((notes) => {
             res.status(200).send(notes)
         })
     },
 
     addNotes: (req, res) => {
         const db = req.app.get('db')
-        const {notes_content} = req.body
         const {user_id} = req.session.user
-        db.notes.create_notes(notes_content, user_id).then((notes) => {
+        const {notes_content, date} = req.body
+        const team = req.session.user.team_id ? req.session.user.team_id : null
+        db.notes.create_notes(user_id, team, date, notes_content).then((notes) => {
             res.status(200).send(notes)
         })
     },

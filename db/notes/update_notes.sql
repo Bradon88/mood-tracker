@@ -1,7 +1,7 @@
 UPDATE notes
-SET notes_content = $2,
-WHERE user_id = $1;
+SET notes_content = $1
+WHERE notes_id = $2
+RETURNING *
+ORDER BY notes_id;
 
-SELECT n.notes_id, n.notes_content, d.date
-FROM notes 
-ORDER BY notes_id
+

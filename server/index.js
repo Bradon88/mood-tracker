@@ -4,14 +4,14 @@ const session = require('express-session');
 const massive = require('massive');
 const socketio = require("socket.io");
 const auth = require("./middleware/auth");
-const moodCtrl = require('./controllers/mood')
-const teamCtrl = require('./controllers/team')
-const memberCtrl = require('./controllers/members')
 
 
 //CONTROLLERS
 const authCtrl = require('./controllers/user');
 const notesCtrl = require('./controllers/notes')
+const moodCtrl = require('./controllers/mood')
+const teamCtrl = require('./controllers/team')
+const memberCtrl = require('./controllers/members')
 
 //MIDDLEWARE
 const app = express();
