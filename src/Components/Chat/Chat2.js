@@ -5,16 +5,17 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { borders } from '@material-ui/system';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import io from "socket.io-client"
 import './Chat.scss'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-
-library.add(
-  faPaperPlane
-)
 
 
 const Chat = (props) => {
@@ -27,11 +28,12 @@ const Chat = (props) => {
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-      },
-      selectEmpty: {
+    },
+    selectEmpty: {
       marginTop: theme.spacing(2),
-      },
-      }));
+    },
+    
+  }));
 
   const classes = useStyles();
 
@@ -67,14 +69,15 @@ const Chat = (props) => {
       </FormControl>
       
         <div>
-          <div className="chatContainer">
-            <div className="chatHeader"></div>
-              <div className="screen">
-                {messages.map((m) => (
+          <p>This is the chat</p>
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+              {messages.map((m) => (
                   <div className="speech-wrapper">
                     {console.log(m.user.user_id, user.user_id, 'chat')}
-                      <div className={`bubble ${m.user.user_id === user.user_id ? 'sender' : 'receiver'}`}>
-                        <div className={`txt ${m.user.user_id === user.user_id ? 'senderTxt' : 'receiverTxt'}`}>
+                    <div className={`bubble ${m.user.user_id === user.user_id ? 'sender' : 'receiver'}`}>
+                        <div className="txt">
                           <p className="name">
                               {m.user.first_name}
                           </p>
@@ -86,23 +89,43 @@ const Chat = (props) => {
                         <div className="bubble-arrow"></div>
                     </div>
                   </div>
-                ))}
-              </div>
-            <div className="chatFooter">
-              <div className="bodyInput">
-                <input
-                  className="messageInput"
-                  value={message} 
-                  onChange={(e) => setMessage(e.target.value)} />
-                <button 
-                  className="chatButton"
-                  onClick={() => socket.emit("send-message", { message, user})}>
-                  <FontAwesomeIcon icon={["fa", "paper-plane"]}/>
-                </button>
-              </div>
+              ))}
+              <form className={classes.form} onSubmit={(event)=>{
+                event.preventDefault();
+                socket.emit("send-message", { message, user})
+              }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={8}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      name="message"
+                      label="Message"
+                      type="message"
+                      id="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={4}>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                    >
+                      Send
+                    </Button>
+                  </Grid>
+                </Grid>
+              </form>  
             </div>
-          </div>
+            
+          </Container>
         </div>
+        
     </div>
 
 
