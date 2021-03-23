@@ -3,10 +3,11 @@ import {Link} from 'react-router-dom'
 const Footer = () => {
     return (
         <div className='footer'>
-            <Link to='/Main' className='link'>Current Mood</Link>
-            <Link to='/Chat' className='link'>Chat</Link>
-            <Link to='/Register' className='link'>Register</Link>
-            <Link to='/Login' className='link'>Login</Link>
+            <Link to='/' className='footer-links'>Home</Link>
+            <Link to='/Main' className='footer-links'>Current Mood</Link>
+            <Link to='/Chat' className='footer-links'>Chat</Link>
+            <Link to='/Register' className='footer-links'>Register</Link>
+            <Link to='/Login' className='footer-links'>Login</Link>
 
         </div>
     )
