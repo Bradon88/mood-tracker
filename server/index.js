@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
+const socketio = require("socket.io");
+const auth = require("./middleware/auth");
 
 
 //CONTROLLERS
@@ -34,7 +36,7 @@ massive({
 }).then(db => {
    app.set('db', db);
    console.log('db connected');
-   const io = require("socket.io")(
+   const io = socketio(
       app.listen(SERVER_PORT, console.log(`Server listening on ${SERVER_PORT}`)),
       {
          cors: {
@@ -68,3 +70,5 @@ app.post('/auth/register', authCtrl.register);
 app.post('/auth/login', authCtrl.login);
 app.post('/auth/logout', authCtrl.logout);
 app.get('/auth/user', authCtrl.getUser);
+// this will use your jwt token to authenticate
+//app.get('/auth/user', auth , authCtrl.getUser);

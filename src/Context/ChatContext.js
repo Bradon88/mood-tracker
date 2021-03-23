@@ -16,7 +16,7 @@ export const ChatProvider=(props) => {
       ){
          socket.disconnect()
       }
-   }, [socket])
+   }, [socket, user])
 
    useEffect(() => {
       if (socket) {
