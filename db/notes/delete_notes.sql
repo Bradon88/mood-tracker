@@ -1,6 +1,5 @@
-UPDATE notes
-SET notes_content = $2,
-WHERE user_id = $1;
+DELETE FROM notes 
+WHERE notes_id = $1
 
 SELECT n.notes_id, n.notes_content, d.date
 FROM notes 

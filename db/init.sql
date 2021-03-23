@@ -54,3 +54,10 @@ CREATE TABLE mood (
     current_activity VARCHAR(200),
     activity_notes VARCHAR(200),
 )
+
+
+
+SOME DUMMY INFO
+
+INSERT INTO notes (user_id, notes_id, notes_content, date)
+VALUES (1, 1, 'Hey there', '03/23/21')

@@ -8,6 +8,7 @@ const auth = require("./middleware/auth");
 
 //CONTROLLERS
 const authCtrl = require('./controllers/user');
+const notesCtrl = require('./controllers/notes')
 
 //MIDDLEWARE
 const app = express();
@@ -63,7 +64,11 @@ massive({
 })
 
 
-//Endpoints
+//Notes Endpoints
+app.get('/api/notes', notesCtrl.getNotes)
+app.post('/api/notes', notesCtrl.addNotes)
+app.put('/api/notes/:notes_id', notesCtrl.updateNotes)
+app.delete('/api/notes/:notes_id', notesCtrl.deleteNotes)
 
 //Auth Endpoints
 app.post('/auth/register', authCtrl.register);
