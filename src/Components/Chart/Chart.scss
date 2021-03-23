@@ -1,53 +1,9 @@
 $color: #2a9d8f;
 
 
-body{
-    display: flex;
-    text-align: center;
-
-    
+Link{
+    text-decoration: none;
 }
-
-div{
-    
-    .button{
-        height: 100px;
-        width: 100px;
-        color: black;
-    }
-
-    .sad{
-         :hover{
-        color: #bf5c43 ;
-        
-        }
-    }
-
-    .bummed{
-        :hover{
-            color:#ee8959;
-        }
-    }
-
-    .meh{
-        :hover{
-            color:#efb366;
-        }
-    }
-
-    .happy{
-        :hover{
-            color: #e9cf6a
-        }
-    }
-
-    .stoked{
-        :hover{
-            color: #babb74
-        }
-    }
-}
-
 
 .btn {
     display: inline-block;

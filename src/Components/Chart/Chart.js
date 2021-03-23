@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Scatter} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom'
+import './Chart.scss'
 
 class Chart extends Component {
     render(){
@@ -19,36 +20,21 @@ class Chart extends Component {
 
 
         const data = {
-            type: 'scatter',
-            
+            type: 'line',
+            labels: ['1', '2', '3', '4'],
                 datasets: [{
-                    label: 'Scatter Dataset',
+                    label: 'March',
                     pointBorderColor: '#000',
                     pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
                     radius: '6',
-                   
-                    data: [{
-                        x: 5,
-                        y: 4
-                    },{
-                        x:5,
-                        y:2
-                    }, {
-                        x: 0,
-                        y: 10
-                    }, {
-                        x: 10,
-                        y: 5
-                    },{
-                        x: 6,
-                        y:3
-                    }]
+                    data: [4, 3, 2, 5, 1]
                 }],
             
             options: {
                 scales: {
                     xAxes: [{
+                        
                         type: 'linear',
                         position: 'bottom'
                     }]
@@ -57,31 +43,33 @@ class Chart extends Component {
         };
         return (
             <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
-            <Scatter
+            <Line
 
             data={data}
-            width={500}
+            width={200}
             // height={300} for responsive/mobile design
             options={{
-             title: {
-                 display:true
-             },
+            
             legend: {
                 display: true
             }
             }}/>
             <Pie
             data={data1}
-            height={110}
+            height={150}
             options={
                 {
                     display: true,
-                    cutoutPercentage: '50'
+                    cutoutPercentage: '60'
                 }
             }
+            
             />
 
-            <button><Link to='/CurrentMood'>Add Mood</Link></button>
+            <button className="btn"
+            style={{
+                marginTop: '20px'
+            }}><Link to='/CurrentMood'>Add Mood</Link></button>
             </div>
         )
     }

@@ -20,39 +20,24 @@ class CurrentMood extends Component{
 
                 <IconButton><SentimentVeryDissatisfiedIcon
                 className='sad button' 
-                style={{
-                    
-                    // color: "#264653"
-                }}/></IconButton>
-
+                /></IconButton>
+                   
                 <IconButton><SentimentDissatisfied 
                 className = 'bummed button'
-                style={{
-                    // height: "50px",
-                    // width: "50px",
-                    // color: "#e9c46a"
-                }}/></IconButton>
+                /></IconButton>
 
                 <IconButton><SentimentSatisfiedIcon 
                 className = 'meh button'
-                style={{
-                    // height: "50px",
-                    // width: "50px"
-                }}/></IconButton>
+                /></IconButton>
 
+                    
                 <IconButton><SentimentSatisfiedAltIcon
                 className = 'happy button'
-                style={{
-                    // height: "50px",
-                    // width: "50px"
-                }}/></IconButton>
-
+                /></IconButton>
+                    
                 <IconButton><SentimentVerySatisfiedIcon
                 className = 'stoked button'
-                style={{
-                    // height: "50px",
-                    // width: "50px"
-                }}/></IconButton>
+                /></IconButton>
                 
                 <div>
                     <br></br>
