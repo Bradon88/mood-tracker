@@ -16,7 +16,7 @@ CREATE TABLE users (
     is_admin BOOLEAN
 )
 
-CREATE TABLE user_team (
+CREATE TABLE team_members (
     user_team_id SERIAL PRIMARY KEY,
     user_id REFERENCES user_id,
     team_id REFERENCES team_id
