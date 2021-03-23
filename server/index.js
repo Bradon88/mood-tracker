@@ -94,7 +94,7 @@ app.delete('/api/team/:team_id', teamCtrl.deleteTeam)
 
 //TEAM MEMBERS ENDPOINTS
 // adds a member to logged-in user's existing team
-app.post('/api/team_member', memberCtrl.addMember);
+app.post('/api/team_member/:member_id', memberCtrl.addMember);
 // returns all team member information
 app.get('/api/team_member', memberCtrl.getMembers);
 // deletes an individual team member by team member user_id

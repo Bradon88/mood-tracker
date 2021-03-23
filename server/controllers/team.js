@@ -4,8 +4,10 @@ module.exports = {
     // creates a team
     addTeam: async ( req, res ) => {
         const db = req.app.get('db')
+        //check if user is logged in 
         if( req.session.user ){
-            if( req.session.user.is_admin !== true ){
+            //check if user has a team already
+            if( !req.session.user.is_admin ){
                 const { team_name } = req.body
                 const { user_id } = req.session.user
                 const newTeam = await db.team.create_team([ team_name, user_id ])
