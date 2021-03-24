@@ -1,8 +1,13 @@
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {AuthContext} from '../Context/AuthContext';
+import { useContext} from "react";
 
 
 const Home = () => {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <div className='home'>
             <div className='welcome-parent'>
@@ -24,10 +29,14 @@ const Home = () => {
                 <h2 className='landing-page-text'>
                 For all the ups and the downs!
                 </h2>
-                
-                <Link to='/Register'className='landing-page-link'>Register for an Account</Link>
-                <Link to='/Login'className='landing-page-link'>Login</Link>
-            </div>
+                { !user ?
+                <div>
+                    <Link to='/Register' className='landing-page-link'>Register for an Account</Link>
+                    <Link to='/Login' className='landing-page-link'>Login</Link>
+                </div>
+                : null
+                }
+            </h3>
         </div>
     )
 }

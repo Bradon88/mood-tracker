@@ -18,10 +18,8 @@ module.exports = {
       //user.team_id = null
       req.session.user = {
          ...user, 
-         team_id: null,
-         is_admin: false
+         team_id: null
       }
-      console.log(req.session.user)
       return res.status(200).send({
          user,
          token: generateJWT(user),
