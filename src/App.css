@@ -7,10 +7,6 @@
   width: 100vw;
 }
 
-title {
-
-}
-
 .welcome {
   font-size: 70px;
   margin-left: 35px;
@@ -126,16 +122,16 @@ title {
   background-color: rgba(0, 0, 0, 0.5);
   max-width: fit-content;
   color: white;
-  margin-left: 150px;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 400px), (max-height: 850px) {
   .landing-page-text {
-    position: relative;
+    display: flex;
     background-color: rgba(0, 0, 0, 0.5);
     max-width: fit-content;
     color: white;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -149,11 +145,10 @@ title {
   justify-content: center;
   font-size: larger;
   font-weight: bolder;
-  margin-top: 80px;
-  margin-left: 150px;
   padding: 15px;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
+  margin-top: 50px;
 }
 
 .landing-page-link:hover {
@@ -172,7 +167,7 @@ title {
     justify-content: center;
     font-size: larger;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 30px;
   }
   
   .landing-page-link:hover {
@@ -181,12 +176,17 @@ title {
   }
 
   .landing-page-text-parent {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+    
+    
   }
+}
+
+.landing-page-text-parent {
+  width: 30%;
+  position: relative;
+  left: 150px;
 }
 
 
@@ -216,6 +216,4 @@ title {
   background-color: sandybrown;
 }
 
-.breadcrumb-trail {
-  
-}
+
