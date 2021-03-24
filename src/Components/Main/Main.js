@@ -10,7 +10,6 @@ const Main = (props) => {
 
    return (
       <div>
-         This is the main component
       <Chart/>
       </div>
    )
