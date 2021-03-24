@@ -7,7 +7,10 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
+<<<<<<< HEAD
+=======
     "@fortawesome/react-fontawesome": "^0.1.14",
+>>>>>>> 04d46725f518b1a365a156a93a19b8d361145a11
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
