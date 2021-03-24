@@ -10,8 +10,10 @@ const Home = () => {
 
     return (
         <div className='home'>
+            <div className='welcome-parent'>
             <h1 className='welcome'>Welcome to Mood Tracker!</h1>
-            <h3>
+            </div>
+            <div className='landing-page-text-parent'>
                 <h2 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
                 </h2>
