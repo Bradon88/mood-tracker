@@ -1,5 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+
+
+const {NODEMAILER_EMAIL, NODEMAILER_PASSWORD} = process.env
 
 module.exports = {
 
@@ -18,8 +22,38 @@ module.exports = {
       //user.team_id = null
       req.session.user = {
          ...user, 
-         team_id: null
+         team_id: null,
+         is_admin: false
       }
+      console.log(req.session.user)
+      //NODEMAILER
+      try {
+         const transporter = nodemailer.createTransport({
+             service: 'mail.com',
+             auth: {
+                 user: NODEMAILER_EMAIL,
+                 pass: NODEMAILER_PASSWORD
+             }
+         })
+         await transporter.sendMail({
+             from: NODEMAILER_EMAIL,
+             to: email,
+             subject: "Account Created!",
+             html: `
+             <body style='background-color:teal; height:100vh; width:100vw; margin: 0;'>
+             <div style='background-color:sandybrown; height:50%; width:100vw; display: flex; justify-content: center; align-items: center; margin: 0;'>
+                 <div style='background-color: white; height: 400px; width: 700px; margin-top: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column;'>
+                  <h1 style='font-weight:bolder;'>Thank you for joining Mood Tracker!</h1>
+                 <h3 style='font-weight:bolder;'>This email is to confirm that your account has been created.</h3>
+                 </div>
+             </div>
+         </body>
+             `
+         })
+     } catch(err) {
+         console.log(err)
+     }
+      //END OF NODEMAILER
       return res.status(200).send({
          user,
          token: generateJWT(user),
