@@ -44,11 +44,15 @@ export const AuthProvider=(props) => {
    }
 
    const getUser = () => {
-      axios.get('/auth/me').then(({data}) => setUser(data))
+      axios.get('/auth/user').then(({data}) => setUser(data))
+   }
+
+   const updateUser = () => {
+      axios.post('/auth/user').then(({data}) => setUser(data))
    }
 
    return(
-      <AuthContext.Provider value={{user, setUser, login, register, logout}}>
+      <AuthContext.Provider value={{user, setUser, login, register, logout, updateUser}}>
          {props.children}
       </AuthContext.Provider>
    )
