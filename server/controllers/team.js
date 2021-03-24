@@ -10,10 +10,11 @@ module.exports = {
             if( !req.session.user.is_admin ){
                 const { team_name } = req.body
                 const { user_id } = req.session.user
-                const newTeam = await db.team.create_team([ team_name, user_id ])
+                const [newTeam] = await db.team.create_team([ team_name, user_id ])
                 req.session.user = {
                     ...req.session.user,
-                    is_admin: true
+                    is_admin: true,
+                    team_id: newTeam.team_id
                 }
                 return res.status(200).send(newTeam)
             } else {
