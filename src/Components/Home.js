@@ -11,8 +11,9 @@ const Home = () => {
     return (
         <div className='home'>
             <div className='welcome-parent'>
-            <h1 className='welcome'>Welcome to Mood Tracker!</h1>
+                <h1 className='welcome'>Welcome to Mood Tracker!</h1>
             </div>
+            
             <div className='landing-page-text-parent'>
                 <h2 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
@@ -29,14 +30,15 @@ const Home = () => {
                 <h2 className='landing-page-text'>
                 For all the ups and the downs!
                 </h2>
+
                 { !user ?
                 <div>
                     <Link to='/Register' className='landing-page-link'>Register for an Account</Link>
                     <Link to='/Login' className='landing-page-link'>Login</Link>
                 </div>
-                : null
+                 : null
                 }
-            </h3>
+            </div> 
         </div>
     )
 }
