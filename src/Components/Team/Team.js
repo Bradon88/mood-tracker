@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react"
 import {TeamContext} from '../../Context/TeamContext'
 
 const Team = () => {
-    const {teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
+    const {teamMemberList, team, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
     const [team_name, setTeamName] = useState('')
 
     //check if is_admin = false in DidMount
@@ -21,9 +21,9 @@ const Team = () => {
         const top100Films = [
             { title: 'The Shawshank Redemption', year: 1994 },
             { title: 'The Godfather', year: 1972 }]
-        
+        console.log(team[0].team_name, 'team.js component')
         return <div>
-                    
+                   
                     <div>
                         <h2>Create a team to view and manage team member mood logs!</h2>
                         <button 
@@ -46,6 +46,7 @@ const Team = () => {
                             <button 
                                 className="btn"
                                 onClick={() => {
+                                    console.log(team_name)
                                     addTeam(team_name)
                                     setTeamName('')
                                     }}

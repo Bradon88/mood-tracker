@@ -3,16 +3,16 @@ import React, {createContext, useState, useEffect} from 'react'
 
 export const TeamContext = createContext(null)
 export const TeamProvider=(props) => {
-   const [team_name, setTeam_Name] = useState();
+   const [team, setTeam] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
 
 
-   const addTeam = async (body) => {
+   const addTeam = async (team_name) => {
       console.log(team_name, 'before axios call')
       await axios
-      .post("/api/team", body)
+      .post("/api/team", {team_name})
       .then((res) => {
-         setTeam_Name(res.data)
+         setTeam(res.data)
       })
       .catch(() => console.log('Failed to create a new team.'))
       console.log('teamContext--addTeam', team_name)
@@ -21,7 +21,7 @@ export const TeamProvider=(props) => {
       await axios
       .get("/api/team")
       .then((res) => {
-         setTeam_Name(res.data)
+         setTeam(res.data)
       })
          .catch(() => console.log("Failed to get team."))
    }
@@ -59,7 +59,7 @@ export const TeamProvider=(props) => {
       }
 
    return (
-      <TeamContext.Provider value={{team_name, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
+      <TeamContext.Provider value={{team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
          {props.children}
       </TeamContext.Provider>
    )
