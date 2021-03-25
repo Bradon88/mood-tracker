@@ -8,19 +8,15 @@ const Home = () => {
             <div className='welcome-parent'>
                 <h1 className='welcome'>Welcome to Mood Tracker!</h1>
             </div>
-<<<<<<< HEAD
             
             <div className='landing-page-text-parent'>
                 <h2 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
                 </h2>
-=======
                 <div className='landing-page-text-parent'>
                     <h3 className='landing-page-text'>
                     Get simple and useful insight into yourself! 
                     </h3>
->>>>>>> master
-                
                     <h3 className='landing-page-text'>
                     Track your daily emotional health. 
                     </h3>
@@ -37,6 +33,7 @@ const Home = () => {
                     <Link to='/Login'className='landing-page-link'>Login</Link>
                 </div>
         </div>
+    </div>
     )
 }
 
