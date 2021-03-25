@@ -16,7 +16,7 @@ const Routes = (props) =>{
             <Route path="/Register" component={Register} render={props => <Register {...props} />}/>
             <Route path="/Login" component={Login} render={props => <Login {...props} />}/>
             <Route path="/Main" component={Main} render={props => <Main {...props} />}/>
-            <Route path="/Chat" component={Chat}/>
+            <Route path="/Chat/:room?" component={Chat}/>
             <Route path="/CurrentMood" component={CurrentMood}/>
          </Switch>
       </>
