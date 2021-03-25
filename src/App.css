@@ -7,13 +7,64 @@
   width: 100vw;
 }
 
-title {
-
-}
-
 .welcome {
   font-size: 70px;
   margin-left: 35px;
+}
+
+@media screen and (max-width: 400px), (max-height: 850px) {
+  .welcome {
+    font-size: 25px;
+  }
+}
+
+.welcome-parent {
+  display: flex;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
+}
+
+.header-links:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+
+.header-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
+  background-color: teal;
+  border: none;
+}
+
+.header-logout:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+
+.footer {
+  display: none;
+}
+
+@media screen and (max-width: 400px), (max-height: 850px) {
+
+.header {
+  display: none;
 }
 
 .footer {
@@ -23,9 +74,10 @@ title {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 50px;
+  height: 80px;
   background-color: teal;
 }
+
 
 .footer-links {
   display: flex;
@@ -44,6 +96,25 @@ title {
   border-radius: 25px;
 }
 
+.footer-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
+  background-color: teal;
+  border: none;
+}
+
+.footer-logout:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+}
+
 .landing-page-text {
   display: flex;
   justify-content: center;
@@ -51,7 +122,17 @@ title {
   background-color: rgba(0, 0, 0, 0.5);
   max-width: fit-content;
   color: white;
-  margin-left: 150px;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 400px), (max-height: 850px) {
+  .landing-page-text {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: fit-content;
+    color: white;
+    font-size: 14px;
+  }
 }
 
 .landing-page-link {
@@ -63,16 +144,49 @@ title {
   align-items: center;
   justify-content: center;
   font-size: larger;
-  margin-top: 80px;
-  margin-left: 150px;
+  font-weight: bolder;
   padding: 15px;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
+  margin-top: 50px;
 }
 
 .landing-page-link:hover {
   text-decoration: underline;
   border: solid white 2px;
+}
+
+@media screen and (max-width: 400px), (max-height: 850px) {
+  .landing-page-link {
+    background-color: teal;
+    color: white;
+    display: flex;
+    width: 200px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    text-decoration: none;
+    border-radius: 30px;
+  }
+  
+  .landing-page-link:hover {
+    text-decoration: underline;
+    border: solid white 2px;
+  }
+
+  .landing-page-text-parent {
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+}
+
+.landing-page-text-parent {
+  width: 30%;
+  position: relative;
+  left: 150px;
 }
 
 
@@ -85,12 +199,21 @@ title {
   background-repeat: no-repeat;
 }
 
+@media screen and (max-width: 400px), (max-height: 850px) {
+  .home {
+    height: 812px;
+    width: 375px;
+    background: url('https://media.istockphoto.com/photos/young-african-woman-smiling-at-sunset-picture-id969233490?k=6&m=969233490&s=612x612&w=0&h=3UW-GHQ2CksIelqKk0UKgy_7qExPsn1g8B2Q0zzU1xo=');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
 .breadcrumb-parent {
   display: flex;
   align-items: center;
   background-color: sandybrown;
 }
 
-.breadcrumb-trail {
-  
-}
+
