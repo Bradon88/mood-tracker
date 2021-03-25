@@ -3,13 +3,24 @@ import {Line} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
+// import axios from 'axios'
 import './Chart.scss'
 
 
 
 class Chart extends Component {
-    render(){
 
+    // componentDidMount(){
+    //     axios.get('/api/mood')
+    //     .then(res => {
+    //         this.props.getMood(res.data)
+    //     })
+    // }
+    render(props){
+
+        
+        // const day = this.props.mood.map(mood => moment(mood.date).format('D'))
+    
 
         const donutChart = {
             type: 'doughnut',
@@ -46,13 +57,14 @@ class Chart extends Component {
                     // pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
                     radius: '6',
-                    data: [4, 3, 2, 5, 1]
+                    data: [this.props.getMood]
                 }],
                 
             
         };
         return (
             <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
+            
             <Line
 
             data={lineChart}
