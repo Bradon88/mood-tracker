@@ -7,9 +7,10 @@ export const TeamProvider=(props) => {
    const [teamMemberList, setTeamMemberList] = useState();
 
 
-   const addTeam = async (team_name) => {
+   const addTeam = async (body) => {
+      console.log(team_name, 'before axios call')
       await axios
-      .post("/api/team", team_name)
+      .post("/api/team", body)
       .then((res) => {
          setTeam_Name(res.data)
       })
