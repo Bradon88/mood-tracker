@@ -132,6 +132,7 @@
     max-width: fit-content;
     color: white;
     font-size: 14px;
+ 
   }
 }
 
@@ -186,7 +187,7 @@
 .landing-page-text-parent {
   width: 30%;
   position: relative;
-  left: 150px;
+  background-color: red;
 }
 
 

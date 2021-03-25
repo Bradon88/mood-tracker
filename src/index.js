@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {HashRouter as Router} from 'react-router-dom';
 import {AuthProvider} from './Context/AuthContext'
 import {ChatProvider} from './Context/ChatContext'
-import {TeamProvider} from './Context/Team Context'
+import {TeamProvider} from './Context/TeamContext'
 
 ReactDOM.render(
   <React.StrictMode>

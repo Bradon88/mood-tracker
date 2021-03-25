@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import {Line} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
@@ -15,11 +14,12 @@ class Chart extends Component {
         const donutChart = {
             type: 'doughnut',
             datasets: [{
-                data: [10,20,30],
-                backgroundColor: ['#e76f51', '#e9c46a']
+                data: [10,20,30, 22, 54],
+                backgroundColor: ['#bf5c43', '#ee8959','#efb366', '#e9cf6a', '#babb74'],
+                weight: 2
             }],
             labels: [
-                'Red', 'Yellow', 'Blue'
+               'Sad', 'Bummed', 'Meh', 'Happy', 'Stoked'
             ]
         }
 
@@ -27,18 +27,28 @@ class Chart extends Component {
         const lineChart = {
             
             type: 'line',
-            labels: ['1', '2', '3', '4', '5'],
+            labels: [
+                
+                moment().format('Do'),
+                moment().add(1, 'days').format('Do'),
+                moment().add(2, 'days').format('Do'),
+                moment().add(3, 'days').format('Do')
+            
+        ],
                 datasets: [{
                     label: moment().format('MMMM YYYY'),
                     pointBorderColor: '#000',
-                    borderColor: '#2a9d8f',
-                    fill: false,
+                    pointBackgroundColor: '',
+                    borderColor: '#39b8a9',
+                    fill: true,
+                  
                     
                     // pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
                     radius: '6',
                     data: [4, 3, 2, 5, 1]
                 }],
+                
             
         };
         return (
@@ -47,13 +57,7 @@ class Chart extends Component {
 
             data={lineChart}
             width={200}
-            // height={300} for responsive/mobile design
-            options={{
-
-    
-            legend: {display:true}
-          
-            }}/>
+            />
 
             <Pie
             data={donutChart}
@@ -69,6 +73,8 @@ class Chart extends Component {
             style={{
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
+
+            <button className='btn'>View Notes</button>
 
             </div>
         )
