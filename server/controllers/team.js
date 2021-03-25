@@ -10,7 +10,7 @@ module.exports = {
             const { user_id } = req.session.user
             const [isAdmin] = await db.user.check_is_admin([ user_id ])
             console.log(isAdmin.is_admin)
-            if( isAdmin == false ){
+            if( isAdmin.is_admin == false ){
                 const { team_name } = req.body
                 const [newTeam] = await db.team.create_team([ team_name, user_id ])
                 req.session.user = {
