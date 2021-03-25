@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react';
+import {useParams, useHistory} from 'react-router-dom';
 import {ChatContext} from '../../Context/ChatContext';
 import {AuthContext} from '../../Context/AuthContext'
 import axios from 'axios';
@@ -11,6 +12,8 @@ import './Chat.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import moment from 'moment'
+
 
 library.add(
   faPaperPlane
@@ -20,21 +23,28 @@ library.add(
 const Chat = (props) => {
 
   const [message, setMessage] = useState("")
-  const {messages, socket} =useContext(ChatContext)
+  const {messages, socket, setSocketRoom} =useContext(ChatContext)
+  const [teamMember, setTeamMember] =useState()
   const {user} = useContext(AuthContext)
+  const {room} = useParams();
+  const {push} = useHistory()
+
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-      },
-      selectEmpty: {
+    },
+    selectEmpty: {
       marginTop: theme.spacing(2),
-      },
-      }));
+    },
+  }));
 
   const classes = useStyles();
 
+  useEffect(()=>{
+    if(room){setSocketRoom(room)}
+  },[room])
 
   return (
     <div>
@@ -59,8 +69,12 @@ const Chat = (props) => {
             flexDirection: "column"
         }}>
         <InputLabel>Select Team Member</InputLabel>
-        <Select>
-            <MenuItem>Member1</MenuItem>
+        <Select
+          onChange={(e)=> {
+            setTeamMember(e.target.value)
+            push(`/Chat/${user.user_id}:${e.target.value.user_id}`)
+          }}>
+            <MenuItem value={{user_id:"1"}}>Member1</MenuItem>
             <MenuItem>Member2</MenuItem>
             <MenuItem>Member3</MenuItem>
         </Select>
@@ -70,23 +84,27 @@ const Chat = (props) => {
           <div className="chatContainer">
             <div className="chatHeader"></div>
               <div className="screen">
-                {messages.map((m) => (
-                  <div className="speech-wrapper">
-                    {console.log(m.user.user_id, user.user_id, 'chat')}
-                      <div className={`bubble ${m.user.user_id === user.user_id ? 'sender' : 'receiver'}`}>
-                        <div className={`txt ${m.user.user_id === user.user_id ? 'senderTxt' : 'receiverTxt'}`}>
-                          <p className="name">
-                              {m.user.first_name}
-                          </p>
-                          <p className="message">
-                              {m.message}
-                          </p>
-                          <span className="timestamp">Date</span>
-                        </div>  
-                        <div className="bubble-arrow"></div>
+                {messages.map((m, index) => {
+                  const mDate = new Date ()
+                  return(
+                    <div className="speech-wrapper" key={index}>
+                      {console.log(m.user.user_id, user.user_id, 'chat')}
+                        <div className={`${m.user.user_id === user.user_id ? 'sender' : 'receiver'}`}>
+                          <div className={`${m.user.user_id === user.user_id ? 'senderTxt' : 'receiverTxt'}`}>
+                            <p className="name">
+                                {m.user.first_name}
+                            </p>
+                            <p className="message">
+                                {m.message}
+                            </p>
+                            <span className="timestamp">
+                              {moment(mDate).format('MMM Do YYYY, h:mm a')}
+                            </span>
+                          </div>  
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             <div className="chatFooter">
               <div className="bodyInput">
@@ -96,7 +114,11 @@ const Chat = (props) => {
                   onChange={(e) => setMessage(e.target.value)} />
                 <button 
                   className="chatButton"
-                  onClick={() => socket.emit("send-message", { message, user})}>
+                  onClick={() => {
+                    socket.emit("send-message", { message, user, teamMember})
+                    setMessage('')
+                  }}
+                >
                   <FontAwesomeIcon icon={["fa", "paper-plane"]}/>
                 </button>
               </div>
