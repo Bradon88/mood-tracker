@@ -3,24 +3,56 @@ import {Line} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
-// import axios from 'axios'
+import axios from 'axios'
+// import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied'
+// import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+// import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+// import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import './Chart.scss'
-
+// import mood from '../../../server/controllers/mood';
 
 
 class Chart extends Component {
 
+    constructor(){
+        super();
+        this.state = {
+            mood: []
+        }
+    }
+    
     // componentDidMount(){
     //     axios.get('/api/mood')
+        
     //     .then(res => {
-    //         this.props.getMood(res.data)
-    //     })
+    //         this.setState({
+    //             mood: res.data
+    //         })
+    //    console.log(res.data) }) 
     // }
-    render(props){
+
+    getMood = () => {
+        axios.get('/api/mood')
+        .then(res => {
+            this.setState({
+                mood: res.data
+            })
+            console.log(res.data)
+        })
+    }
+
+
+    componentDidMount(){
+        this.getMood()
+    }
+
+    render(){
 
         
-        // const day = this.props.mood.map(mood => moment(mood.date).format('D'))
-    
+
+        // const moodDate = this.state.getMood.map(getMood => moment(getMood.date).format('D'))
+        // const moodNumber
 
         const donutChart = {
             type: 'doughnut',
@@ -30,8 +62,9 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-               'Sad', 'Bummed', 'Meh', 'Happy', 'Stoked'
-            ]
+               '', '', '', '', ''
+            ],
+            
         }
 
 
@@ -39,11 +72,16 @@ class Chart extends Component {
             
             type: 'line',
             labels: [
-                
+                // moment for prev days
+                moment().subtract(3, 'days').format('Do'),
+                moment().subtract(2, 'days').format('Do'),
+                moment().subtract(1, 'days').format('Do'),
                 moment().format('Do'),
                 moment().add(1, 'days').format('Do'),
                 moment().add(2, 'days').format('Do'),
-                moment().add(3, 'days').format('Do')
+                moment().add(3, 'days').format('Do'),
+                moment().add(4, 'days').format('Do'),
+                moment().add(5, 'days').format('Do'),
             
         ],
                 datasets: [{
@@ -57,8 +95,8 @@ class Chart extends Component {
                     // pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
                     radius: '6',
-                    data: [this.props.getMood]
-                }],
+                    data: ''
+                }]
                 
             
         };
@@ -70,6 +108,14 @@ class Chart extends Component {
             data={lineChart}
             width={200}
             />
+            
+            {/* <div>
+                <SentimentVeryDissatisfied style={{ color:' #bf5c43'}}/>
+                <SentimentDissatisfied style={{color:'#ee8959' }}/>
+                <SentimentDissatisfied style={{color:'#efb366'}}/>
+                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/>
+                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/>
+            </div> */}
 
             <Pie
             data={donutChart}
