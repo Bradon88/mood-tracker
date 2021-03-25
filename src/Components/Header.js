@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <div>
-            {!user ?
+            { !user ?
             null
             :
             <div className='header'>
@@ -18,7 +18,7 @@ const Header = () => {
                 <Link to='/Chat' className='header-links'>Chat</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
-}
+            }
         </div>
     )
 }
