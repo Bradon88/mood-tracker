@@ -120,7 +120,7 @@ app.get('/api/team_member', memberCtrl.getMembers);
 app.delete('/api/team_member/:member_id', memberCtrl.deleteMember);
 
 //CHAT ENDPOINTS
-app.post('/api/chat', chatCtrl.addMessage);
+app.post('/api/chat/:member_id', chatCtrl.addMessage);
 // adds message to chat table for user and team admin
-// app.get('/api/chat', chatCtrl.getChat);
+app.get('/api/chat/:member_id', chatCtrl.getChat);
 // get messsages from chat table for Admin and user chat
