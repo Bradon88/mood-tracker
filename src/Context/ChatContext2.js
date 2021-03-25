@@ -2,9 +2,8 @@ import { useState, useEffect, createContext, useContext } from "react"
 import {AuthContext} from './AuthContext';
 import io from "socket.io-client"
 
-
-export const ChatContext = createContext(null)
-export const ChatProvider=(props) => {
+export const ChatContext2 = createContext(null)
+export const ChatProvider2=(props) => {
    const {user} = useContext(AuthContext)
    const [messages, setMessages] = useState([])
    const [socket, setSocket] = useState(null)
@@ -41,10 +40,10 @@ export const ChatProvider=(props) => {
          })
       }
    }, [socket])
-   
+
    return(
-      <ChatContext.Provider value={{messages, socket, setSocketRoom}}>
+      <ChatContext2.Provider value={{messages, socket, setSocketRoom}}>
          {props.children}
-      </ChatContext.Provider>
+      </ChatContext2.Provider>
    )
 }
