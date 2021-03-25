@@ -59,7 +59,8 @@ $messagefontsize: 13px;
 .messageInput{
    margin-left: 10px;
    width: 200px;
-   height: 18px;
+   min-height: 18px;
+   max-height: 40px;
 }
 .sender{
    width: 240px;
@@ -84,49 +85,60 @@ $messagefontsize: 13px;
          margin: 15px 25px 15px 25px;
 }          
 .senderTxt{
-   padding: 8px 55px 8px 14px;
+   display: flex;
+   width: 205px;
+   flex-direction: column;
+   padding: 8px 10px 8px 14px;
    .name{
+      display: flex;
+      align-self: flex-end;
       font-weight: 600;
       font-size: $namefontsize;
       font-family: $nameFF;
-      margin: 0 0 4px;
+      margin: 0 0 1px;
       color: $senderText;
-   }
-   span{
-      font-weight: normal;
-      color: #b3b3b3;
    }
 
    .message{
+      display: flex;
+      align-self: flex-start;
       font-size: $messagefontsize;
       font-family: $messageFF;
       margin: 0;
-            color: $messageText;
+      text-align: left;
+      color: $messageText;
    }
 
    .timestamp{
+      display: flex;
+      align-self: flex-end;
       font-size: 11px;
-      position: absolute;
-      bottom: 8px;
-      right: 10px;
-      text-transform: uppercase; color: #999
+      font-weight: normal;
+      margin-top: 3px;
+      text-transform: uppercase; 
+      color: #999
    }
 }
 .receiverTxt{
+   display: flex;
+   width: 205px;
+   flex-direction: column;
    padding: 8px 55px 8px 14px;
    .name{
+      display: flex;
+      align-self: flex-start;
       font-weight: 600;
       font-size: $namefontsize;
       font-family: $nameFF;
-      margin: 0 0 4px;
+      margin: 0 0 1px;
       color: $receiverText;
    }
-   span{
-      font-weight: normal;
-      color: #b3b3b3;
-   }
+
 
    .message{
+      display: flex;
+      align-self: flex-start;
+      text-align: left;
       font-size: $messagefontsize;
       font-family: $messageFF;
       margin: 0;
@@ -134,12 +146,14 @@ $messagefontsize: 13px;
    }
 
    .timestamp{
+      display: flex;
+      align-self: flex-start;
       font-size: 11px;
-      position: absolute;
+      font-weight: normal;
+      // position: absolute;
       bottom: 8px;
       right: 10px;
       text-transform: uppercase; color: #999
    }
 }
-     
    

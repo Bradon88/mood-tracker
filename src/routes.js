@@ -6,6 +6,7 @@ import Chat from './Components/Chat/Chat'
 import CurrentMood from './Components/CurrentMood/CurrentMood'
 import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs';
 import Home from './Components/Home'
+import Team from './Components/Team/Team'
 
 const Routes = (props) =>{
    return(
@@ -16,8 +17,9 @@ const Routes = (props) =>{
             <Route path="/Register" component={Register} render={props => <Register {...props} />}/>
             <Route path="/Login" component={Login} render={props => <Login {...props} />}/>
             <Route path="/Main" component={Main} render={props => <Main {...props} />}/>
-            <Route path="/Chat" component={Chat}/>
+            <Route path="/Chat/:room?" component={Chat}/>
             <Route path="/CurrentMood" component={CurrentMood}/>
+            <Route path="/Team" component={Team}/>
          </Switch>
       </>
    )
