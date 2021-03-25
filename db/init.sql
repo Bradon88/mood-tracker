@@ -17,21 +17,21 @@ CREATE TABLE users (
 )
 
 CREATE TABLE team_members (
-    user_team_id SERIAL PRIMARY KEY,
-    user_id REFERENCES user_id,
-    team_id REFERENCES team_id
+    team_members_id SERIAL PRIMARY KEY,
+    member_id INT REFERENCES users(user_id),
+    team_id INT REFERENCES team(team_id)
 )
 
 CREATE TABLE team (
     team_id SERIAL PRIMARY KEY,
     team_name VARCHAR(200),
-    admin_id REFERENCES user_id,
+    admin_id INT REFERENCES users(user_id)
 )
 
 CREATE TABLE chat (
     chat_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id),
-    admin_id INT REFERENCES team(team_id),
+    member_id INT REFERENCES users(user_id),
+    team_id INT REFERENCES team(team_id),
     date TIMESTAMP,
     chat_content VARCHAR(500)
 )
