@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {ChatContext} from '../../Context/ChatContext';
-import {AuthContext} from '../../Context/AuthContext'
-import axios from 'axios';
+import {AuthContext} from '../../Context/AuthContext';
+import {TeamContext} from '../../Context/Team Context';
+import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -12,7 +13,6 @@ import './Chat.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import moment from 'moment'
 
 
 library.add(
@@ -21,13 +21,14 @@ library.add(
 
 
 const Chat = (props) => {
-
-  const [message, setMessage] = useState("")
   const {messages, socket, setSocketRoom} =useContext(ChatContext)
-  const [teamMember, setTeamMember] =useState()
   const {user} = useContext(AuthContext)
+  const {team_name, teamMemberList} =useContext(TeamContext)
+  const [message, setMessage] = useState("")
+  const [teamMember, setTeamMember] =useState()
   const {room} = useParams();
-  const {push} = useHistory()
+  const {push} = useHistory();
+  const date = new Date ();
 
 
   const useStyles = makeStyles((theme) => ({
@@ -54,6 +55,7 @@ const Chat = (props) => {
           display: "flex",
           flexDirection: "column"
         }}>
+          {/* {team-name} */}
         <InputLabel>Select Team</InputLabel>
         <Select>
             <MenuItem>Team1</MenuItem>
@@ -74,6 +76,13 @@ const Chat = (props) => {
             setTeamMember(e.target.value)
             push(`/Chat/${user.user_id}:${e.target.value.user_id}`)
           }}>
+            {/* {teamMemberList.map((member, index)=>{
+            return(
+              <MenuItem key={index}>
+                {member.user.first_name} {member.user.last_name}
+              </MenuItem>
+            )
+          })} */}
             <MenuItem value={{user_id:"1"}}>Member1</MenuItem>
             <MenuItem>Member2</MenuItem>
             <MenuItem>Member3</MenuItem>
@@ -115,7 +124,7 @@ const Chat = (props) => {
                 <button 
                   className="chatButton"
                   onClick={() => {
-                    socket.emit("send-message", { message, user, teamMember})
+                    socket.emit("send-message", { message, user, teamMember, date})
                     setMessage('')
                   }}
                 >

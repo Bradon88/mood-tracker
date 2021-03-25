@@ -6,6 +6,11 @@ export const TeamProvider=(props) => {
    const [team_name, setTeam_Name] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
 
+   useEffect(() => {
+      getTeam()
+      getMembers()
+   }, [])
+
 
    const addTeam = async (team_name) => {
       await axios
