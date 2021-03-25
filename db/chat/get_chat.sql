@@ -1,4 +1,4 @@
-SELECT *
-FROM chat
-WHERE user_id = $1
-AND admin_id =$2;
+SELECT * FROM chat c
+JOIN users u
+ON c.member_id = u.user_id
+WHERE c.team_id = $1
