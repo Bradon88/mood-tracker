@@ -8,16 +8,31 @@ export const ChatProvider=(props) => {
    const {user} = useContext(AuthContext)
    const [messages, setMessages] = useState([])
    const [socket, setSocket] = useState(null)
+   const [socketRoom, setSocketRoom] = useState()
+
    useEffect(() => {
-      if (user && !socket) {
-         setSocket(io.connect())
+      if (socketRoom && !socket) {
+         setSocket(
+            io('ws://localhost:3333', {
+               query: {
+                  "roomname": socketRoom
+               }
+            })
+            // io('ws://localhost:3333', {
+            //    reconnectionDelayMax: 10000,
+            //    auth: {
+            //       token: "123"
+            //    },
+            //    query: "stuff=123"
+            // })
+         )
       } else if (
-         !user && socket
+         !socketRoom && socket 
       ){
          socket.disconnect()
       }
-   }, [socket, user])
-
+   }, [socket, socketRoom])
+   
    useEffect(() => {
       if (socket) {
          socket.on("receive-message", (body) => {
@@ -26,9 +41,9 @@ export const ChatProvider=(props) => {
          })
       }
    }, [socket])
-
+   
    return(
-      <ChatContext.Provider value={{messages, socket}}>
+      <ChatContext.Provider value={{messages, socket, setSocketRoom}}>
          {props.children}
       </ChatContext.Provider>
    )

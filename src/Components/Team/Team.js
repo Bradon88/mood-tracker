@@ -1,46 +1,45 @@
-import axios from 'axios';
-import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useState, useEffect, useContext } from "react"
+import {TeamContext} from '../../Context/TeamContext'
+import {AuthContext} from '../../Context/AuthContext';
 
-
-class Team extends Component {
-    constructor(){
-        super()
-        this.state = {
-            team_name: ''
-        }
-    }
+const Team = () => {
+    const {teamMemberList, team, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
+    const [team_name, setTeamName] = useState('')
+    const { user } = useContext(AuthContext);
+    const [member_id, setMember] = useState('')
 
     //check if is_admin = false in DidMount
 
-    changeHandler = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
 
-    addTeam = async (e) => {
-        const { team_name } = this.state
-        try {
-            const name = await axios.post('/api/team', { team_name })
-            this.setState({
-                team_name: name.data
-            })
-            console.log(name)
-        } catch {
-            alert('Failed to create a new team.')
-        }
-    }
+    useEffect(() => {
+        getTeam()
+        // getMembers()
+    }, [])
 
-    render(){
+    
 
         const top100Films = [
             { title: 'The Shawshank Redemption', year: 1994 },
             { title: 'The Godfather', year: 1972 }]
-        
         return <div>
+                <div>
                     
+                    {team?.map((team, index)=>{
+                        return(
+                            <div key={index}>
+                                <div>
+                                    {team.team_name}
+                                </div>
+                            </div>
+                        )
+                    }) || null}
+                    <div>
+
+                    </div>
+                </div>
+                    { user.is_admin ?
                     <div>
                         <h2>Create a team to view and manage team member mood logs!</h2>
                         <button 
@@ -48,27 +47,39 @@ class Team extends Component {
                             >Add Team
                         </button>
                     </div>
-                    
-                    <form onSubmit={ this.addTeam }>
+                    : null
+                    }
+
+                    { user.is_admin ?
+                    <div>
                         <div>
                             <h2>What would you like to name your team?</h2>
                             <TextField 
+                                value={ team_name }
+                                onChange={ (e) => setTeamName(e.target.value) }
                                 id="outlined-basic" 
                                 label="Team Name" 
                                 name='team_name'
                                 variant="outlined" 
                                 autoComplete='off'
-                                value={ this.state.team_name }
-                                onChange={ this.changeHandler }/>
+                            />
                             <button 
                                 className="btn"
-                                type='submit'
+                                onClick={async() => {
+                                    console.log(team_name)
+                                    await addTeam(team_name)
+                                    getTeam()
+                                    setTeamName('')
+                                    }}
                                 >Create Team
                             </button>
                         </div>
-                    </form>
+                    </div>
+                    : null
+                    }
 
                 <div>
+                    <h2>Add members to your team!</h2>
                     <h2>Search for team members by email:</h2>
                     <div style={{ width: 300 }}>
                         <Autocomplete
@@ -79,6 +90,8 @@ class Team extends Component {
                             renderInput={(params) => (
                             <TextField
                                 {...params}
+                                value={member_id}
+                                onChange={ (e) => setMember(e.target.value) }
                                 label="Search By Email"
                                 margin="normal"
                                 variant="outlined"
@@ -86,12 +99,16 @@ class Team extends Component {
                             />
                         )}
                         />
-                        <button className='btn'> Add Team Member</button>
+                        <button className='btn'
+                        onClick={() => {
+                            console.log(member_id, 'onclick')
+                            addMember(member_id)
+                            }}> Add Team Member</button>
                     </div>
                     
                 </div>
             </div>
-    }
+    
 }
 
 export default Team

@@ -53,7 +53,9 @@ class Chart extends Component {
             labels: [
                '1', '2', '3', '4', '5'
             ],
-            
+           
+               'Sad', 'Bummed', 'Meh', 'Happy', 'Stoked'
+            ]
         }
 
 
