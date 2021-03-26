@@ -17,6 +17,7 @@ class CurrentMood extends Component{
         this.state = {
             mood: '',
             activity_notes: '',
+            date: '',
             newPost: false
         }
     }
@@ -83,8 +84,7 @@ class CurrentMood extends Component{
                 }}><SentimentVerySatisfiedIcon
                 className = 'stoked button'
                 /></IconButton>
-                
-                
+               
                     <br></br>
                     <input
                     placeholder="Activity Notes"
@@ -101,7 +101,8 @@ class CurrentMood extends Component{
                     value={this.state.date}
                     onChange={this.changeHandler}/> */}
 
-                   
+                    <br></br>
+                    <br></br>
                     <button 
                     className="btn"
                     type='submit'
