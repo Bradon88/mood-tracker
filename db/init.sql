@@ -53,3 +53,10 @@ CREATE TABLE mood (
     current_activity VARCHAR(200),
     activity_notes VARCHAR(200),
 )
+
+CREATE TABLE chat_rooms (
+    chat_room_id SERIAL PRIMARY KEY,
+    admin_id INT REFERENCES users(user_id),
+    user_id INT REFERENCES users(user_id),
+    chat_room_name VARCHAR(50)
+)
