@@ -1,0 +1,1 @@
+SELECT * FROM chat_rooms WHERE user_id = $1 OR admin_id = $1

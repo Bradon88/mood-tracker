@@ -23,7 +23,7 @@ library.add(
 const Chat = (props) => {
   const {messages, socket, setSocketRoom} =useContext(ChatContext)
   const {user} = useContext(AuthContext)
-  const {team_name, teamMemberList} =useContext(TeamContext)
+  const {team, teamMemberList, getTeam, getMembers} =useContext(TeamContext)
   const [message, setMessage] = useState("")
   const [teamMember, setTeamMember] =useState()
   const {room} = useParams();
@@ -43,19 +43,37 @@ const Chat = (props) => {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    getTeam()
+    getMembers()
+}, [])
+
   useEffect(()=>{
     if(room){setSocketRoom(room)}
   },[room])
 
+console.log('----chat team', team)
+console.log('----chat memebers', teamMemberList)
+
   return (
     <div>
+      <div>
+        {team?.map((team, index)=>{
+                      return(
+                          <div key={index}>
+                              <div>
+                                  {team.team_name}
+                              </div>
+                          </div>
+                      )
+                  }) || null}
+      </div>
       <FormControl className = {classes.formControl}
         style={{
           width: "25%",
           display: "flex",
           flexDirection: "column"
         }}>
-          {/* {team-name} */}
         <InputLabel>Select Team</InputLabel>
         <Select>
             <MenuItem>Team1</MenuItem>
@@ -74,15 +92,16 @@ const Chat = (props) => {
         <Select
           onChange={(e)=> {
             setTeamMember(e.target.value)
-            push(`/Chat/${user.user_id}:${e.target.value.user_id}`)
+            push(`/Chat/${user.user_id}:${e.target.value}`)
+            console.log(teamMember, '------onchange')
           }}>
-            {/* {teamMemberList.map((member, index)=>{
+            {teamMemberList?.map((member, index)=>{
             return(
-              <MenuItem key={index}>
-                {member.user.first_name} {member.user.last_name}
+              <MenuItem value={member.member_id} key={index}>
+                {member.first_name} {member.last_name}
               </MenuItem>
             )
-          })} */}
+          })|| null}
             <MenuItem value={{user_id:"1"}}>Member1</MenuItem>
             <MenuItem>Member2</MenuItem>
             <MenuItem>Member3</MenuItem>

@@ -5,6 +5,7 @@ export const TeamContext = createContext(null)
 export const TeamProvider=(props) => {
    const [team, setTeam] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
+   const [chatRooms, setChatRooms] = useState ();
 
    // useEffect(() => {
    //    getTeam()
@@ -46,8 +47,8 @@ export const TeamProvider=(props) => {
       .catch(() => console.log('Failed to add team member.'))
    }
 
-   const getMembers = async () =>{
-      await axios
+   const getMembers = () =>{
+      axios
       .get("/api/team_member")
       .then((res) => {
          setTeamMemberList(res.data)
@@ -63,8 +64,17 @@ export const TeamProvider=(props) => {
       })
       }
 
+      const getMyChatRooms = () => {
+         axios
+         .get("/api/chatrooms")
+         .then((res) => {
+            setChatRooms(res.data)
+         })
+
+      }
+
    return (
-      <TeamContext.Provider value={{team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
+      <TeamContext.Provider value={{chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
          {props.children}
       </TeamContext.Provider>
    )
