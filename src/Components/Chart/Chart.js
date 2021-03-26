@@ -40,13 +40,20 @@ class Chart extends Component {
 
     render(){
 
-     
+     const moods = this.state.mood.map((m) => m.mood)
+
+     const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
+     const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
+     const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
+     const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
+     const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
         
+    //  console.log('moods:', moodFive)
 
         const donutChart = {
             type: 'doughnut',
             datasets: [{
-                data: [10,20,30, 22, 54],
+                data: [moodOne, moodTwo, moodThree, moodFour, moodFive],
                 backgroundColor: ['#bf5c43', '#ee8959','#efb366', '#e9cf6a', '#babb74'],
                 weight: 2
             }],
@@ -62,7 +69,7 @@ class Chart extends Component {
             type: 'line',
             labels: [
                 // moment for prev days
-                
+               
                 moment().subtract(6, 'days').format('Do'),
                 moment().subtract(5, 'days').format('Do'),
                 moment().subtract(4, 'days').format('Do'),
@@ -74,7 +81,6 @@ class Chart extends Component {
                 datasets: [{
                     label: moment().format('MMMM YYYY'),
                     pointBorderColor: '#000',
-                    pointBackgroundColor: '',
                     borderColor: '#39b8a9',
                     fill: true,
                   
