@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {ChatContext} from '../../Context/ChatContext';
 import {AuthContext} from '../../Context/AuthContext';
-import {TeamContext} from '../../Context/Team Context';
+import {TeamContext} from '../../Context/TeamContext';
 import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';

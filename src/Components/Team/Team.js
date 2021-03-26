@@ -1,4 +1,3 @@
-import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useState, useEffect, useContext } from "react"
@@ -21,9 +20,24 @@ const Team = () => {
         const top100Films = [
             { title: 'The Shawshank Redemption', year: 1994 },
             { title: 'The Godfather', year: 1972 }]
-        console.log(team[0].team_name, 'team.js component')
+        console.log(team, 'team.js component')
         return <div>
-                   
+                <div>
+                    
+                    {team?.map((team, index)=>{
+                        return(
+                            <div key={index}>
+                                <div>
+                                    {team.team_name}
+                                </div>
+                            </div>
+                        )
+                    }) || null}
+                    <div>
+
+                    </div>
+                </div>
+
                     <div>
                         <h2>Create a team to view and manage team member mood logs!</h2>
                         <button 
