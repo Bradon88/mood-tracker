@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {AuthContext} from '../../Context/AuthContext';
 import {useHistory, Switch, Route, Redirect} from "react-router-dom";
 import Chart from '../Chart/Chart'

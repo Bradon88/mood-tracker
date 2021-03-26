@@ -1,46 +1,43 @@
-import axios from 'axios';
-import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useState, useEffect, useContext } from "react"
+import {TeamContext} from '../../Context/TeamContext'
 
-
-class Team extends Component {
-    constructor(){
-        super()
-        this.state = {
-            team_name: ''
-        }
-    }
+const Team = () => {
+    const {teamMemberList, team, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
+    const [team_name, setTeamName] = useState('')
 
     //check if is_admin = false in DidMount
 
-    changeHandler = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
 
-    addTeam = async (e) => {
-        const { team_name } = this.state
-        try {
-            const name = await axios.post('/api/team', { team_name })
-            this.setState({
-                team_name: name.data
-            })
-            console.log(name)
-        } catch {
-            alert('Failed to create a new team.')
-        }
-    }
+    useEffect(() => {
+        getTeam()
+        // getMembers()
+    }, [])
 
-    render(){
+    
 
         const top100Films = [
             { title: 'The Shawshank Redemption', year: 1994 },
             { title: 'The Godfather', year: 1972 }]
-        
+        console.log(team, 'team.js component')
         return <div>
+                <div>
                     
+                    {team?.map((team, index)=>{
+                        return(
+                            <div key={index}>
+                                <div>
+                                    {team.team_name}
+                                </div>
+                            </div>
+                        )
+                    }) || null}
+                    <div>
+
+                    </div>
+                </div>
+
                     <div>
                         <h2>Create a team to view and manage team member mood logs!</h2>
                         <button 
@@ -49,24 +46,28 @@ class Team extends Component {
                         </button>
                     </div>
                     
-                    <form onSubmit={ this.addTeam }>
+                    <div >
                         <div>
                             <h2>What would you like to name your team?</h2>
-                            <TextField 
-                                id="outlined-basic" 
-                                label="Team Name" 
-                                name='team_name'
-                                variant="outlined" 
-                                autoComplete='off'
-                                value={ this.state.team_name }
-                                onChange={ this.changeHandler }/>
+                            <input 
+                                // id="outlined-basic" 
+                                // label="Team Name" 
+                                // name='team_name'
+                                // variant="outlined" 
+                                // autoComplete='off'
+                                value={ team_name }
+                                onChange={ (e) => setTeamName(e.target.value) }/>
                             <button 
                                 className="btn"
-                                type='submit'
+                                onClick={() => {
+                                    console.log(team_name)
+                                    addTeam(team_name)
+                                    setTeamName('')
+                                    }}
                                 >Create Team
                             </button>
                         </div>
-                    </form>
+                    </div>
 
                 <div>
                     <h2>Search for team members by email:</h2>
@@ -91,7 +92,7 @@ class Team extends Component {
                     
                 </div>
             </div>
-    }
+    
 }
 
 export default Team
