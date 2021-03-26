@@ -28,10 +28,10 @@ const Team = () => {
                     
                     {team?.map((team, index)=>{
                         return(
-                            <div key={index}>
-                                <div>
+                            <div key={index} className='title'>
+                                <h1 className='team-name'>
                                     {team.team_name}
-                                </div>
+                                </h1>
                             </div>
                         )
                     }) || null}
