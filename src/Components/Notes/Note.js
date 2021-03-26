@@ -1,0 +1,71 @@
+import {Component} from 'react'
+import {setNotes} from '../../redux/notesReducer'
+import axios from 'axios'
+import {connect} from 'react-redux'
+
+class Note extends Component {
+    constructor() {
+        super()
+        this.state = {
+            notes_content: '',
+            editing: false
+        }
+    }
+
+
+
+    handleEditToggle = () => {
+        this.setState({ editing: true })
+    }
+
+    handleChange = (value) => {
+        this.setState({ notes_content: value })
+    }
+
+    handleDelete = () => {
+      const {notes_id} = this.props.note
+        axios
+          .delete(`/api/notes/${notes_id}`)
+          .then((results) => {
+            this.props.setNotes(results.data)
+          })
+          .catch((err) => console.log(err))
+    }
+    
+    handleSave = () => {
+      const {notes_id} = this.props.note
+      const {notes_content} = this.state
+        axios
+          .put(`/api/notes/${notes_id}`, {
+            notes_content
+          })
+          .then((results) => {
+            this.props.setNotes(results.data)
+            console.log(this.props)
+            this.setState({ editing: false })
+            this.props.history.push('/notes')
+          })
+          .catch((err) => console.log(err))
+      }
+
+      render () {
+          return this.state.editing ? (
+           <div>
+               <input
+                    value={this.state.notes_content}
+                    onChange={(e) => this.handleChange(e.target.value)}
+                    className='enter-notes-input'
+                />
+                <button onClick={this.handleSave} className='add-to-notes-btn'>Save Note</button>
+           </div>
+          ) : (
+              <div>
+                <p className='notes-content'>{this.props.note.notes_content}</p>
+                <button onClick={this.handleEditToggle} className='edit-delete-btn'>Edit Note</button>
+                <button onClick={this.handleDelete} className='edit-delete-btn'>Delete Note</button>
+              </div>
+          )
+      }
+}
+
+export default connect(null, { setNotes })(Note)

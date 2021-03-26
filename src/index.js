@@ -7,6 +7,8 @@ import {HashRouter as Router} from 'react-router-dom';
 import {AuthProvider} from './Context/AuthContext'
 import {ChatProvider} from './Context/ChatContext'
 import {TeamProvider} from './Context/TeamContext'
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +16,9 @@ ReactDOM.render(
       <AuthProvider>
         <ChatProvider>
           <TeamProvider>
-            <App />
+            <Provider store = {store}>
+              <App />
+            </Provider>
           </TeamProvider>
         </ChatProvider>
       </AuthProvider>
