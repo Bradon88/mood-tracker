@@ -22,15 +22,6 @@ class Chart extends Component {
         }
     }
     
-    // componentDidMount(){
-    //     axios.get('/api/mood')
-        
-    //     .then(res => {
-    //         this.setState({
-    //             mood: res.data
-    //         })
-    //    console.log(res.data) }) 
-    // }
 
     getMood = () => {
         axios.get('/api/mood')
@@ -49,10 +40,8 @@ class Chart extends Component {
 
     render(){
 
+     
         
-
-        // const moodDate = this.state.getMood.map(getMood => moment(getMood.date).format('D'))
-        // const moodNumber
 
         const donutChart = {
             type: 'doughnut',
@@ -62,7 +51,7 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-               '', '', '', '', ''
+               '1', '2', '3', '4', '5'
             ],
             
         }
@@ -73,16 +62,14 @@ class Chart extends Component {
             type: 'line',
             labels: [
                 // moment for prev days
+                
+                moment().subtract(6, 'days').format('Do'),
+                moment().subtract(5, 'days').format('Do'),
+                moment().subtract(4, 'days').format('Do'),
                 moment().subtract(3, 'days').format('Do'),
                 moment().subtract(2, 'days').format('Do'),
                 moment().subtract(1, 'days').format('Do'),
-                moment().format('Do'),
-                moment().add(1, 'days').format('Do'),
-                moment().add(2, 'days').format('Do'),
-                moment().add(3, 'days').format('Do'),
-                moment().add(4, 'days').format('Do'),
-                moment().add(5, 'days').format('Do'),
-            
+                moment().format('Do')
         ],
                 datasets: [{
                     label: moment().format('MMMM YYYY'),
@@ -92,10 +79,12 @@ class Chart extends Component {
                     fill: true,
                   
                     
-                    // pointBackgroundColor: '#e76f51',
+                    pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
-                    radius: '6',
-                    data: ''
+                    radius: '3',
+
+                    data: this.state.mood.map((m) => ({x: m.date, y: m.mood}))
+                
                 }]
                 
             
