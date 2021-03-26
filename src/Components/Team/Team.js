@@ -6,6 +6,7 @@ import {TeamContext} from '../../Context/TeamContext'
 const Team = () => {
     const {teamMemberList, team, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
     const [team_name, setTeamName] = useState('')
+    const [member_id, setMember] = useState('')
 
     //check if is_admin = false in DidMount
 
@@ -20,7 +21,6 @@ const Team = () => {
         const top100Films = [
             { title: 'The Shawshank Redemption', year: 1994 },
             { title: 'The Godfather', year: 1972 }]
-        console.log(team, 'team.js component')
         return <div>
                 <div>
                     
@@ -49,19 +49,21 @@ const Team = () => {
                     <div >
                         <div>
                             <h2>What would you like to name your team?</h2>
-                            <input 
-                                // id="outlined-basic" 
-                                // label="Team Name" 
-                                // name='team_name'
-                                // variant="outlined" 
-                                // autoComplete='off'
+                            <TextField 
                                 value={ team_name }
-                                onChange={ (e) => setTeamName(e.target.value) }/>
+                                onChange={ (e) => setTeamName(e.target.value) }
+                                id="outlined-basic" 
+                                label="Team Name" 
+                                name='team_name'
+                                variant="outlined" 
+                                autoComplete='off'
+                            />
                             <button 
                                 className="btn"
-                                onClick={() => {
+                                onClick={async() => {
                                     console.log(team_name)
-                                    addTeam(team_name)
+                                    await addTeam(team_name)
+                                    getTeam()
                                     setTeamName('')
                                     }}
                                 >Create Team
@@ -80,6 +82,8 @@ const Team = () => {
                             renderInput={(params) => (
                             <TextField
                                 {...params}
+                                value={member_id}
+                                onChange={ (e) => setMember(e.target.value) }
                                 label="Search By Email"
                                 margin="normal"
                                 variant="outlined"
@@ -87,7 +91,11 @@ const Team = () => {
                             />
                         )}
                         />
-                        <button className='btn'> Add Team Member</button>
+                        <button className='btn'
+                        onClick={() => {
+                            console.log(member_id, 'onclick')
+                            addMember(member_id)
+                            }}> Add Team Member</button>
                     </div>
                     
                 </div>
