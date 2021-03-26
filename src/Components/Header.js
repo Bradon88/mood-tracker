@@ -12,7 +12,7 @@ const Header = () => {
             null
             :
             <div className='header'>
-                <h1 className='title'>Mood Tracker</h1>
+                <h1>Mood Tracker</h1>
                 <Link to='/' className='header-links'>Home</Link>
                 <Link to='/Main' className='header-links'>Current Mood</Link>
                 <Link to='/Team' className='header-links'>My Teams</Link>

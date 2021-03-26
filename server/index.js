@@ -131,6 +131,7 @@ app.post('/api/team_member/:member_id', memberCtrl.addMember);
 app.get('/api/team_member', memberCtrl.getMembers);
 // deletes an individual team member by team member user_id
 app.delete('/api/team_member/:member_id', memberCtrl.deleteMember);
+app.post('/api/search', memberCtrl.searchMembers)
 
 //CHAT ENDPOINTS
 app.post('/api/chat/:member_id', chatCtrl.addMessage);
