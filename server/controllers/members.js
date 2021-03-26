@@ -1,4 +1,14 @@
 module.exports = {
+    searchMembers: async ( req, res ) => {
+        const db = req.app.get('db')
+        if( req.session.user ) {
+            const { email } = req.body
+            const memberEmail = await db.members.find_user_by_email([ email ])
+            return res.status(200).send(memberEmail)
+        } else {
+            return res.status(400).send('Please log in to search for members.')
+        }
+    },
     addMember: async ( req, res ) => {
         const db = req.app.get('db')
         //checks to see if user is signed in
@@ -9,6 +19,7 @@ module.exports = {
                 await db.members.add_member([ member_id, team_id.team_id ])
                 const teamMemberList = await db.members.get_team_members([ team_id.team_id ])
                 console.log(teamMemberList)
+                await db.chat_chat_room(user_id, member_id, chat_room_name)
                 return res.status(200).send(teamMemberList)
             } else {
             return res.status(400).send('Please sign in to add a team member.')

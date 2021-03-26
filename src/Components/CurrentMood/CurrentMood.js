@@ -84,8 +84,7 @@ class CurrentMood extends Component{
                 }}><SentimentVerySatisfiedIcon
                 className = 'stoked button'
                 /></IconButton>
-                
-                
+               
                     <br></br>
                     <input
                     placeholder="Activity Notes"

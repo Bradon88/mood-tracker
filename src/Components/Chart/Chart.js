@@ -60,7 +60,6 @@ class Chart extends Component {
             labels: [
                '', '', '', '', ''
             ],
-            
         }
 
 
@@ -130,7 +129,7 @@ class Chart extends Component {
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
 
-            <button className='btn'>View Notes</button>
+            <Link to='/Notes' className='btn'>View Notes</Link>
 
             </div>
         )
