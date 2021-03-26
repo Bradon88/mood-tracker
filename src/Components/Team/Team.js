@@ -2,10 +2,12 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useState, useEffect, useContext } from "react"
 import {TeamContext} from '../../Context/TeamContext'
+import {AuthContext} from '../../Context/AuthContext';
 
 const Team = () => {
     const {teamMemberList, team, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember} =useContext(TeamContext)
     const [team_name, setTeamName] = useState('')
+    const { user } = useContext(AuthContext);
     const [member_id, setMember] = useState('')
 
     //check if is_admin = false in DidMount
@@ -26,10 +28,10 @@ const Team = () => {
                     
                     {team?.map((team, index)=>{
                         return(
-                            <div key={index}>
-                                <div>
+                            <div key={index} className='title'>
+                                <h1 className='team-name'>
                                     {team.team_name}
-                                </div>
+                                </h1>
                             </div>
                         )
                     }) || null}
@@ -37,7 +39,7 @@ const Team = () => {
 
                     </div>
                 </div>
-
+                    { user.is_admin ?
                     <div>
                         <h2>Create a team to view and manage team member mood logs!</h2>
                         <button 
@@ -45,8 +47,11 @@ const Team = () => {
                             >Add Team
                         </button>
                     </div>
-                    
-                    <div >
+                    : null
+                    }
+
+                    { user.is_admin ?
+                    <div>
                         <div>
                             <h2>What would you like to name your team?</h2>
                             <TextField 
@@ -70,8 +75,11 @@ const Team = () => {
                             </button>
                         </div>
                     </div>
+                    : null
+                    }
 
                 <div>
+                    <h2>Add members to your team!</h2>
                     <h2>Search for team members by email:</h2>
                     <div style={{ width: 300 }}>
                         <Autocomplete
