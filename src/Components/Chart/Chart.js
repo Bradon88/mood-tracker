@@ -51,12 +51,9 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-               '1', '2', '3', '4', '5'
-            ],
-           
-               'Sad', 'Bummed', 'Meh', 'Happy', 'Stoked'
-            ]
-        }
+                '1', '2', '3', '4', '5'
+             ],
+         }
 
 
         const lineChart = {
