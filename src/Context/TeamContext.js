@@ -14,11 +14,11 @@ export const TeamProvider=(props) => {
 
    const addTeam = async (team_name) => {
       console.log(team_name, 'before axios call')
-      await axios
+      return await axios
       .post("/api/team", {team_name})
-      .then((res) => {
-         setTeam(res.data)
-      })
+      // .then((res) => {
+      //    setTeam(res.data)
+      // })
       .catch(() => console.log('Failed to create a new team.'))
       console.log('teamContext--addTeam', team_name)
    }
