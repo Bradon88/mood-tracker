@@ -123,6 +123,8 @@
   max-width: fit-content;
   color: white;
   font-size: 25px;
+  position: relative;
+  left: 200px;
 }
 
 @media screen and (max-width: 400px), (max-height: 850px) {
@@ -132,7 +134,8 @@
     max-width: fit-content;
     color: white;
     font-size: 14px;
- 
+    position: relative;
+    left: 20px;
   }
 }
 
@@ -150,6 +153,8 @@
   text-decoration: none;
   border-radius: 30px;
   margin-top: 50px;
+  position: relative;
+  left: 200px;
 }
 
 .landing-page-link:hover {
@@ -169,6 +174,9 @@
     font-size: larger;
     text-decoration: none;
     border-radius: 30px;
+    position: relative;
+    left: 80px;
+    top: 35px;
   }
   
   .landing-page-link:hover {
@@ -177,9 +185,6 @@
   }
 
   .landing-page-text-parent {
-    display: flex;
-    flex-direction: column;
-    
     
   }
 }
@@ -187,7 +192,7 @@
 .landing-page-text-parent {
   width: 30%;
   position: relative;
-  background-color: red;
+ 
 }
 
 
