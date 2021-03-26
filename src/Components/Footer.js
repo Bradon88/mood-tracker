@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import {AuthContext} from '../Context/AuthContext';
-import { useState, useContext} from "react";
+import { useContext} from "react";
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
