@@ -81,7 +81,9 @@ massive({
          // ])
          
          
-         console.log(body.message)
+         console.log(body.message, "socket on server message")
+         console.log('-----user off body', body.user )
+         console.log('------team', body.teamMember)
          io.in (socket.handshake.query.roomname).emit('receive-message', body)
       })
    })
@@ -135,3 +137,4 @@ app.post('/api/chat/:member_id', chatCtrl.addMessage);
 // adds message to chat table for user and team admin
 app.get('/api/chat/:member_id', chatCtrl.getChat);
 // get messsages from chat table for Admin and user chat
+app.get('/api/chatrooms', chatCtrl.getMyChatRooms)
