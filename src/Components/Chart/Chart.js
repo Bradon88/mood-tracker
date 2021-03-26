@@ -4,11 +4,11 @@ import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
 import axios from 'axios'
-// import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied'
-// import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-// import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-// import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied'
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import './Chart.scss'
 // import mood from '../../../server/controllers/mood';
 
@@ -58,7 +58,7 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-               '1', '2', '3', '4', '5'
+               '', '', '', '', ''
             ],
             
         }
@@ -104,13 +104,13 @@ class Chart extends Component {
             width={200}
             />
             
-            {/* <div>
-                <SentimentVeryDissatisfied style={{ color:' #bf5c43'}}/>
-                <SentimentDissatisfied style={{color:'#ee8959' }}/>
-                <SentimentDissatisfied style={{color:'#efb366'}}/>
-                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/>
-                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/>
-            </div> */}
+            <div>
+                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/> {moodOne}
+                <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
+                <SentimentDissatisfied style={{color:'#efb366'}}/> {moodThree}
+                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
+                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/> {moodFive}
+            </div>
 
             <Pie
             data={donutChart}
@@ -118,7 +118,10 @@ class Chart extends Component {
             options={
                 {
                     display: true,
-                    cutoutPercentage: '60'
+                    cutoutPercentage: '60',
+                    legend: {
+                        display: false
+                    }
                 }
             }/>
 
