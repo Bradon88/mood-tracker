@@ -27,7 +27,7 @@ export const AuthProvider=(props) => {
    const register = (body) => {
       axios.post('/auth/register', body).then(res => {
          localStorage.setItem("token", res.data.token)
-         localStorage.setItem("user", res.data.user)
+         localStorage.setItem("user", JSON.stringify(res.data.user))
          setToken(res.data.token)
          setUser(res.data.user)
          push('/Main')
