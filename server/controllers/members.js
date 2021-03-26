@@ -1,4 +1,14 @@
 module.exports = {
+    searchMembers: async ( req, res ) => {
+        const db = req.app.get('db')
+        if( req.session.user ) {
+            const { email } = req.body
+            const memberEmail = await db.members.find_user_by_email([ email ])
+            return res.status(200).send(memberEmail)
+        } else {
+            return res.status(400).send('Please log in to search for members.')
+        }
+    },
     addMember: async ( req, res ) => {
         const db = req.app.get('db')
         //checks to see if user is signed in
