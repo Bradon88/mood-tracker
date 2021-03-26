@@ -7,6 +7,8 @@ import CurrentMood from './Components/CurrentMood/CurrentMood'
 import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs';
 import Home from './Components/Home'
 import Team from './Components/Team/Team'
+import Notes from './Components/Notes/Notes'
+import AddNotes from './Components/Notes/AddNotes'
 
 const Routes = (props) =>{
    return(
@@ -20,6 +22,8 @@ const Routes = (props) =>{
             <Route path="/Chat/:room?" component={Chat}/>
             <Route path="/CurrentMood" component={CurrentMood}/>
             <Route path="/Team" component={Team}/>
+            <Route path='/Notes' component={Notes}/>
+            <Route path='/AddNotes' component={AddNotes}/>
          </Switch>
       </>
    )

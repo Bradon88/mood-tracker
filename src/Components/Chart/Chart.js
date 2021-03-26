@@ -60,9 +60,6 @@ class Chart extends Component {
             labels: [
                '1', '2', '3', '4', '5'
             ],
-           
-               'Sad', 'Bummed', 'Meh', 'Happy', 'Stoked'
-            ]
         }
 
 
@@ -129,7 +126,7 @@ class Chart extends Component {
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
 
-            <button className='btn'>View Notes</button>
+            <Link to='/Notes' className='btn'>View Notes</Link>
 
             </div>
         )
