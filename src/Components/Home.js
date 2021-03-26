@@ -10,9 +10,6 @@ const Home = () => {
             </div>
             
             <div className='landing-page-text-parent'>
-                <h3 className='landing-page-text'>
-                Get simple and useful insight into yourself! 
-                </h3>
                 
                 <h3 className='landing-page-text'>
                 Get simple and useful insight into yourself! 
