@@ -40,13 +40,13 @@ class Chart extends Component {
 
     render(){
 
-     const moods = this.state.mood.map((m) => m.mood)
+    const moods = this.state.mood.map((m) => m.mood)
 
-     const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
-     const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
-     const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
-     const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
-     const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
+    const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
+    const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
+    const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
+    const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
+    const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
         
     //  console.log('moods:', moodFive)
 
@@ -58,9 +58,9 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-               '1', '2', '3', '4', '5'
+                '1', '2', '3', '4', '5'
             ],
-        
+
         }
 
 
@@ -69,7 +69,7 @@ class Chart extends Component {
             type: 'line',
             labels: [
                 // moment for prev days
-               
+            
                 moment().subtract(6, 'days').format('Do'),
                 moment().subtract(5, 'days').format('Do'),
                 moment().subtract(4, 'days').format('Do'),
@@ -83,7 +83,7 @@ class Chart extends Component {
                     pointBorderColor: '#000',
                     borderColor: '#39b8a9',
                     fill: true,
-                  
+                
                     
                     pointBackgroundColor: '#e76f51',
                     pointBorderWidth: '1',
@@ -127,7 +127,7 @@ class Chart extends Component {
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
 
-            <button className='btn'>View Notes</button>
+            <Link to='/Notes' className='btn'>View Notes</Link>
 
             </div>
         )

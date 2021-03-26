@@ -1,4 +1,9 @@
-// import {createStore} from 'react'
+import {createStore, combineReducers} from 'redux'
 // import readMood from './readMood'
+import notesReducer from './notesReducer'
 
-// export default createStore(readMood)
+const rootReducer = combineReducers({
+    notesReducer
+  })
+
+export default createStore(rootReducer)
