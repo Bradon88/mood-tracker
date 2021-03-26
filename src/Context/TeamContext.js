@@ -6,6 +6,11 @@ export const TeamProvider=(props) => {
    const [team, setTeam] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
 
+   // useEffect(() => {
+   //    getTeam()
+   //    getMembers()
+   // }, [])
+
 
    const addTeam = async (team_name) => {
       console.log(team_name, 'before axios call')
@@ -17,8 +22,8 @@ export const TeamProvider=(props) => {
       .catch(() => console.log('Failed to create a new team.'))
       console.log('teamContext--addTeam', team_name)
    }
-   const getTeam = async () =>{
-      await axios
+   const getTeam = () =>{
+      axios
       .get("/api/team")
       .then((res) => {
          setTeam(res.data)

@@ -67,9 +67,20 @@ massive({
       })
    
       socket.on('send-message', (body) => {
-         
          //pass into database file create 
-         //get all info from database
+         // db.chat.create_chat([
+         //    body.teamMember.member_id,
+         //    body.user.user-id,
+         //    body.date,
+         //    chat_content])
+
+         // //get all info from database
+         // db.chat.getChat([
+         //    body.teamMember.member_id,
+         //    body.user.user-id,
+         // ])
+         
+         
          console.log(body.message)
          io.in (socket.handshake.query.roomname).emit('receive-message', body)
       })
