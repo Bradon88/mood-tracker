@@ -31,7 +31,10 @@ module.exports = {
       const db = req.app.get('db')
       if( req.session.user ){
          const { user_id } = req.session.user
+         const admin_id = user_id
+
          const chatRoom = await db.chat.get_chat_rooms([ user_id ])
+         await db.chat.get_chat_rooms(admin_id)
          return res.status(200).send(chatRoom)
       } else {
          return res.status(400).send('Please log in to view a chat rooms.')

@@ -30,7 +30,7 @@ const Login = (props) => {
    const classes = useStyles();
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
-   const {login, register} = useContext(AuthContext)
+   const {login} = useContext(AuthContext)
 
 
    return (
