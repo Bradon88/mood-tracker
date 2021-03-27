@@ -8,7 +8,7 @@ const getTokenFromHeader = (req) => {
 
 module.exports = jwt({
    secret: 'MySuP3R_z3kr3t.',
-   userProperty: 'token', // this is where the next middleware can find the encoded data generated in services/auth:generateToken
-   getToken: getTokenFromHeader,
+   requestProperty: 'session', // this is where the next middleware can find the encoded data generated in services/auth:generateToken
+   // getToken: getTokenFromHeader,
    algorithms: ['HS256']
-})
+}).unless({path: ['/auth/login', '/auth/register']});

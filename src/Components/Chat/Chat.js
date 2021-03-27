@@ -23,7 +23,16 @@ library.add(
 const Chat = (props) => {
   const {messages, socket, setSocketRoom} =useContext(ChatContext)
   const {user} = useContext(AuthContext)
-  const {team, teamMemberList, getTeam, getMembers} =useContext(TeamContext)
+  const {
+    myTeamName, 
+    chatRooms, 
+    team, 
+    teamMemberList, 
+    getTeam, 
+    getMembers, 
+    getMyChatRooms, 
+    getMyTeamName
+  } =useContext(TeamContext)
   const [message, setMessage] = useState("")
   const [teamMember, setTeamMember] =useState()
   const {room} = useParams();
@@ -46,14 +55,18 @@ const Chat = (props) => {
   useEffect(() => {
     getTeam()
     getMembers()
+    getMyTeamName()
+    getMyChatRooms()
+
 }, [])
 
   useEffect(()=>{
     if(room){setSocketRoom(room)}
   },[room])
 
-console.log('----chat team', team)
-console.log('----chat memebers', teamMemberList)
+console.log('----chat team name', myTeamName)
+console.log('----chat members', teamMemberList)
+console.log(chatRooms, "chatrooms chatjs")
 
   return (
     <div>
@@ -63,6 +76,17 @@ console.log('----chat memebers', teamMemberList)
                           <div key={index}>
                               <div>
                                   {team.team_name}
+                              </div>
+                          </div>
+                      )
+                  }) || null}
+      </div>
+      <div>
+        {myTeamName?.map((teamName, index)=>{
+                      return(
+                          <div key={index}>
+                              <div>
+                                  {teamName.team_name}
                               </div>
                           </div>
                       )

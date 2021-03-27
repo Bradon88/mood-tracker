@@ -30,14 +30,9 @@ let {
    SESSION_SECRET,
 } = process.env;
 
-app.use(
-   session({
-      secret: SESSION_SECRET,
-      resave: false,
-      saveUninitialized: true,
-      cookie: {maxAge: 1000 * 60 * 60 * 24}
-   })
-);
+
+app.use(auth)
+
 
 //DATABASE CONNECTION
 massive({
@@ -132,6 +127,8 @@ app.get('/api/team_member', memberCtrl.getMembers);
 // deletes an individual team member by team member user_id
 app.delete('/api/team_member/:member_id', memberCtrl.deleteMember);
 app.post('/api/search', memberCtrl.searchMembers)
+app.get('/api/my_team_name', memberCtrl.getMyTeamName)
+//member can get their team name
 
 //CHAT ENDPOINTS
 app.post('/api/chat/:member_id', chatCtrl.addMessage);
@@ -139,3 +136,4 @@ app.post('/api/chat/:member_id', chatCtrl.addMessage);
 app.get('/api/chat/:member_id', chatCtrl.getChat);
 // get messsages from chat table for Admin and user chat
 app.get('/api/chatrooms', chatCtrl.getMyChatRooms)
+//get chatrooms for your user id

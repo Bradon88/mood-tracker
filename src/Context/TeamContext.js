@@ -6,6 +6,7 @@ export const TeamProvider=(props) => {
    const [team, setTeam] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
    const [chatRooms, setChatRooms] = useState ();
+   const [myTeamName, setMyTeamName] = useState ();
 
    // useEffect(() => {
    //    getTeam()
@@ -62,19 +63,27 @@ export const TeamProvider=(props) => {
       .then((res) => {
          setTeamMemberList(res.data)
       })
-      }
+   }
 
-      const getMyChatRooms = () => {
-         axios
-         .get("/api/chatrooms")
-         .then((res) => {
-            setChatRooms(res.data)
-         })
+   const getMyChatRooms = () => {
+      axios
+      .get("/api/chatrooms")
+      .then((res) => {
+         setChatRooms(res.data)
+      })
 
-      }
+   }
+
+   const getMyTeamName = () => {
+      axios
+      .get("/api/my_team_name")
+      .then((res) => {
+         setMyTeamName(res.data)
+      })
+   }
 
    return (
-      <TeamContext.Provider value={{chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
+      <TeamContext.Provider value={{myTeamName, chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember, getMyChatRooms, getMyTeamName}}>
          {props.children}
       </TeamContext.Provider>
    )
