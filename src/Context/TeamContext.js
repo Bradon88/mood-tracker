@@ -65,6 +65,13 @@ export const TeamProvider=(props) => {
       })
    }
 
+   const getMyTeamName = () => {
+      axios
+      .get("/api/my_team_name")
+      .then((res) => {
+         setMyTeamName(res.data)
+      })
+   }
    const getMyChatRooms = () => {
       axios
       .get("/api/chatrooms")
@@ -73,14 +80,11 @@ export const TeamProvider=(props) => {
       })
 
    }
-
-   const getMyTeamName = () => {
-      axios
-      .get("/api/my_team_name")
-      .then((res) => {
-         setMyTeamName(res.data)
-      })
-   }
+   // getChatRoomFromUser=(user_id) => {
+   //    axios
+      
+   // }
+   
 
    return (
       <TeamContext.Provider value={{myTeamName, chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember, getMyChatRooms, getMyTeamName}}>

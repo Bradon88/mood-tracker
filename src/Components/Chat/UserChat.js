@@ -68,7 +68,7 @@ const UserChat = (props) => {
                         )
                      }) || null}
          </div>
-         <FormControl className = {classes.formControl}
+         {/* <FormControl className = {classes.formControl}
          style={{
             width: "25%",
             display: "flex",
@@ -80,7 +80,7 @@ const UserChat = (props) => {
                <MenuItem>Team2</MenuItem>
                <MenuItem>Team3</MenuItem>
          </Select>
-         </FormControl>
+         </FormControl> */}
 
          <FormControl className = {classes.formControl}
          style={{

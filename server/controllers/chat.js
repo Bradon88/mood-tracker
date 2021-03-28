@@ -33,9 +33,21 @@ module.exports = {
          const { user_id } = req.session.user
          const admin_id = user_id
 
-         const chatRoom = await db.chat.get_chat_rooms([ user_id ])
-         await db.chat.get_chat_rooms(admin_id)
-         return res.status(200).send(chatRoom)
+         const chatRooms = [
+            ...await db.chat.get_chat_rooms([ user_id ]),
+            ...await db.chat.get_chat_rooms([admin_id])
+            ///may need to be filtered
+         ]
+         const userIds=[
+            ...chatRooms.map((room)=> (room.user_id)),
+            ...chatRooms.map((room)=> (room.admin_id))
+         ]
+         let users = await db.user.get_users()
+         users = users.filter((user)=>{
+            return userIds.includes(user.user_id)
+         })
+      
+         return res.status(200).send({chatRooms, users})
       } else {
          return res.status(400).send('Please log in to view a chat rooms.')
       }
