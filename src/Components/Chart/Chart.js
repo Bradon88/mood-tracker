@@ -127,7 +127,7 @@ class Chart extends Component {
                 marginTop: '20px'
             }}><Link to='/CurrentMood'>Add Mood</Link></button>
 
-            <Link to='/Notes' className='btn'>View Notes</Link>
+            <button className='btn'><Link to='/Notes'>View Notes</Link></button>
 
             </div>
         )

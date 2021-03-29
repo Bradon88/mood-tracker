@@ -9,6 +9,9 @@ import {ChatProvider} from './Context/ChatContext'
 import {TeamProvider} from './Context/TeamContext'
 import {Provider} from 'react-redux'
 import store from './redux/store'
+import axios from 'axios';
+
+axios.defaults.headers.common["Authorization"]= 'Bearer ' + localStorage.getItem('token')
 
 ReactDOM.render(
   <React.StrictMode>
