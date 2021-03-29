@@ -1,9 +1,20 @@
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TeamContext } from "../../Context/TeamContext";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import Typography from '@material-ui/core/Typography';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const Team = () => {
     const {
@@ -38,7 +49,7 @@ const Team = () => {
         <div>
             {team?.map((team, index) => {
             return (
-                <div key={index} className="title">
+                <div key={index}>
                 <h1 className="team-name">{team.team_name}</h1>
                 </div>
             );
@@ -92,7 +103,7 @@ const Team = () => {
                 // onChange={(e) => {
                 //     setMemberEmail(e.target.value)
                 //     console.log(email, "onchange")
-                //     console.log(e.target.value, "onchage e target")
+                //     console.log(e.target.value, "onchange e target")
                 // }}
                 onChange={(event, value) => {
                     setMemberEmail(value.email)
@@ -118,6 +129,51 @@ const Team = () => {
                 {" "}
                 Add Team Member
             </button>
+            </div>
+            <div>
+                {teamMemberList?.map((member, index) => {
+                    return (
+                        <div key={index} >
+                            <h1>Team Members</h1>
+                            <div className>
+                <List>
+                    <div>
+                        <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                            <AccountCircleIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={ member.first_name}
+                            secondary={
+                                <React.Fragment>
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    color="textPrimary">
+                                    { member.last_name }
+                                  </Typography>
+                                  <div>
+                                  { member.email }
+                                  </div>
+                                </React.Fragment>
+                            }
+                            />
+                        <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="delete">
+                                <div>
+                                    <DeleteIcon onClick={() => deleteMember(member.member_id)}/>
+                                </div>
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                        </ListItem>
+                    </div>
+                </List>
+            </div>
+                        </div>
+                    );
+                }) || null}
             </div>
         </div>
         </div>
