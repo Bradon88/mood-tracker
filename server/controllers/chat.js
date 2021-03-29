@@ -1,3 +1,10 @@
+const RemoveDuplicates = (array, key) => {
+   return array.reduce((arr, item) => {
+      const removed = arr.filter(i => i[key] !== item[key]);
+      return [...removed, item];
+   }, []);
+};
+
 module.exports = {
    addMessage: async ( req, res ) => {
       const db = req.app.get('db');
@@ -47,7 +54,10 @@ module.exports = {
             return userIds.includes(user.user_id)
          })
       
-         return res.status(200).send({chatRooms, users})
+         return res.status(200).send({
+            chatRooms: RemoveDuplicates(chatRooms, 'chat_room_name'),
+            users
+         })
       } else {
          return res.status(400).send('Please log in to view a chat rooms.')
       }
