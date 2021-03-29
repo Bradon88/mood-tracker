@@ -185,9 +185,11 @@
     border: solid white 2px;
   }
 
-  .landing-page-text-parent {
-    
+  .landing-page-link:focus {
+    text-decoration: underline;
+    border: solid white 2px;
   }
+
 }
 
 .landing-page-text-parent {
