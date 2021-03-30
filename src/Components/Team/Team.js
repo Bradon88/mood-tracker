@@ -96,9 +96,11 @@ const Team = () => {
                 disableClearable
                 getOptionLabel={(option) => option.email}
                 options={dropDown}
-                onChange={(value) => {
+                onChange={(event, value) => {
                     setMemberEmail(value.email)
-                    setMemberID(value.user_id)}}
+                    setMemberID(value.user_id)
+                    console.log(value.user_id)
+                }}
                 renderInput={(params) => (
                 <TextField
                     {...params}
@@ -111,9 +113,11 @@ const Team = () => {
                 )}
             />
             <button
+    
                 className="btn"
                 onClick={() => {
                 addMember(member_id);
+                console.log(member_id)
                 }}
             >
                 {" "}
