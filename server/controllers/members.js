@@ -55,9 +55,9 @@ module.exports = {
         if( req.session.user ) {
             const { user_id } = req.session.user
             const member_id = user_id
-            console.log(member_id, "mem id")
+            // console.log(member_id, "mem id")
             const [team_id]  = await db.members.get_my_team_id(member_id)
-            console.log(team_id, "controller team id")
+            // console.log(team_id, "controller team id")
             if(!team_id){
                 return res.status(400).send('User is not a sub member of Team')
             }

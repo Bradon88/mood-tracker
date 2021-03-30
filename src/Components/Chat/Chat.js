@@ -59,11 +59,11 @@ const Chat = (props) => {
 
   useEffect(() => {
     getTeam()
-    getMembers()
+    // getMembers()
     getMyTeamName()
     getMyChatRooms()
 
-}, )
+}, [])
 
   useEffect(()=>{
     if(room){setSocketRoom(room)}

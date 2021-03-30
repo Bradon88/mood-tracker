@@ -99,6 +99,7 @@ app.post('/auth/register', authCtrl.register);
 app.post('/auth/login', authCtrl.login);
 app.post('/auth/logout', authCtrl.logout);
 app.get('/auth/user', authCtrl.getUser);
+app.get('/auth/updateToken', authCtrl.updateToken)
 // app.post('/auth/user', authCtrl.updateUser)
 // this will use your jwt token to authenticate
 //app.get('/auth/user', auth , authCtrl.getUser);
