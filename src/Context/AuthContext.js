@@ -34,6 +34,15 @@ export const AuthProvider=(props) => {
       })
       .catch((err) => console.log(err))
    }
+   const updateToken = () => {
+      axios.get('/auth/updateToken').then(res => {
+         localStorage.setItem("token", res.data.token)
+         localStorage.setItem("user", JSON.stringify(res.data.user))
+         setToken(res.data.token)
+         setUser(res.data.user)
+      })
+      .catch((err) => console.log(err))
+   }
 
    const logout = () => {
       axios.post('/auth/logout', '').then(res =>{
@@ -54,7 +63,7 @@ export const AuthProvider=(props) => {
    }
 
    return(
-      <AuthContext.Provider value={{user, setUser, login, register, logout, updateUser}}>
+      <AuthContext.Provider value={{updateToken, user, setUser, login, register, logout, updateUser}}>
          {props.children}
       </AuthContext.Provider>
    )

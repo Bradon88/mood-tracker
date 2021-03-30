@@ -8,10 +8,7 @@ export const TeamProvider=(props) => {
    const [chatRooms, setChatRooms] = useState ();
    const [myTeamName, setMyTeamName] = useState ();
 
-   // useEffect(() => {
-   //    getTeam()
-   //    getMembers()
-   // }, [])
+
 
 
    const addTeam = async (team_name) => {
