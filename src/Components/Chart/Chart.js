@@ -167,9 +167,9 @@ class Chart extends Component {
             <button className="btn"
             style={{
                 marginTop: '20px'
-            }}><Link to='/CurrentMood'>Add Mood</Link></button>
+            }}><Link to='/Main/CurrentMood'>Add Mood</Link></button>
 
-            <button className='btn'><Link to='/Notes'>View Notes</Link></button>
+            <button className='btn'><Link to='/Main/Notes'>View Notes</Link></button>
 
             </div>
         )

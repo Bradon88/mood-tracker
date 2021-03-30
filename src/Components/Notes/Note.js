@@ -47,7 +47,7 @@ class Note extends Component {
             this.props.setNotes(results.data)
             console.log(this.props)
             this.setState({ editing: false })
-            this.props.history.push('/notes')
+            this.props.history.push('/Main/notes')
           })
           .catch((err) => console.log(err))
       }
