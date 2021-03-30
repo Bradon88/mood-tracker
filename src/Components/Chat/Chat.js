@@ -9,6 +9,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import './Chat.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -36,10 +38,12 @@ const Chat = (props) => {
   } =useContext(TeamContext)
   const [message, setMessage] = useState("")
   const [teamMember, setTeamMember] =useState()
+  const [theChatRoom, setTheChatRoom] =useState()
+  const [firstName, setFirstName] =useState()
   const {room} = useParams();
   const {push} = useHistory();
   const date = new Date ();
-
+  
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -68,7 +72,8 @@ const Chat = (props) => {
 console.log('----chat team name', myTeamName)
 console.log('----chat members', teamMemberList)
 console.log(chatRooms, "chatrooms chatjs")
-
+console.log(user, 'chatjs')
+console.log(theChatRoom, 'the chat room of member')
   return (
     <div>
       <div>
@@ -93,20 +98,7 @@ console.log(chatRooms, "chatrooms chatjs")
                       )
                   }) || null}
       </div>
-      {/* <FormControl className = {classes.formControl}
-        style={{
-          width: "25%",
-          display: "flex",
-          flexDirection: "column"
-        }}>
-        <InputLabel>Select Team</InputLabel>
-        <Select>
-            <MenuItem>Team1</MenuItem>
-            <MenuItem>Team2</MenuItem>
-            <MenuItem>Team3</MenuItem>
-        </Select>
-      </FormControl> */}
-
+      
       <FormControl className = {classes.formControl}
         style={{
             width: "25%",
@@ -115,24 +107,26 @@ console.log(chatRooms, "chatrooms chatjs")
         }}>
         <InputLabel>Select Team Member</InputLabel>
         <Select
+          value={theChatRoom?.chat_room_name}
           onChange={(e)=> {
-            setTeamMember(e.target.value)
-            push(`/Chat/${user.user_id}:${e.target.value}`)
-            console.log(teamMember, '------onchange')
+            setTheChatRoom(e.target.value)
+            push(`/Chat/${e.target.value}`)
+            console.log(theChatRoom, '------onchange')
           }}>
-            {teamMemberList?.map((member, index)=>{
+            {chatRooms?.map((memberRoom, index)=>{
             return(
-              <MenuItem value={member.member_id} key={index}>
-                {member.first_name} {member.last_name}
+              <MenuItem value={memberRoom.chat_room_name} key={index}>
+                {
+                  user.isAdmin ?
+                  `${memberRoom.first_name} ${memberRoom.last_name}` :
+                  `${memberRoom.admin_first_name} ${memberRoom.admin_last_name}`
+                }
               </MenuItem>
             )
           })|| null}
-            <MenuItem value={{user_id:"1"}}>Member1</MenuItem>
-            <MenuItem>Member2</MenuItem>
-            <MenuItem>Member3</MenuItem>
         </Select>
       </FormControl>
-      
+      {theChatRoom ? (
         <div>
           <div className="chatContainer">
             <div className="chatHeader"></div>
@@ -168,7 +162,7 @@ console.log(chatRooms, "chatrooms chatjs")
                 <button 
                   className="chatButton"
                   onClick={() => {
-                    socket.emit("send-message", { message, user, teamMember, date})
+                    socket.emit("send-message", { message, user, date})
                     setMessage('')
                   }}
                 >
@@ -178,7 +172,10 @@ console.log(chatRooms, "chatrooms chatjs")
             </div>
           </div>
         </div>
+      ):null}
+    
     </div>
+
 
 
 
