@@ -33,6 +33,11 @@ module.exports = {
             const [team_id] = await db.team.get_team_id([ user_id ])
             if( team_id ){
             const teamMemberList = await db.members.get_team_members([ team_id.team_id])
+            console.log(teamMemberList)
+            for(let i = 0; i < teamMemberList.length; i++){
+                teamMemberList[i].moods = await db.mood.get_mood(teamMemberList[i].user_id)
+            }
+
             return res.status(200).send(teamMemberList)
             }
         } else {

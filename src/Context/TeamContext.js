@@ -50,6 +50,7 @@ export const TeamProvider=(props) => {
       .get("/api/team_member")
       .then((res) => {
          setTeamMemberList(res.data)
+         console.log(res.data)
       })
          .catch(() => console.log("Failed to get team."))
    }

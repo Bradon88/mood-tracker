@@ -138,3 +138,5 @@ app.get('/api/chat/:member_id', chatCtrl.getChat);
 // get messsages from chat table for Admin and user chat
 app.get('/api/chatrooms', chatCtrl.getMyChatRooms)
 //get chatrooms for your user id
+
+app.get('/api/member_mood', moodCtrl.getMemberMood);
