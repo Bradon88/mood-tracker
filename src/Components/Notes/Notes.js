@@ -33,7 +33,7 @@ class Notes extends Component {
         <div className='notes-header'>
           <p className='your-notes'>Notes</p>
           <div className='space'>
-            <Link to='/AddNotes' className='add-notes-link'><AddCircleIcon fontSize='large'/></Link>
+            <Link to='/Main/AddNotes' className='add-notes-link'><AddCircleIcon fontSize='large'/></Link>
           </div>
         </div>
         
