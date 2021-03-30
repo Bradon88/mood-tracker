@@ -3,7 +3,7 @@ module.exports = {
     addMood: async ( req, res ) => { 
         const db = req.app.get('db')
         if( req.session.user ){
-          
+        
             const date = new Date
             const { mood, current_activity, activity_notes } = req.body
 

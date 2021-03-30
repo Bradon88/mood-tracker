@@ -1,0 +1,206 @@
+.chatContainer {
+  width: 320px;
+  margin: 20px;
+  border-right: 3px solid gray;
+  border-radius: 15px;
+  border-left: 3px solid gray;
+}
+
+.chatHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 38px;
+  background-color: gray;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 10px;
+}
+
+.screen {
+  min-height: 100px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.speech-wrapper {
+  width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.chatButton {
+  font-size: 16px;
+  background-color: grey;
+  color: whitesmoke;
+  border: none;
+  margin-top: -4px;
+  margin-left: 8px;
+  -webkit-transform: rotate(55deg);
+          transform: rotate(55deg);
+}
+
+.chatButton:hover {
+  color: black;
+}
+
+.chatFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 44px;
+  margin-top: 20px;
+  background-color: gray;
+  border-radius: 0 0 10px 10px;
+}
+
+.bodyInput {
+  margin: 10px 10px 4px 25px;
+}
+
+.messageInput {
+  margin-left: 10px;
+  width: 200px;
+  min-height: 18px;
+  max-height: 40px;
+}
+
+.sender {
+  width: 240px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background: #9BFED5;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 8px 5px #000;
+          box-shadow: 2px 8px 5px #000;
+  position: relative;
+  margin: 15px 25px 15px 0;
+}
+
+.receiver {
+  width: 240px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  background: #9BF7FE;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 8px 5px #000;
+          box-shadow: 2px 8px 5px #000;
+  position: relative;
+  margin: 15px 25px 15px 25px;
+}
+
+.senderTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 205px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 8px 10px 8px 14px;
+}
+
+.senderTxt .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: fantasy;
+  margin: 0 0 1px;
+  color: #151515;
+}
+
+.senderTxt .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-size: 13px;
+  font-family: helvetica;
+  margin: 0;
+  text-align: left;
+  color: black;
+}
+
+.senderTxt .timestamp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 11px;
+  font-weight: normal;
+  margin-top: 3px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.receiverTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 205px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 8px 55px 8px 14px;
+}
+
+.receiverTxt .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: fantasy;
+  margin: 0 0 1px;
+  color: #151515;
+}
+
+.receiverTxt .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  text-align: left;
+  font-size: 13px;
+  font-family: helvetica;
+  margin: 0;
+  color: black;
+}
+
+.receiverTxt .timestamp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-size: 11px;
+  font-weight: normal;
+  bottom: 8px;
+  right: 10px;
+  text-transform: uppercase;
+  color: #999;
+}
+/*# sourceMappingURL=Chat.css.map */

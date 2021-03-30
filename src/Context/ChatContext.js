@@ -1,11 +1,11 @@
-import { useState, useEffect, createContext, useContext } from "react"
-import {AuthContext} from './AuthContext';
+import { useState, useEffect, createContext } from "react"
+// import {AuthContext} from './AuthContext';
 import io from "socket.io-client"
 
 
 export const ChatContext = createContext(null)
 export const ChatProvider=(props) => {
-   const {user} = useContext(AuthContext)
+   // const {user} = useContext(AuthContext)
    const [messages, setMessages] = useState([])
    const [socket, setSocket] = useState(null)
    const [socketRoom, setSocketRoom] = useState()

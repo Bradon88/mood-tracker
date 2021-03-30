@@ -33,7 +33,7 @@ const Auth = (props) => {
    const [last_name, setLastName] = useState("")
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
-   const {login, register} = useContext(AuthContext)
+   const {register} = useContext(AuthContext)
 
    return (
       <Container component="main" maxWidth="xs">

@@ -38,14 +38,16 @@ export const AuthProvider=(props) => {
    const logout = () => {
       axios.post('/auth/logout', '').then(res =>{
          setUser(null)
+         localStorage.removeItem('token')
+         localStorage.removeItem('user')
          push('/')
       })
       .catch((err) => console.log(err))
    }
 
-   const getUser = () => {
-      axios.get('/auth/user').then(({data}) => setUser(data))
-   }
+   // const getUser = () => {
+   //    axios.get('/auth/user').then(({data}) => setUser(data))
+   // }
 
    const updateUser = () => {
       axios.post('/auth/user').then(({data}) => setUser(data))

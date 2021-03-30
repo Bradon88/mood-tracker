@@ -1,11 +1,12 @@
 import axios from 'axios'
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState} from 'react'
 
 export const TeamContext = createContext(null)
 export const TeamProvider=(props) => {
    const [team, setTeam] = useState();
    const [teamMemberList, setTeamMemberList] = useState();
    const [chatRooms, setChatRooms] = useState ();
+   const [myTeamName, setMyTeamName] = useState ();
 
    // useEffect(() => {
    //    getTeam()
@@ -21,7 +22,7 @@ export const TeamProvider=(props) => {
       //    setTeam(res.data)
       // })
       .catch(() => console.log('Failed to create a new team.'))
-      console.log('teamContext--addTeam', team_name)
+      // console.log('teamContext--addTeam', team_name)
    }
    const getTeam = () =>{
       axios
@@ -62,19 +63,31 @@ export const TeamProvider=(props) => {
       .then((res) => {
          setTeamMemberList(res.data)
       })
-      }
+   }
 
-      const getMyChatRooms = () => {
-         axios
-         .get("/api/chatrooms")
-         .then((res) => {
-            setChatRooms(res.data)
-         })
+   const getMyTeamName = () => {
+      axios
+      .get("/api/my_team_name")
+      .then((res) => {
+         setMyTeamName(res.data)
+      })
+   }
+   const getMyChatRooms = () => {
+      axios
+      .get("/api/chatrooms")
+      .then((res) => {
+         setChatRooms(res.data)
+      })
 
-      }
+   }
+   // getChatRoomFromUser=(user_id) => {
+   //    axios
+      
+   // }
+   
 
    return (
-      <TeamContext.Provider value={{chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember}}>
+      <TeamContext.Provider value={{myTeamName, chatRooms, team, teamMemberList, getTeam, addTeam, deleteTeam, getMembers, addMember, deleteMember, getMyChatRooms, getMyTeamName}}>
          {props.children}
       </TeamContext.Provider>
    )

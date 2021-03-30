@@ -1,0 +1,73 @@
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 80px;
+  background-color: teal;
+}
+
+.footer-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
+}
+
+.footer-links:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+
+.footer-logout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  width: 250px;
+  background-color: teal;
+  border: none;
+}
+
+.footer-logout:hover {
+  text-decoration: underline;
+  border: solid white 2px;
+  border-radius: 25px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .footer-links {
+    display: none;
+  }
+  .footer-logout {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Footer.css.map */

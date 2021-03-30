@@ -15,11 +15,11 @@ module.exports = {
         if( req.session.user ) {
                 const { user_id } = req.session.user
                 const { member_id } = req.params
+                const chat_room_name = `${user_id}-${member_id}`
                 const [team_id] = await db.team.get_team_id([ user_id ])
                 await db.members.add_member([ member_id, team_id.team_id ])
                 const teamMemberList = await db.members.get_team_members([ team_id.team_id ])
-                console.log(teamMemberList)
-                await db.chat_chat_room(user_id, member_id, chat_room_name)
+                await db.chat.create_chat_room(user_id, member_id, chat_room_name, team_id.team_id)
                 return res.status(200).send(teamMemberList)
             } else {
             return res.status(400).send('Please sign in to add a team member.')
@@ -48,6 +48,23 @@ module.exports = {
             return res.status(200).send(teamMemberList)
         } else {
             return res.status(400).send('Please log in to delete team members.')
+        }
+    },
+    getMyTeamName: async (req, res) => {
+        const db = req.app.get('db')
+        if( req.session.user ) {
+            const { user_id } = req.session.user
+            const member_id = user_id
+            console.log(member_id, "mem id")
+            const [team_id]  = await db.members.get_my_team_id(member_id)
+            console.log(team_id, "controller team id")
+            if(!team_id){
+                return res.status(400).send('User is not a sub member of Team')
+            }
+            const teamName = await db.members.get_my_team_name(team_id.team_id)
+            return res.status(200).send(teamName)
+        } else {
+            return res.status(400).send('Please log in to get your team name.')
         }
     }
 }
