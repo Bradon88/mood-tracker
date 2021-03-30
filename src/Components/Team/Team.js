@@ -48,12 +48,12 @@ const Team = () => {
             }) || null}
             <div></div>
         </div>
-        {user.is_admin ? (
+        {/* {user.is_admin ? ( */}
             <div>
             <h2>Create a team to view and manage team member mood logs!</h2>
             <button className="btn">Add Team</button>
             </div>
-        ) : null}
+        {/* ) : null} */}
 
         {user.is_admin ? (
             <div>

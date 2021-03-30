@@ -31,8 +31,10 @@ module.exports = {
         if( req.session.user ) {
             const { user_id } = req.session.user
             const [team_id] = await db.team.get_team_id([ user_id ])
+            if( team_id ){
             const teamMemberList = await db.members.get_team_members([ team_id.team_id])
             return res.status(200).send(teamMemberList)
+            }
         } else {
             return res.status(400).send('Please log in to view team members.')
         }

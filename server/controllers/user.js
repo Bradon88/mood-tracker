@@ -10,7 +10,6 @@ module.exports = {
    register: async (req, res) => {
       const db = req.app.get('db');
       const {first_name, last_name, email, password} = req.body;
-      console.log('before', req.body)
       const [result] = await db.user.find_user(email);
       if(result){
          return res.status(409).send('Username taken');
@@ -20,7 +19,7 @@ module.exports = {
       let [user] = await db.user.create_user(first_name, last_name, email, hash)
       delete user.password
       //user.team_id = null
-      console.log(req.session.user)
+      // console.log(req.session.user)
       //NODEMAILER
       try {
          const transporter = nodemailer.createTransport({
