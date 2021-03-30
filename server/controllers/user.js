@@ -77,6 +77,15 @@ module.exports = {
          token: generateJWT(user),
       })
    },
+   updateToken: async (req, res) =>{
+      const db = req.app.get('db');
+      const email = req.session.user.email;
+      let [user] = await db.user.find_user(email);
+      return res.status(200).send({
+         user,
+         token: generateJWT(user),
+      })
+   },
 
    logout: (req, res) => {
       // req.session.destroy()

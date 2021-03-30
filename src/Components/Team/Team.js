@@ -17,7 +17,7 @@ const Team = () => {
         deleteMember,
     } = useContext(TeamContext);
     const [team_name, setTeamName] = useState("");
-    const { user } = useContext(AuthContext);
+    const { user, updateToken} = useContext(AuthContext);
     const [email, setMemberEmail] = useState("");
     const [dropDown, setDropDown] = useState([]);
     const [member_id, setMemberID] = useState();
@@ -30,7 +30,7 @@ const Team = () => {
         setDropDown(res.data);
         });
         getMembers()
-    }, );
+    },[]);
 
     console.log(dropDown, 'dropdown Teamsjs')
     console.log(team, 'teamjs component')
@@ -42,20 +42,23 @@ const Team = () => {
                 <div key={index}>
                 <h1>{team.team_name}</h1>
                 <h2>{team.team_id}</h2>
-                <button className="btn" onClick={() => { deleteTeam(team.team_id) }}>Delete Team</button>
+                <button className="btn" onClick={ async () => {
+                    await deleteTeam(team.team_id)
+                    getTeam()
+                }}>Delete Team</button>
                 </div>
             );
             }) || null}
             <div></div>
         </div>
-        {/* {user.is_admin ? ( */}
+        {user.is_admin ? (''): (
             <div>
             <h2>Create a team to view and manage team member mood logs!</h2>
             <button className="btn">Add Team</button>
             </div>
-        {/* ) : null} */}
+        )}
 
-        {user.is_admin ? (
+        {user.is_admin ? ('') : (
             <div>
             <div>
                 <h2>What would you like to name your team?</h2>
@@ -73,6 +76,7 @@ const Team = () => {
                 onClick={async () => {
                     console.log(team_name);
                     await addTeam(team_name);
+                    updateToken();
                     getTeam();
                     setTeamName("");
                 }}
@@ -81,9 +85,9 @@ const Team = () => {
                 </button>
             </div>
             </div>
-        ) : null}
-
-        <div>
+        )}
+        {user.is_admin ? (
+            <div>
             <h2>Add members to your team!</h2>
             <h2>Search for team members by email:</h2>
             <div style={{ width: 300 }}>
@@ -141,6 +145,9 @@ const Team = () => {
                 }) || null}
             </div>
         </div>
+        
+        ): null}
+        
         </div>
     );
 };
