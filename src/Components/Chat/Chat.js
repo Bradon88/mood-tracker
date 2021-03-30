@@ -59,11 +59,11 @@ const Chat = (props) => {
     getMyTeamName()
     getMyChatRooms()
 
-}, [])
+}, )
 
   useEffect(()=>{
     if(room){setSocketRoom(room)}
-  },[room])
+  },[room, setSocketRoom])
 
 console.log('----chat team name', myTeamName)
 console.log('----chat members', teamMemberList)

@@ -4,17 +4,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { TeamContext } from "../../Context/TeamContext";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import Typography from '@material-ui/core/Typography';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const Team = () => {
     const {
@@ -40,17 +29,20 @@ const Team = () => {
         axios.post("/api/search", { email }).then((res) => {
         setDropDown(res.data);
         });
-    // getMembers()
-    }, []);
+        getMembers()
+    }, );
 
     console.log(dropDown, 'dropdown Teamsjs')
+    console.log(team, 'teamjs component')
     return (
         <div>
         <div>
             {team?.map((team, index) => {
             return (
                 <div key={index}>
-                <h1 className="team-name">{team.team_name}</h1>
+                <h1>{team.team_name}</h1>
+                <h2>{team.team_id}</h2>
+                <button className="btn" onClick={() => { deleteTeam(team.team_id) }}>Delete Team</button>
                 </div>
             );
             }) || null}
@@ -131,46 +123,25 @@ const Team = () => {
             </button>
             </div>
             <div>
+                <h1>Team Members</h1>
                 {teamMemberList?.map((member, index) => {
                     return (
                         <div key={index} >
-                            <h1>Team Members</h1>
-                            <div className>
-                <List>
-                    <div>
-                        <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                            <AccountCircleIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={ member.first_name}
-                            secondary={
-                                <React.Fragment>
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="textPrimary">
-                                    { member.last_name }
-                                  </Typography>
-                                  <div>
-                                  { member.email }
-                                  </div>
-                                </React.Fragment>
-                            }
-                            />
-                        <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete">
+                            <h2>{ member.first_name } { member.last_name }</h2>
+                        <div>
+                
+                {teamMemberList?.map((member, index) => {
+                    return (
+                        <div key={index} >
                                 <div>
-                                    <DeleteIcon onClick={() => deleteMember(member.member_id)}/>
+                                    <h2>{ member.first_name } { member.last_name }</h2>
+                                    <h3>{ member.email }</h3>
                                 </div>
-                            </IconButton>
-                        </ListItemSecondaryAction>
-                        </ListItem>
-                    </div>
-                </List>
-            </div>
+                                <button className="btn" onClick={() => { deleteMember( member.member_id )}}>Delete member</button>
+                        </div>
+                        );
+                    }) || null}
+                        </div>
                         </div>
                     );
                 }) || null}

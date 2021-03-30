@@ -45,9 +45,9 @@ export const AuthProvider=(props) => {
       .catch((err) => console.log(err))
    }
 
-   const getUser = () => {
-      axios.get('/auth/user').then(({data}) => setUser(data))
-   }
+   // const getUser = () => {
+   //    axios.get('/auth/user').then(({data}) => setUser(data))
+   // }
 
    const updateUser = () => {
       axios.post('/auth/user').then(({data}) => setUser(data))

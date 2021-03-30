@@ -2,6 +2,9 @@ import {Component} from 'react'
 import {setNotes} from '../../redux/notesReducer'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import './Notes.scss'
+import TextField from '@material-ui/core/TextField';
+
 
 class AddNotes extends Component {
     constructor() {
@@ -26,14 +29,20 @@ class AddNotes extends Component {
 
     render () {
         return (
-            <div className='add-notes-parent'>
-                <input
+            <div className='edit-note'>
+                <TextField
+                    className='notes-text'
+                    id="outlined-multiline-static"
+                    label="Note"
+                    multiline
+                    rows={4}
+                    variant="outlined"
                     value={this.state.notes_content}
                     onChange={(e) => this.handleChange(e.target.value)}
-                    placeholder='Enter Notes'
-                    className='enter-notes-input'
                 />
-                <button onClick={() => this.addNotes()} className='add-to-notes-btn'>Add to Notes</button>
+                <div>
+                    <button className='add-to-notes-btn' onClick={() => this.addNotes()}>Add to Notes</button>
+                </div>
             </div>
         )
     }

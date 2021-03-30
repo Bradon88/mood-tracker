@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState} from 'react'
 
 export const TeamContext = createContext(null)
 export const TeamProvider=(props) => {
@@ -22,7 +22,7 @@ export const TeamProvider=(props) => {
       //    setTeam(res.data)
       // })
       .catch(() => console.log('Failed to create a new team.'))
-      console.log('teamContext--addTeam', team_name)
+      // console.log('teamContext--addTeam', team_name)
    }
    const getTeam = () =>{
       axios
