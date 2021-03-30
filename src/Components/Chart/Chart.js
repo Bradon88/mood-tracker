@@ -11,6 +11,7 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle'
 import IconButton from '@material-ui/core/IconButton'
+import { TeamContext } from "../../Context/TeamContext";
 import './Chart.scss'
 // import mood from '../../../server/controllers/mood';
 
@@ -21,8 +22,8 @@ class Chart extends Component {
         super();
         this.state = {
             mood: [],
-            team: [],
-            toggleShow: false
+            // team: [],
+            // toggleShow: false
         }
     }
     
@@ -119,7 +120,7 @@ class Chart extends Component {
         return (
             <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
          
-                <IconButton><SupervisedUserCircle style={{
+                {/* <IconButton><SupervisedUserCircle style={{
                     // display: 'flex',
                     // alignItems: 'flex-start',
                     // paddingRight: '340px',
@@ -129,7 +130,7 @@ class Chart extends Component {
                     <li>{this.getMembers.member_id}</li>
                     <li>member</li>
                 </ul>
-                </IconButton>
+                </IconButton> */}
             <Line
 
             data={lineChart}
@@ -141,7 +142,7 @@ class Chart extends Component {
             <div>
                 
                 <div>
-                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43', paddingTop: '-100px'}}/> {moodOne}
+                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/> {moodOne}
                 <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
                 <SentimentSatisfiedIcon style={{color:'#efb366'}}/> {moodThree}
                 <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
