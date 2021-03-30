@@ -4,6 +4,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Note from './Note'
+import './Notes.scss'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 
 class Notes extends Component {
@@ -27,12 +29,19 @@ class Notes extends Component {
 
   render() {
     return (
-      <div className='add-notes-link-parent'>
-        <Link to='/AddNotes' className='add-notes-link'>Add Note</Link>
-        <p className='your-notes'>Your Notes</p>
-        {this.props.notesReducer && this.props.notesReducer.notes.map((note) => (
-          <Note note={note} key={note.note_id} setNotes={this.props.setNotes}/>
-        ))}
+      <div>
+        <div className='notes-header'>
+          <p className='your-notes'>Notes</p>
+          <div className='space'>
+            <Link to='/AddNotes' className='add-notes-link'><AddCircleIcon fontSize='large'/></Link>
+          </div>
+        </div>
+        
+        <div className='notes-main'>
+          {this.props.notesReducer && this.props.notesReducer.notes.map((note) => (
+            <Note note={note} key={note.note_id} setNotes={this.props.setNotes}/>
+          ))}
+        </div>
       </div>
     )
   }

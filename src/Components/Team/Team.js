@@ -1,6 +1,6 @@
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TeamContext } from "../../Context/TeamContext";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
@@ -29,17 +29,20 @@ const Team = () => {
         axios.post("/api/search", { email }).then((res) => {
         setDropDown(res.data);
         });
-    // getMembers()
-    }, []);
+        getMembers()
+    }, );
 
     console.log(dropDown, 'dropdown Teamsjs')
+    console.log(team, 'teamjs component')
     return (
         <div>
         <div>
             {team?.map((team, index) => {
             return (
-                <div key={index} className="title">
-                <h1 className="team-name">{team.team_name}</h1>
+                <div key={index}>
+                <h1>{team.team_name}</h1>
+                <h2>{team.team_id}</h2>
+                <button className="btn" onClick={() => { deleteTeam(team.team_id) }}>Delete Team</button>
                 </div>
             );
             }) || null}
@@ -112,6 +115,30 @@ const Team = () => {
                 {" "}
                 Add Team Member
             </button>
+            </div>
+            <div>
+                <h1>Team Members</h1>
+                {teamMemberList?.map((member, index) => {
+                    return (
+                        <div key={index} >
+                            <h2>{ member.first_name } { member.last_name }</h2>
+                        <div>
+                
+                {teamMemberList?.map((member, index) => {
+                    return (
+                        <div key={index} >
+                                <div>
+                                    <h2>{ member.first_name } { member.last_name }</h2>
+                                    <h3>{ member.email }</h3>
+                                </div>
+                                <button className="btn" onClick={() => { deleteMember( member.member_id )}}>Delete member</button>
+                        </div>
+                        );
+                    }) || null}
+                        </div>
+                        </div>
+                    );
+                }) || null}
             </div>
         </div>
         </div>

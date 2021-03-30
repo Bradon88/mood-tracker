@@ -2,6 +2,10 @@ import {Component} from 'react'
 import {setNotes} from '../../redux/notesReducer'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import './Notes.scss'
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import TextField from '@material-ui/core/TextField';
 
 class Note extends Component {
     constructor() {
@@ -50,19 +54,28 @@ class Note extends Component {
 
       render () {
           return this.state.editing ? (
-           <div>
-               <input
+           <div >
+               <TextField
                     value={this.state.notes_content}
                     onChange={(e) => this.handleChange(e.target.value)}
-                    className='enter-notes-input'
+                    className='notes-text'
+                    id="outlined-multiline-static"
+                    label="Note"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    placeholder='I need to populate the note content'
                 />
                 <button onClick={this.handleSave} className='add-to-notes-btn'>Save Note</button>
            </div>
           ) : (
-              <div>
+              <div className='add-notes-parent'>
                 <p className='notes-content'>{this.props.note.notes_content}</p>
-                <button onClick={this.handleEditToggle} className='edit-delete-btn'>Edit Note</button>
-                <button onClick={this.handleDelete} className='edit-delete-btn'>Delete Note</button>
+                <div id='button-stack'>
+                  <EditIcon fontSize='large' onClick={this.handleEditToggle} className='edit-delete-btn'/>
+                  <DeleteIcon fontSize='large' onClick={this.handleDelete} className='edit-delete-btn'/>
+                </div>
+
               </div>
           )
       }

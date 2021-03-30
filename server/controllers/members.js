@@ -19,7 +19,7 @@ module.exports = {
                 const [team_id] = await db.team.get_team_id([ user_id ])
                 await db.members.add_member([ member_id, team_id.team_id ])
                 const teamMemberList = await db.members.get_team_members([ team_id.team_id ])
-                await db.chat.create_chat_room(user_id, member_id, chat_room_name)
+                await db.chat.create_chat_room(user_id, member_id, chat_room_name, team_id.team_id)
                 return res.status(200).send(teamMemberList)
             } else {
             return res.status(400).send('Please sign in to add a team member.')

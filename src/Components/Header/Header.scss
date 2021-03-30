@@ -1,0 +1,55 @@
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: teal;
+    color: white;
+    width: 100vw;
+  }
+
+  .header-links {
+      display: none;
+  }
+
+  .header-logout {
+      display: none;
+  }
+  
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+  .header-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bolder;
+    width: 250px;
+  }
+  
+  .header-links:hover {
+    text-decoration: underline;
+    border: solid white 2px;
+    border-radius: 25px;
+  }
+  
+  .header-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    width: 250px;
+    background-color: teal;
+    border: none;
+  }
+  
+  .header-logout:hover {
+    text-decoration: underline;
+    border: solid white 2px;
+    border-radius: 25px;
+  }
+}

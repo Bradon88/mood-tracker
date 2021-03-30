@@ -4,7 +4,6 @@ import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton'
 import './CurrentMood.scss'
 import axios from 'axios';
@@ -26,7 +25,7 @@ class CurrentMood extends Component{
         e.preventDefault();
         const {mood, activity_notes} = this.state;
         try{
-            const post = await axios.post
+            await axios.post
             ('/api/mood', {mood, activity_notes})
             this.props.history.push('/Main')
         } catch {

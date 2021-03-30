@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
-import {AuthContext} from '../Context/AuthContext';
-import { useState, useContext} from "react";
+import {AuthContext} from '../../Context/AuthContext';
+import { useContext} from "react";
+import './Header.scss'
 
 const Header = () => {
 
@@ -8,9 +9,7 @@ const Header = () => {
 
     return (
         <div>
-            { !user ?
-            null
-            :
+            
             <div className='header'>
                 <h1>Mood Tracker</h1>
                 <Link to='/' className='header-links'>Home</Link>
@@ -19,7 +18,7 @@ const Header = () => {
                 <Link to='/Chat' className='header-links'>Chat</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
-            }
+            
         </div>
     )
 }
