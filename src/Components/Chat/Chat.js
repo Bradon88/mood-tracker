@@ -110,14 +110,14 @@ console.log(theChatRoom, 'the chat room of member')
           value={theChatRoom?.chat_room_name}
           onChange={(e)=> {
             setTheChatRoom(e.target.value)
-            push(`/Chat/${e.target.value}`)
+            push(`/Main/Chat/${e.target.value}`)
             console.log(theChatRoom, '------onchange')
           }}>
             {chatRooms?.map((memberRoom, index)=>{
             return(
               <MenuItem value={memberRoom.chat_room_name} key={index}>
                 {
-                  user.isAdmin ?
+                  user.is_admin ?
                   `${memberRoom.first_name} ${memberRoom.last_name}` :
                   `${memberRoom.admin_first_name} ${memberRoom.admin_last_name}`
                 }
