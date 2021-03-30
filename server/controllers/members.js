@@ -47,6 +47,7 @@ module.exports = {
             await db.members.delete_member([ member_id ])
             const [team_id] = await db.team.get_team_id([ user_id ])
             const teamMemberList = await db.members.get_team_members([ team_id.team_id])
+            await db.chat.delete_chat_room([ member_id ])
             return res.status(200).send(teamMemberList)
         } else {
             return res.status(400).send('Please log in to delete team members.')
