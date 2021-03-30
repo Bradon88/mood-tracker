@@ -38,26 +38,22 @@ module.exports = {
       const db = req.app.get('db')
       if( req.session.user ){
          const { user_id } = req.session.user
-         const admin_id = user_id
+         // const admin_id = user_id
 
          const chatRooms = [
             ...await db.chat.get_chat_rooms([ user_id ]),
-            ...await db.chat.get_chat_rooms([admin_id])
-            ///may need to be filtered
          ]
-         const userIds=[
-            ...chatRooms.map((room)=> (room.user_id)),
-            ...chatRooms.map((room)=> (room.admin_id))
-         ]
-         let users = await db.user.get_users()
-         users = users.filter((user)=>{
-            return userIds.includes(user.user_id)
-         })
+         console.log(chatRooms, "controller")
+         const filteredRooms = chatRooms.reduce((acc, current) => {
+            const x = acc.find(item => item.chat_room_name === current.chat_room_name);
+            if (!x) {
+               return acc.concat([current]);
+            } else {
+               return acc;
+            }
+         }, []);
       
-         return res.status(200).send({
-            chatRooms: RemoveDuplicates(chatRooms, 'chat_room_name'),
-            users
-         })
+         return res.status(200).send(filteredRooms)
       } else {
          return res.status(400).send('Please log in to view a chat rooms.')
       }
