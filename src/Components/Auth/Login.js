@@ -81,8 +81,8 @@ const Login = (props) => {
                </Button>
             </form>
          </div>
-            <Link to="/Auth">
-            If you don't have an account, Please Register
+            <Link to="/Register">
+            Don't have an account? Please Register
             </Link>
       </Container>
    );
