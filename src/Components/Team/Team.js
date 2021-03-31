@@ -85,122 +85,122 @@ const Team = () => {
             <div>
                 
                 {team?.map((team, index) => {
-                return (
-                    <div key={index}>
-                        <h1 className='team-name'>{team.team_name}</h1>
-                        <button className='btn'>
-                            Add Member
-                        </button>
-                        <button className="btn" onClick={ async () => {
-                            await deleteTeam(team.team_id)
-                            getTeam()
-                            updateToken()
-                        }}>Delete Team</button>
-                    </div>
-                    );
+                    return (
+                        <div key={index}>
+                            <h1 className='team-name'>{team.team_name}</h1>
+                            <button className='btn'>
+                                Add Member
+                            </button>
+                            <button className="btn" onClick={ async () => {
+                                await deleteTeam(team.team_id)
+                                getTeam()
+                                updateToken()
+                            }}>Delete Team</button>
+                        </div>
+                        );
                 }) || null}
             </div>
 
         {user.is_admin ? ('') : (
             <div>
-            <div>
-                <TextField
-                value={team_name}
-                onChange={(e) => setTeamName(e.target.value)}
-                id="outlined-basic"
-                label="Team Name"
-                name="team_name"
-                variant="outlined"
-                autoComplete="off"
-                />
-                <button
-                className="btn"
-                onClick={async () => {
-                    console.log(team_name);
-                    await addTeam(team_name);
-                    updateToken();
-                    getTeam();
-                    setTeamName("");
-                }}
-                >
-                Create Team
-                </button>
-            </div>
+                <div>
+                    <TextField
+                    value={team_name}
+                    onChange={(e) => setTeamName(e.target.value)}
+                    id="outlined-basic"
+                    label="Team Name"
+                    name="team_name"
+                    variant="outlined"
+                    autoComplete="off"
+                    />
+                    <button
+                    className="btn"
+                    onClick={async () => {
+                        console.log(team_name);
+                        await addTeam(team_name);
+                        updateToken();
+                        getTeam();
+                        setTeamName("");
+                    }}
+                    >
+                    Create Team
+                    </button>
+                </div>
             </div>
         )}
 
         {user.is_admin ? (
             <div>
                 <button
-                className='add-member'
-                onClick={() => {
-                addMember(member_id);
-                console.log(member_id)
-                }}
-            >
-                {" "}
-                <AddIcon fontSize='large'/>
-            </button>
-            <div style={{ width: 300 }}>
-            <Autocomplete
-                id="free-solo-2-demo"
-                disableClearable
-                getOptionLabel={(option) => option.email}
-                options={dropDown}
-                onChange={(event, value) => {
-                    setMemberEmail(value.email)
-                    setMemberID(value.user_id)
-                    console.log(value.user_id)
-                }}
-                renderInput={(params) => (
-                <TextField
-                    {...params}
-                    value={email}
-                    label="Search By Email"
-                    className='search-bar'
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={{ ...params.InputProps, type: "search" }}
-                />
-                )}
-            />
-            
-            </div>
-            <div>
-                <div>
-                    <h1 className='member-header'>Members</h1>
+                    className='add-member'
+                    onClick={async() => {
+                    await addMember(member_id);
+                    getTeam();
+                    }}
+                >
+                    {" "}
+                    <AddIcon fontSize='large'/>
+                </button>
+                <div style={{ width: 300 }}>
+                    <Autocomplete
+                        id="free-solo-2-demo"
+                        disableClearable
+                        getOptionLabel={(option) => option.email}
+                        options={dropDown}
+                        onChange={(event, value) => {
+                            setMemberEmail(value.email)
+                            setMemberID(value.user_id)
+                            console.log(value.user_id)
+                        }}
+                        renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            value={email}
+                            label="Search By Email"
+                            className='search-bar'
+                            margin="normal"
+                            variant="outlined"
+                            InputProps={{ ...params.InputProps, type: "search" }}
+                        />
+                        )}
+                    />
+                
                 </div>
-                {teamMemberList?.map((member, index) => {
+                <div>
+                    <div>
+                        <h1 className='member-header'>Members</h1>
+                    </div>
+                    {teamMemberList?.map((member, index) => {
 
-                const moods = member.moods.map((m) => m.mood)
-
-                const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
-                const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
-                const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
-                const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
-                const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
-
-                    return (
-                        <div key={index} >
-                            <h2>{ member.first_name } { member.last_name }
-                            <br></br>
-                             </h2>
-                                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/>  {moodOne}
-                                <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
-                                <SentimentSatisfiedIcon style={{color:'#efb366'}}/> {moodThree}
-                                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
-                                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/> {moodFive}
-                                
-                        <div>
-                        <br></br>
-                <DeleteOutlineIcon style={{color: '#39b8a9'}} onClick={() => { deleteMember( member.member_id )}}/>
-                        </div>
-                        </div>
-                    );
-                }
-                ) || null}
+                        const moods = (member?.moods || []).map((m) => m.mood)
+                        const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
+                        const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
+                        const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
+                        const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
+                        const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
+                        
+                        return (
+                            <div key={index} >
+                                <h2>{ member.first_name } { member.last_name }
+                                <br></br>
+                                </h2>
+                                    <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/>  {moodOne}
+                                    <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
+                                    <SentimentSatisfiedIcon style={{color:'#efb366'}}/> {moodThree}
+                                    <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
+                                    <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/> {moodFive}
+                                    
+                                <div>
+                                    <br></br>
+                                    <DeleteOutlineIcon style={{color: '#39b8a9'}} onClick={async () => {
+                                        await deleteMember( member.member_id ) 
+                                        getMembers()}}/>
+                                </div>
+                            </div>
+                        );
+                    }) || null}
+                </div>
             </div>
-        </div>
         
         ): null}
         
