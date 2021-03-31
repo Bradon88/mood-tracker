@@ -16,6 +16,7 @@ const Header = () => {
                 <Link to='/Main/CurrentMood' className='header-links'>Current Mood</Link>
                 <Link to='/Main/Team' className='header-links'>My Teams</Link>
                 <Link to='/Main/Chat' className='header-links'>Chat</Link>
+                <Link to='/Main/Notes' className='header-links'>View Notes</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
         : null }
