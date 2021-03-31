@@ -3,7 +3,7 @@ import {setNotes} from '../../redux/notesReducer'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import './Notes.scss'
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom'
@@ -77,7 +77,7 @@ class Note extends Component {
                 <p className='notes-content'>{this.props.note.notes_content}</p>
                 <div id='button-stack'>
                   <EditIcon fontSize='large' onClick={this.handleEditToggle} className='edit-delete-btn'/>
-                  <DeleteIcon fontSize='large' onClick={this.handleDelete} className='edit-delete-btn'/>
+                  <DeleteOutlineIcon fontSize='large' onClick={this.handleDelete} className='edit-delete-btn'/>
                 </div>
 
               </div>

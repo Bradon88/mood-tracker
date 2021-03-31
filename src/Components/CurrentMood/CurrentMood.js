@@ -87,7 +87,7 @@ class CurrentMood extends Component{
                 className = 'stoked button'
                 /></IconButton>
                
-                    <br></br>
+                    {/* <br></br>
                     <h2>What have you been doing?</h2>
                     <input
                     placeholder="Activity Notes"
@@ -97,7 +97,7 @@ class CurrentMood extends Component{
                     className='input-field'
                     value={this.state.activity_notes}
                     onChange={this.changeHandler}
-                    />
+                    /> */}
                     <br></br>
                     <br></br>
                     {/* <TextField
@@ -117,8 +117,8 @@ class CurrentMood extends Component{
                     </button>
                     <div>
                         <Link to='/Main/Chart'>
-                            <button className='skip'>
-                                <ArrowForwardIosIcon />
+                            <button className='btn'>Back To Mood Display
+                                {/* <ArrowForwardIosIcon /> */}
                             </button>
                         </Link>
                     </div>

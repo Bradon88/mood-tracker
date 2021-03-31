@@ -82,8 +82,22 @@ class Chart extends Component {
             labels: [
                 '', '', '', '', ''
             ],
-
+            
         }
+        // var option = {
+        //     scales: {
+        //         xAxes: [{
+        //            gridLines: {
+        //               display: false
+        //            }
+        //         }],
+        //         yAxes: [{
+        //            gridLines: {
+        //               display: false
+        //            }
+        //         }]
+        //    }
+        // }
 
 
         const lineChart = {
@@ -111,12 +125,14 @@ class Chart extends Component {
                     pointBorderWidth: '1',
                     radius: '3',
 
-                    data: this.state.mood.map((m) => ({x: m.date, y: m.mood}))
-                
-                }]
+                    data: this.state.mood.map((m) => ({x: m.date, y: m.mood})),
+                    // options: option
+                }],
                 
             
         };
+
+        
         return (
             <div><h1 style={{textAlign: 'center'}}>Mood History</h1>
          
@@ -135,12 +151,13 @@ class Chart extends Component {
 
             data={lineChart}
             width={200}
+           
             />
 
             
             
             <div>
-                
+                <h3>Total Moods</h3>
                 <div>
                 <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/> {moodOne}
                 <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
@@ -169,7 +186,8 @@ class Chart extends Component {
                 marginTop: '20px'
             }}>Add Mood</button></Link>
             
-            
+            {/* <Link to='/Main/Notes'><button className='btn'>View Notes</button></Link> */}
+
 
             </div>
         )
