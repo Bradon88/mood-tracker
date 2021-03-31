@@ -45,6 +45,7 @@ const Team = () => {
                 <button className="btn" onClick={ async () => {
                     await deleteTeam(team.team_id)
                     getTeam()
+                    updateToken()
                 }}>Delete Team</button>
                 </div>
             );

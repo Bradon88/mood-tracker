@@ -23,11 +23,15 @@ module.exports = {
             return res.status(401).send('Please log in to view mood information.')
         }
     },
-    // gets mood entires of entire team, based on admin_user (user_id of logged-in user)
-    getMoods: async ( req, res ) => {
+    // gets mood entires of a team member
+    getMemberMood: async ( req, res ) => {
         const db = req.app.get('db')
         if( req.session.user ){
-
+            const { member_id } = req.body
+            const mood = await db.mood.get_mood([ member_id ])
+            return res.status(200).send(mood)
+        } else {
+            return res.status(401).send('Please log in to view team member mood information.')
         }
     }
 }
