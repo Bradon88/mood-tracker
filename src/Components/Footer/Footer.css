@@ -11,7 +11,7 @@
   bottom: 0;
   width: 100vw;
   height: 80px;
-  background-color: teal;
+  background-color: #607d8b;
 }
 
 .footer-links {
@@ -51,7 +51,7 @@
   font-size: larger;
   font-weight: bolder;
   width: 250px;
-  background-color: teal;
+  background-color: #607d8b;
   border: none;
 }
 
@@ -61,6 +61,10 @@
   border-radius: 25px;
 }
 
+.copyright {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   .footer-links {
@@ -68,6 +72,9 @@
   }
   .footer-logout {
     display: none;
+  }
+  .copyright {
+    color: white;
   }
 }
 /*# sourceMappingURL=Footer.css.map */

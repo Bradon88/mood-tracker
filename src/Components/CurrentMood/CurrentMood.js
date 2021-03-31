@@ -5,8 +5,11 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import IconButton from '@material-ui/core/IconButton'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import './CurrentMood.scss'
 import axios from 'axios';
+import {Link} from 'react-router-dom'
+
 
 class CurrentMood extends Component{
 
@@ -85,10 +88,13 @@ class CurrentMood extends Component{
                 /></IconButton>
                
                     <br></br>
+                    <h2>What have you been doing?</h2>
                     <input
                     placeholder="Activity Notes"
+                    autoComplete='off'
                     type='text'
                     name='activity_notes'
+                    className='input-field'
                     value={this.state.activity_notes}
                     onChange={this.changeHandler}
                     />
@@ -103,12 +109,19 @@ class CurrentMood extends Component{
                     <br></br>
                     <br></br>
                     <button 
-                    className="btn"
+                    className="register-btn"
                     type='submit'
                     value='addPost'
                     onClick={this.toggleNewPost}>Add Mood
                         {/* OPTIONAL add alert with console.log for submission */}
                     </button>
+                    <div>
+                        <Link to='/Main/Chart'>
+                            <button className='skip'>
+                                <ArrowForwardIosIcon />
+                            </button>
+                        </Link>
+                    </div>
                     
                     </form>
                 </div>

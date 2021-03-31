@@ -118,7 +118,7 @@ class Chart extends Component {
             
         };
         return (
-            <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
+            <div><h1 style={{textAlign: 'center'}}>Mood History</h1>
          
                 {/* <IconButton><SupervisedUserCircle style={{
                     // display: 'flex',
@@ -164,12 +164,12 @@ class Chart extends Component {
                 }
             }/>
 
-            <button className="btn"
+            <Link to='/Main/CurrentMood'><button className='btn'
             style={{
                 marginTop: '20px'
-            }}><Link to='/Main/CurrentMood'>Add Mood</Link></button>
-
-            <button className='btn'><Link to='/Main/Notes'>View Notes</Link></button>
+            }}>Add Mood</button></Link>
+            
+            <Link to='/Main/Notes'><button className='btn'>View Notes</button></Link>
 
             </div>
         )

@@ -9,7 +9,7 @@ const Header = () => {
 
     return (
         <div>
-            
+            { user ?
             <div className='header'>
                 <h1>Mood Tracker</h1>
                 <Link to='/' className='header-links'>Home</Link>
@@ -18,7 +18,7 @@ const Header = () => {
                 <Link to='/Main/Chat' className='header-links'>Chat</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
-            
+        : null }
         </div>
     )
 }

@@ -17,7 +17,6 @@ const Footer = () => {
             null
         :
             <div className='footer'>
-                <Link to='/' className='footer-links'><HomeRoundedIcon/></Link>
                 <Link to='/Main/CurrentMood' className='footer-links'><SentimentVerySatisfiedIcon/></Link>
                 <Link to='/Main/Team' className='footer-links'><PeopleIcon/></Link>
                 <Link to='/Main/Chat' className='footer-links'><ChatBubbleIcon/></Link>

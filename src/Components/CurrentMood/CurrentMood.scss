@@ -1,5 +1,5 @@
+@import '../Home/colors.scss';
 $color: #2a9d8f;
-
 
 body{
     display: flex;
@@ -89,5 +89,13 @@ div{
         width: 100%;
       }
     }
+  }
+
+  .skip {
+      border: none;
+      background-color: white;
+      font-size: 1rem;
+      margin: 20px;
+      color: $blue;
   }
   

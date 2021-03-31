@@ -14,6 +14,9 @@ Link {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: none;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .btn:after {
@@ -23,7 +26,7 @@ Link {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #2a9d8f;
+  background-color: #b8907c;
   border-radius: 10rem;
   z-index: -2;
 }
@@ -35,7 +38,7 @@ Link {
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: #1a6158;
+  background-color: #966851;
   -webkit-transition: all .3s;
   transition: all .3s;
   border-radius: 10rem;
@@ -48,5 +51,13 @@ Link {
 
 .btn:hover:before {
   width: 100%;
+}
+
+.show {
+  display: none;
+}
+
+.mem-dropdown {
+  display: none;
 }
 /*# sourceMappingURL=Chart.css.map */

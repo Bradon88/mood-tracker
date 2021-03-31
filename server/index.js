@@ -110,7 +110,7 @@ app.post('/api/mood', moodCtrl.addMood);
 // returns mood entries for one user, based on logged-in user
 app.get('/api/mood', moodCtrl.getMood);
 // returns mood entries for an entire team, based on logged-in user (as admin_id)
-app.get('/api/moods', moodCtrl.getMoods);
+app.get('/api/member_mood', moodCtrl.getMemberMood);
 
 //TEAM ENDPOINTS
 // creates a new team

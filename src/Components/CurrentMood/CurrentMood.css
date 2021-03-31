@@ -78,4 +78,12 @@ div .stoked :hover {
 .btn:hover:before {
   width: 100%;
 }
+
+.skip {
+  border: none;
+  background-color: white;
+  font-size: 1rem;
+  margin: 20px;
+  color: #607d8b;
+}
 /*# sourceMappingURL=CurrentMood.css.map */
