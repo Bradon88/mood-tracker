@@ -39,4 +39,28 @@
           justify-content: left;
   margin: 0 20px;
 }
+
+.members {
+  width: auto;
+  height: auto;
+  border: 2px black solid;
+  border-color: #607d8b;
+}
+
+.team-test {
+  height: 300px;
+  width: 100vw;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.team-filler {
+  height: 300px;
+  width: 100vw;
+}
+
+.create-team {
+  margin-top: 100px;
+}
 /*# sourceMappingURL=Team.css.map */

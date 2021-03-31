@@ -1,6 +1,6 @@
 .home-main {
-  width: 100vw;
-  height: 100vh;
+  width: 70vw;
+  height: 70vh;
   background-color: #f8f8f8;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,13 +12,23 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: larger;
+  font-weight: bolder;
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 30px;
+  margin-top: 30px;
+  position: relative;
+  left: 40px;
 }
 
 .moodful-logo {
   background-size: contain;
   background-repeat: no-repeat;
   height: 300px;
-  margin-top: 30%;
 }
 
 .home-logo {
@@ -26,10 +36,12 @@
   font-size: 4.4em;
   margin: 0;
   margin-bottom: 10%;
+  font-size: 70px;
 }
 
 .beige {
   color: #b8907c;
+  font-size: 70px;
 }
 
 .login-btn {
@@ -40,9 +52,64 @@
   text-decoration: none;
   border-radius: 25px;
   font-size: 1.5em;
-  padding-top: 10px;
   margin: 10px;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .home-main {
+    width: 100vw;
+    height: 700px;
+    background-color: #f8f8f8;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: larger;
+    font-weight: bolder;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 30px;
+    position: relative;
+    right: 20px;
+  }
+  .moodful-logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+  }
+  .home-logo {
+    color: #607d8b;
+    font-size: 4.4em;
+    margin: 0;
+    margin-bottom: 10%;
+  }
+  .beige {
+    color: #b8907c;
+    font-size: 85px;
+  }
+  .login-btn {
+    width: 300px;
+    height: 40px;
+    background-color: #b8907c;
+    color: #f8f8f8;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.5em;
+    margin: 10px;
+    -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
 }
 /*# sourceMappingURL=Home.css.map */
