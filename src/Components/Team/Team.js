@@ -51,26 +51,12 @@ const Team = () => {
         getMembers()
         
     },[])
-    
-        // getMembers();
-        // axios.get('/api/mood/member_mood', {member_id}).then((res) => {
-        //     setMood(res.data)
-        // })
-        // getMembers();
 
-    // const moods = mood.map((m) => m.mood)
-
-    // const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
-    // const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
-    // const moodThree = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '3' ? 1 : 0), 0)
-    // const moodFour = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '4' ? 1 : 0), 0)
-    // const moodFive = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '5' ? 1 : 0), 0)
-    
     console.log(dropDown, 'dropdown Teamsjs')
     console.log(team, 'teamjs component')
     return (
         <div> 
-           <Link to='/Main'><ArrowBackIcon fontSize='large' className='back-arrow' style={{zIndex:'4'}}/></Link> 
+            <Link to='/Main'><ArrowBackIcon fontSize='large' className='back-arrow' style={{zIndex:'4'}}/></Link> 
         <div className='team-main'>
        
         {user.is_admin ? (''): (
@@ -105,8 +91,9 @@ const Team = () => {
                  {user.is_admin ? <div>
                 <button
                 className='add-member'
-                onClick={() => {
-                addMember(member_id);
+                onClick={async () => {
+                await addMember(member_id);
+                getMembers()
                 console.log(member_id)
                 }}
             >
@@ -152,7 +139,7 @@ const Team = () => {
                 </div>
                 {teamMemberList?.map((member, index) => {
 
-                const moods = member.moods.map((m) => m.mood)
+                const moods = (member?.moods || []).map((m) => m.mood)  
 
                 const moodOne = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '1' ? 1 : 0), 0)
                 const moodTwo = moods.reduce((a, mood) => a+(mood.slice(0, 2) === '2' ? 1 : 0), 0)
@@ -174,7 +161,9 @@ const Team = () => {
                                 
                         <div>
                         <br></br>
-                <DeleteOutlineIcon style={{color: '#39b8a9'}} onClick={() => { deleteMember( member.member_id )}}/>
+                <DeleteOutlineIcon style={{color: '#39b8a9'}} onClick={async () => { 
+                    await deleteMember( member.member_id )
+                    getMembers()}}/>
                         </div>
                         
                         </div>
