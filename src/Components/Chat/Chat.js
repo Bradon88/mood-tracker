@@ -94,7 +94,7 @@ console.log('-------roominfo', roomInfo)
         {myTeamName?.map((teamName, index)=>{
                       return(
                           <div key={index}>
-                              <div>
+                              <div className='team-name'>
                                   {teamName.team_name}
                               </div>
                           </div>
