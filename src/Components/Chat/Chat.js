@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext, useRef} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import {ChatContext} from '../../Context/ChatContext';
@@ -40,10 +40,11 @@ const Chat = (props) => {
   const [message, setMessage] = useState("")
   const [roomInfo, setRoomInfo] = useState("")
   // const [teamMember, setTeamMember] =useState()
-  const [theChatRoom, setTheChatRoom] =useState()
-  // const [firstName, setFirstName] =useState()
   const {room} = useParams();
+  const [theChatRoom, setTheChatRoom] =useState(room)
+  // const [firstName, setFirstName] =useState()
   const {push} = useHistory();
+  const scrollContainer = useRef(null)
   const date = new Date ();
   
 
@@ -70,6 +71,12 @@ const Chat = (props) => {
   useEffect(()=>{
     if(room){setSocketRoom(room)}
   },[room, setSocketRoom])
+
+  useEffect(()=>{
+    if(scrollContainer?.current){
+      scrollContainer.current.scrollTop=scrollContainer.current.scrollHeight
+    }
+  },[messages])
 
 console.log('----chat team name', myTeamName)
 console.log('----chat members', teamMemberList)
@@ -111,7 +118,7 @@ console.log('-------roominfo', roomInfo)
         <InputLabel>Team Member</InputLabel>
         <Select
         
-          value={theChatRoom?.chat_room_name}
+          value={theChatRoom}
           onChange={(e)=> {
             setTheChatRoom(e.target.value)
             push(`/Main/Chat/${e.target.value}`)
@@ -134,7 +141,7 @@ console.log('-------roominfo', roomInfo)
         <div>
           <div className="chatContainer">
             <div className="chatHeader"></div>
-              <div className="screen">
+              <div ref={scrollContainer} className="screen">
                 {messages.map((m, index) => {
                   const mDate = new Date ()
                   return(
