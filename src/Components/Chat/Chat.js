@@ -98,15 +98,16 @@ console.log(theChatRoom, 'the chat room of member')
                       )
                   }) || null}
       </div>
-      
+      {/* <h2>Team Chat</h2> */}
       <FormControl className = {classes.formControl}
         style={{
-            width: "25%",
+            width: "35%",
             display: "flex",
             flexDirection: "column"
         }}>
-        <InputLabel>Select Team Member</InputLabel>
+        <InputLabel>Team Member</InputLabel>
         <Select
+        
           value={theChatRoom?.chat_room_name}
           onChange={(e)=> {
             setTheChatRoom(e.target.value)
