@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import Note from './Note'
 import './Notes.scss'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import moment from 'moment'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
@@ -41,7 +42,10 @@ class Notes extends Component {
         
         <div className='notes-main'>
           {this.props.notesReducer && this.props.notesReducer.notes.map((note) => (
+           <div>
+             {moment(note.date).format('ll')}
             <Note note={note} key={note.note_id} setNotes={this.props.setNotes}/>
+            </div>
           ))}
         </div>
       </div>
