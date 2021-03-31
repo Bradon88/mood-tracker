@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import {ChatContext} from '../../Context/ChatContext';
 import {AuthContext} from '../../Context/AuthContext';
 import {TeamContext} from '../../Context/TeamContext';
@@ -37,9 +38,10 @@ const Chat = (props) => {
     getMyTeamName
   } =useContext(TeamContext)
   const [message, setMessage] = useState("")
-  const [teamMember, setTeamMember] =useState()
+  const [roomInfo, setRoomInfo] = useState("")
+  // const [teamMember, setTeamMember] =useState()
   const [theChatRoom, setTheChatRoom] =useState()
-  const [firstName, setFirstName] =useState()
+  // const [firstName, setFirstName] =useState()
   const {room} = useParams();
   const {push} = useHistory();
   const date = new Date ();
@@ -74,6 +76,7 @@ console.log('----chat members', teamMemberList)
 console.log(chatRooms, "chatrooms chatjs")
 console.log(user, 'chatjs')
 console.log(theChatRoom, 'the chat room of member')
+console.log('-------roominfo', roomInfo)
   return (
     <div>
       <div>
@@ -162,7 +165,7 @@ console.log(theChatRoom, 'the chat room of member')
                 <button 
                   className="chatButton"
                   onClick={() => {
-                    socket.emit("send-message", { message, user, date})
+                    socket.emit("send-message", {id:uuidv4(), message, user, date})
                     setMessage('')
                   }}
                 >
