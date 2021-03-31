@@ -1,10 +1,12 @@
+@import '../Home/colors.scss';
+
 .notes-main {
     height: 70vh;
     overflow: scroll;
 }
 
 .add-notes-link {
-    color: teal;
+    color: $blue;
     margin: 0% 10%;
   }
 
@@ -44,7 +46,7 @@
 
 .notes-text {
     width: 60vw;
-    background-color: sandybrown;
+    background-color: $beige;
 }
 
 .notes-content {
@@ -52,18 +54,19 @@
     overflow: scroll;
     width: 60vw;
     height: 100px;
-    background-color: sandybrown;
+    background-color: $beige;
+    color: $light-gray;
     border-radius: 3px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
   
   .add-notes-link:hover {
-    border: solid sandybrown 2px;
+    border: solid $beige 2px;
   }
 
   .add-to-notes-btn {
-    background-color: teal;
+    background-color:$blue;
     margin: 20px;
     color: white;
     width: 200px;
@@ -76,7 +79,7 @@
   }
   
   .add-to-notes-btn:hover {
-    border: solid sandybrown 2px;
+    border: solid $beige 2px;
   }
   
   .enter-notes-input {
@@ -87,19 +90,26 @@
   }
   
   .edit-delete-btn {
-    background-color: white;
-    color: teal;
+    color: $blue;
     text-decoration: none;
-    border: solid white 2px;
     border-radius: 10px;
   }
   
   .edit-delete-btn:hover {
-    border: solid sandybrown 2px;
+    border: solid $beige 2px;
 }
 
 #button-stack {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.back-arrow {
+  text-decoration: none;
+  color: $blue;
+  display: flex;
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
 }

@@ -1,0 +1,35 @@
+@import '../Home/colors.scss';
+
+.team-main {
+    height: 85vh;
+    width: 100vw;
+    overflow: scroll;
+}
+
+.team-header {
+    font-size: 40px;
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.team-name {
+    font-size: 3em;
+    color: $blue;
+}
+
+.add-member {
+    border: none;
+    color: $blue;
+    background-color: white;
+    float: right;
+    margin: 24px 14px;
+}
+
+.member-header {
+    color: $blue;
+    display: flex;
+    justify-content: left;
+    margin: 0 20px;
+}

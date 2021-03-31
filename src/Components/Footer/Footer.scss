@@ -1,3 +1,5 @@
+@import '../Home/colors.scss';
+
 .footer {
     display: flex;
     justify-content: space-around;
@@ -6,7 +8,7 @@
     bottom: 0;
     width: 100vw;
     height: 80px;
-    background-color: teal;
+    background-color: $blue;
   }
 
   .footer-links {
@@ -34,7 +36,7 @@
     font-size: larger;
     font-weight: bolder;
     width: 250px;
-    background-color: teal;
+    background-color: $blue;
     border: none;
   }
   

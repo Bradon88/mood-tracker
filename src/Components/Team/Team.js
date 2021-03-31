@@ -10,6 +10,11 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import axios from "axios";
+import {Link} from 'react-router-dom'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/Add';
+import './Team.scss'
 // import { getMembers } from "../../../server/controllers/members";
 
 
@@ -65,33 +70,40 @@ const Team = () => {
     console.log(team, 'teamjs component')
     return (
         <div>
-        <div>
-            {team?.map((team, index) => {
-            return (
-                <div key={index}>
-                <h1>{team.team_name}</h1>
-                <h2>{team.team_id}</h2>
-                <button className="btn" onClick={ async () => {
-                    await deleteTeam(team.team_id)
-                    getTeam()
-                    updateToken()
-                }}>Delete Team</button>
-                </div>
-            );
-            }) || null}
-            <div></div>
-        </div>
+            <Link to='/Main'><ArrowBackIcon fontSize='large' className='back-arrow'/></Link>
+        <div className='team-main'>
+        
         {user.is_admin ? (''): (
             <div>
-            <h2>Create a team to view and manage team member mood logs!</h2>
-            <button className="btn">Add Team</button>
+                <h1 className='team-header'>Team</h1>
+                <div className='add-team-btn'>
+                    <AddCircleIcon fontSize='large' className='add-notes-link'/>
+                </div>
             </div>
         )}
+            
+            <div>
+                
+                {team?.map((team, index) => {
+                return (
+                    <div key={index}>
+                        <h1 className='team-name'>{team.team_name}</h1>
+                        <button className='btn'>
+                            Add Member
+                        </button>
+                        <button className="btn" onClick={ async () => {
+                            await deleteTeam(team.team_id)
+                            getTeam()
+                            updateToken()
+                        }}>Delete Team</button>
+                    </div>
+                    );
+                }) || null}
+            </div>
 
         {user.is_admin ? ('') : (
             <div>
             <div>
-                <h2>What would you like to name your team?</h2>
                 <TextField
                 value={team_name}
                 onChange={(e) => setTeamName(e.target.value)}
@@ -116,10 +128,19 @@ const Team = () => {
             </div>
             </div>
         )}
+
         {user.is_admin ? (
             <div>
-            <h2>Add members to your team!</h2>
-            <h2>Search for team members by email:</h2>
+                <button
+                className='add-member'
+                onClick={() => {
+                addMember(member_id);
+                console.log(member_id)
+                }}
+            >
+                {" "}
+                <AddIcon fontSize='large'/>
+            </button>
             <div style={{ width: 300 }}>
             <Autocomplete
                 id="free-solo-2-demo"
@@ -136,26 +157,19 @@ const Team = () => {
                     {...params}
                     value={email}
                     label="Search By Email"
+                    className='search-bar'
                     margin="normal"
                     variant="outlined"
                     InputProps={{ ...params.InputProps, type: "search" }}
                 />
                 )}
             />
-            <button
-    
-                className="btn"
-                onClick={() => {
-                addMember(member_id);
-                console.log(member_id)
-                }}
-            >
-                {" "}
-                Add Team Member
-            </button>
+            
             </div>
             <div>
-                <h1>Team Members</h1>
+                <div>
+                    <h1 className='member-header'>Members</h1>
+                </div>
                 {teamMemberList?.map((member, index) => {
 
                 const moods = member.moods.map((m) => m.mood)
@@ -168,7 +182,7 @@ const Team = () => {
 
                     return (
                         <div key={index} >
-                            <h2>{ member.first_name } { member.last_name } {member.member_id}
+                            <h2>{ member.first_name } { member.last_name }
                             <br></br>
                              </h2>
                                 <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/>  {moodOne}
@@ -180,27 +194,18 @@ const Team = () => {
                         <div>
                         <br></br>
                 <DeleteOutlineIcon style={{color: '#39b8a9'}} onClick={() => { deleteMember( member.member_id )}}/>
-                {teamMemberList?.map((member, index) => {
-                    return (
-                        <div key={index} >
-                                <div>
-                                    <h2>{ member.first_name } { member.last_name }</h2>
-                                    <h3>{ member.email }</h3>
-                                </div>
-                                
-                        </div>
-                        );
-                    }) || null}
                         </div>
                         </div>
                     );
-                }) || null}
+                }
+                ) || null}
             </div>
         </div>
         
         ): null}
         
         </div>
+    </div>
     );
 };
 
