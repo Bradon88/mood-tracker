@@ -1,8 +1,8 @@
 @import './colors.scss';
 
 .home-main {
-  width: 100vw;
-  height: 100vh;
+  width: 70vw;
+  height: 70vh;
   background-color: $light-gray;
   display: flex;
   flex-direction: column;
@@ -15,14 +15,64 @@
   border-radius: 30px;
   margin-top: 30px;
   position: relative;
-  left: 200px;
+  left: 40px;
 }
 
 .moodful-logo {
   background-size: contain;
   background-repeat: no-repeat;
   height: 300px;
-  margin-top: 30%;
+}
+
+.home-logo {
+  color: $blue;
+  font-size: 4.4em;
+  margin: 0;
+  margin-bottom: 10%;
+  font-size: 70px;
+}
+
+.beige {
+  color: $beige;
+  font-size: 70px;
+}
+
+.login-btn {
+  width: 300px;
+  height: 40px;
+  background-color: $beige;
+  color: $light-gray;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1.5em;
+  margin: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  //DESKTOP VERSION
+.home-main {
+  width: 100vw;
+  height: 700px;
+  background-color: $light-gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bolder;
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 30px;
+  margin-top: 30px;
+  position: relative;
+  right: 20px;
+}
+
+.moodful-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 300px;
 }
 
 .home-logo {
@@ -34,6 +84,8 @@
 
 .beige {
   color: $beige;
+  font-size: 85px;
+
 }
 
 .login-btn {
@@ -44,8 +96,7 @@
   text-decoration: none;
   border-radius: 25px;
   font-size: 1.5em;
-  padding-top: 10px;
   margin: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
+}
