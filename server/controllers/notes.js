@@ -10,7 +10,8 @@ module.exports = {
     addNotes: (req, res) => {
         const db = req.app.get('db')
         const {user_id} = req.session.user
-        const {notes_content, date} = req.body
+        const {notes_content} = req.body
+        const date = new Date()
         const team = req.session.user.team_id ? req.session.user.team_id : null
         db.notes.create_notes(user_id, team, date, notes_content).then((notes) => {
             res.status(200).send(notes)
