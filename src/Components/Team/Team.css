@@ -1,0 +1,42 @@
+.team-main {
+  height: 85vh;
+  width: 100vw;
+  overflow: scroll;
+}
+
+.team-header {
+  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.team-name {
+  font-size: 3em;
+  color: #607d8b;
+}
+
+.add-member {
+  border: none;
+  color: #607d8b;
+  background-color: white;
+  float: right;
+  margin: 24px 14px;
+}
+
+.member-header {
+  color: #607d8b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin: 0 20px;
+}
+/*# sourceMappingURL=Team.css.map */

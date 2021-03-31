@@ -4,7 +4,7 @@
 }
 
 .add-notes-link {
-  color: teal;
+  color: #607d8b;
   margin: 0% 10%;
 }
 
@@ -59,7 +59,7 @@
 
 .notes-text {
   width: 60vw;
-  background-color: sandybrown;
+  background-color: #b8907c;
 }
 
 .notes-content {
@@ -67,18 +67,19 @@
   overflow: scroll;
   width: 60vw;
   height: 100px;
-  background-color: sandybrown;
+  background-color: #b8907c;
+  color: #f8f8f8;
   border-radius: 3px;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .add-notes-link:hover {
-  border: solid sandybrown 2px;
+  border: solid #b8907c 2px;
 }
 
 .add-to-notes-btn {
-  background-color: teal;
+  background-color: #607d8b;
   margin: 20px;
   color: white;
   width: 200px;
@@ -91,7 +92,7 @@
 }
 
 .add-to-notes-btn:hover {
-  border: solid sandybrown 2px;
+  border: solid #b8907c 2px;
 }
 
 .enter-notes-input {
@@ -102,15 +103,13 @@
 }
 
 .edit-delete-btn {
-  background-color: white;
-  color: teal;
+  color: #607d8b;
   text-decoration: none;
-  border: solid white 2px;
   border-radius: 10px;
 }
 
 .edit-delete-btn:hover {
-  border: solid sandybrown 2px;
+  border: solid #b8907c 2px;
 }
 
 #button-stack {
@@ -124,5 +123,16 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.back-arrow {
+  text-decoration: none;
+  color: #607d8b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 /*# sourceMappingURL=Notes.css.map */

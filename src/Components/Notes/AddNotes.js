@@ -23,7 +23,7 @@ class AddNotes extends Component {
             .post('/api/notes', {notes_content: this.state.notes_content})
             .then((results) => {
                 this.props.setNotes(results.data)
-                this.props.history.push('/notes')
+                this.props.history.push('/Main/notes')
             })
     }
 

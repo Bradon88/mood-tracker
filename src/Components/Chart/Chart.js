@@ -4,11 +4,14 @@ import {Pie} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
 import axios from 'axios'
-// import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied'
-// import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-// import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-// import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied'
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
+import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle'
+import IconButton from '@material-ui/core/IconButton'
+import { TeamContext } from "../../Context/TeamContext";
 import './Chart.scss'
 // import mood from '../../../server/controllers/mood';
 
@@ -18,7 +21,9 @@ class Chart extends Component {
     constructor(){
         super();
         this.state = {
-            mood: []
+            mood: [],
+            // team: [],
+            // toggleShow: false
         }
     }
     
@@ -33,9 +38,26 @@ class Chart extends Component {
         })
     }
 
+    getMembers = () => {
+        axios.get('/api/team')
+        .then (res => {
+            this.setState({
+                team: res.data
+            })
+        })
+    }
+
+    toggleShowFunc = () => {
+        this.setState((prevState) => {
+            return {
+                toggleShow: !prevState.toggleShow
+            }
+        })
+    }
 
     componentDidMount(){
         this.getMood()
+        this.getMembers()
     }
 
     render(){
@@ -58,7 +80,7 @@ class Chart extends Component {
                 weight: 2
             }],
             labels: [
-                '1', '2', '3', '4', '5'
+                '', '', '', '', ''
             ],
 
         }
@@ -96,38 +118,58 @@ class Chart extends Component {
             
         };
         return (
-            <div><h1 style={{textAlign: 'center'}}>Moods on Display</h1>
-            
+            <div><h1 style={{textAlign: 'center'}}>Mood History</h1>
+         
+                {/* <IconButton><SupervisedUserCircle style={{
+                    // display: 'flex',
+                    // alignItems: 'flex-start',
+                    // paddingRight: '340px',
+                    color: '#39b8a9'
+                }} onClick={this.toggleShowFunc} id='circle-btn' className={`mem-dropdown ${this.state.toggleShow ? "show": ""}`} />
+                <ul className={`${this.state.toggleShow ? "show": ""}`}>
+                    <li>{this.getMembers.member_id}</li>
+                    <li>member</li>
+                </ul>
+                </IconButton> */}
             <Line
 
             data={lineChart}
             width={200}
             />
+
             
-            {/* <div>
-                <SentimentVeryDissatisfied style={{ color:' #bf5c43'}}/>
-                <SentimentDissatisfied style={{color:'#ee8959' }}/>
-                <SentimentDissatisfied style={{color:'#efb366'}}/>
-                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/>
-                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/>
-            </div> */}
+            
+            <div>
+                
+                <div>
+                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/> {moodOne}
+                <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
+                <SentimentSatisfiedIcon style={{color:'#efb366'}}/> {moodThree}
+                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
+                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/> {moodFive}
+                </div>
+            </div>
 
             <Pie
             data={donutChart}
-            height={150}
+            height={125}
             options={
                 {
                     display: true,
-                    cutoutPercentage: '60'
+                    cutoutPercentage: '60',
+                    legend: {
+                        display: false
+                    },
+                    
                 }
             }/>
 
-            <button className="btn"
+            <Link to='/Main/CurrentMood'><button className='btn'
             style={{
                 marginTop: '20px'
-            }}><Link to='/CurrentMood'>Add Mood</Link></button>
-
-            <button className='btn'><Link to='/Notes'>View Notes</Link></button>
+            }}>Add Mood</button></Link>
+            
+            
 
             </div>
         )

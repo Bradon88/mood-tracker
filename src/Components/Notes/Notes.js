@@ -7,6 +7,7 @@ import Note from './Note'
 import './Notes.scss'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import moment from 'moment'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 class Notes extends Component {
@@ -31,10 +32,11 @@ class Notes extends Component {
   render() {
     return (
       <div>
+        <Link to='/Main'><ArrowBackIcon fontSize='large' className='back-arrow'/></Link>
         <div className='notes-header'>
           <p className='your-notes'>Notes</p>
           <div className='space'>
-            <Link to='/AddNotes' className='add-notes-link'><AddCircleIcon fontSize='large'/></Link>
+            <Link to='/Main/AddNotes' className='add-notes-link'><AddCircleIcon fontSize='large'/></Link>
           </div>
         </div>
         

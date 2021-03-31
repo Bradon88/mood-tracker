@@ -1,51 +1,11 @@
+@import './colors.scss';
 
-
-.welcome {
-  font-size: 70px;
-  margin-left: 35px;
-}
-
-@media screen and (max-width: 400px), (max-height: 850px) {
-  .welcome {
-    font-size: 25px;
-  }
-}
-
-.welcome-parent {
+.home-main {
+  width: 100vw;
+  height: 100vh;
+  background-color: $light-gray;
   display: flex;
-}
-
-.landing-page-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  max-width: fit-content;
-  color: white;
-  font-size: 25px;
-  position: relative;
-  left: 200px;
-}
-
-@media screen and (max-width: 400px), (max-height: 850px) {
-  .landing-page-text {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
-    max-width: fit-content;
-    color: white;
-    font-size: 14px;
-    position: relative;
-    left: 20px;
-    top: 30px;
-  }
-}
-
-.landing-page-link {
-  background-color: teal;
-  color: white;
-  display: flex;
-  width: 300px;
-  height: 30px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: larger;
@@ -58,63 +18,34 @@
   left: 200px;
 }
 
-.landing-page-link:hover {
-  text-decoration: underline;
-  border: solid white 2px;
-}
-
-@media screen and (max-width: 400px), (max-height: 850px) {
-  .landing-page-link {
-    background-color: teal;
-    color: white;
-    display: flex;
-    width: 200px;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    text-decoration: none;
-    border-radius: 30px;
-    position: relative;
-    left: 85px;
-    top: 120px;
-  }
-  
-  .landing-page-link:hover {
-    text-decoration: underline;
-    border: solid white 2px;
-  }
-
-  .landing-page-link:focus {
-    text-decoration: underline;
-    border: solid white 2px;
-  }
-
-}
-
-.landing-page-text-parent {
-  width: 30%;
-  position: relative;
- 
-}
-
-
-.home {
-  height: 100vh;
-  width: 100vw;
-  background: url('https://media.istockphoto.com/photos/young-african-woman-smiling-at-sunset-picture-id969233490?k=6&m=969233490&s=612x612&w=0&h=3UW-GHQ2CksIelqKk0UKgy_7qExPsn1g8B2Q0zzU1xo=');
-  background-position: center;
-  background-size: cover;
+.moodful-logo {
+  background-size: contain;
   background-repeat: no-repeat;
+  height: 300px;
+  margin-top: 30%;
 }
 
-@media screen and (max-width: 400px), (max-height: 850px) {
-  .home {
-    height: 812px;
-    width: 375px;
-    background: url('https://media.istockphoto.com/photos/young-african-woman-smiling-at-sunset-picture-id969233490?k=6&m=969233490&s=612x612&w=0&h=3UW-GHQ2CksIelqKk0UKgy_7qExPsn1g8B2Q0zzU1xo=');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+.home-logo {
+  color: $blue;
+  font-size: 4.4em;
+  margin: 0;
+  margin-bottom: 10%;
 }
+
+.beige {
+  color: $beige;
+}
+
+.login-btn {
+  width: 300px;
+  height: 40px;
+  background-color: $beige;
+  color: $light-gray;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1.5em;
+  padding-top: 10px;
+  margin: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
