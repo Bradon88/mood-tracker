@@ -33,5 +33,19 @@ module.exports = {
         } else {
             return res.status(401).send('Please log in to view team member mood information.')
         }
+    },
+
+    getMemberMood: async ( req, res ) => {
+        const db = req.app.get('db')
+        if( req.session.user ){
+            const { member_id } = req.body
+            const mood = await db.mood.get_mood([ member_id ])
+            return res.status(200).send(mood)
+        } else {
+            return res.status(401).send('Please log in to view team member mood information.')
+        }
     }
+
+    
+
 }

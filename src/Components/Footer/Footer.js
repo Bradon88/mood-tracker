@@ -18,9 +18,9 @@ const Footer = () => {
         :
             <div className='footer'>
                 <Link to='/' className='footer-links'><HomeRoundedIcon/></Link>
-                <Link to='/Main' className='footer-links'><SentimentVerySatisfiedIcon/></Link>
-                <Link to='/Team' className='footer-links'><PeopleIcon/></Link>
-                <Link to='/Chat' className='footer-links'><ChatBubbleIcon/></Link>
+                <Link to='/Main/CurrentMood' className='footer-links'><SentimentVerySatisfiedIcon/></Link>
+                <Link to='/Main/Team' className='footer-links'><PeopleIcon/></Link>
+                <Link to='/Main/Chat' className='footer-links'><ChatBubbleIcon/></Link>
                 <button onClick={() => logout()} className='footer-logout'><PowerSettingsNewIcon/></button>
                 <p className='copyright'>© 2021 Mood Tracker</p>
             </div>

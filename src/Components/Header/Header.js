@@ -13,9 +13,9 @@ const Header = () => {
             <div className='header'>
                 <h1>Mood Tracker</h1>
                 <Link to='/' className='header-links'>Home</Link>
-                <Link to='/Main' className='header-links'>Current Mood</Link>
-                <Link to='/Team' className='header-links'>My Teams</Link>
-                <Link to='/Chat' className='header-links'>Chat</Link>
+                <Link to='/Main/CurrentMood' className='header-links'>Current Mood</Link>
+                <Link to='/Main/Team' className='header-links'>My Teams</Link>
+                <Link to='/Main/Chat' className='header-links'>Chat</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
             
