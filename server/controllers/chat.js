@@ -43,7 +43,6 @@ module.exports = {
          const chatRooms = [
             ...await db.chat.get_chat_rooms([ user_id ]),
          ]
-         console.log(chatRooms, "controller")
          const filteredRooms = chatRooms.reduce((acc, current) => {
             const x = acc.find(item => item.chat_room_name === current.chat_room_name);
             if (!x) {
@@ -52,7 +51,7 @@ module.exports = {
                return acc;
             }
          }, []);
-      
+         // console.log('-----ctrl chat fchatroom', filteredRooms)
          return res.status(200).send(filteredRooms)
       } else {
          return res.status(400).send('Please log in to view a chat rooms.')

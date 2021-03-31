@@ -188,6 +188,7 @@ class Chart extends Component {
             
             {/* <Link to='/Main/Notes'><button className='btn'>View Notes</button></Link> */}
 
+
             </div>
         )
     }

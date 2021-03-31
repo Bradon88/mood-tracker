@@ -7,6 +7,7 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import PeopleIcon from '@material-ui/icons/People';
 import './Footer.scss'
+import CreateIcon from '@material-ui/icons/Create';
 
 const Footer = () => {
 
@@ -20,6 +21,7 @@ const Footer = () => {
                 <Link to='/Main/CurrentMood' className='footer-links'><SentimentVerySatisfiedIcon/></Link>
                 <Link to='/Main/Team' className='footer-links'><PeopleIcon/></Link>
                 <Link to='/Main/Chat' className='footer-links'><ChatBubbleIcon/></Link>
+                <Link to='/Main/Notes' className='footer-links'><CreateIcon/></Link>
                 <button onClick={() => logout()} className='footer-logout'><PowerSettingsNewIcon/></button>
                 <p className='copyright'>© 2021 Mood Tracker</p>
             </div>

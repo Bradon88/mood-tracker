@@ -6,6 +6,7 @@ import './Notes.scss'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
+import {Link} from 'react-router-dom'
 
 class Note extends Component {
     constructor() {
@@ -16,7 +17,9 @@ class Note extends Component {
         }
     }
 
-
+    componentDidMount = () => {
+      this.setState({notes_content: this.props.note.notes_content})
+    }
 
     handleEditToggle = () => {
         this.setState({ editing: true })
@@ -52,6 +55,7 @@ class Note extends Component {
           .catch((err) => console.log(err))
       }
 
+
       render () {
           return this.state.editing ? (
            <div >
@@ -64,9 +68,9 @@ class Note extends Component {
                     multiline
                     rows={4}
                     variant="outlined"
-                    placeholder='I need to populate the note content'
                 />
-                <button onClick={this.handleSave} className='add-to-notes-btn'>Save Note</button>
+                <button onClick={this.handleSave} className='add-to-notes-btn'>Save</button>
+                <button onClick={() => window.location.reload(false)} className='add-to-notes-btn'>Cancel</button>
            </div>
           ) : (
               <div className='add-notes-parent'>
