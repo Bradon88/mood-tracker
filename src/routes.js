@@ -14,7 +14,8 @@ const Routes = (props) =>{
 
    return(
       <>
-     {/* <Breadcrumbs /> */}
+
+         <Breadcrumbs />
          <Switch>
             <Route exact path='/' component={Home}/>
             <Route path="/Register" component={Register} render={props => <Register {...props} />}/>

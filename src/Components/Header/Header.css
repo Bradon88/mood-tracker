@@ -12,6 +12,28 @@
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
+  .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: white;
+    width: 100vw;
+    height: 80px;
+    border-bottom: solid black 2px;
+  }
+  .mood-title {
+    color: #607d8b;
+    font-size: 50px;
+  }
+  .ful-title {
+    color: #b8907c;
+    font-size: 50px;
+  }
   .header-links {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -23,15 +45,21 @@
         -ms-flex-align: center;
             align-items: center;
     color: white;
+    background-color: #607d8b;
     text-decoration: none;
     font-size: larger;
     font-weight: bolder;
     width: 250px;
+    height: 50px;
+    border-radius: 25px;
   }
   .header-links:hover {
-    text-decoration: underline;
-    border: solid white 2px;
+    border: solid #b8907c 3px;
     border-radius: 25px;
+  }
+  .header-links:focus {
+    background-color: #b8907c;
+    border: solid #607d8b 3px;
   }
   .header-logout {
     display: -webkit-box;
@@ -47,13 +75,18 @@
     font-size: larger;
     font-weight: bolder;
     width: 250px;
-    background-color: teal;
+    height: 50px;
+    background-color: #607d8b;
     border: none;
+    border-radius: 25px;
   }
   .header-logout:hover {
-    text-decoration: underline;
-    border: solid white 2px;
+    border: solid #b8907c 3px;
     border-radius: 25px;
+  }
+  .header-logout:focus {
+    background-color: #b8907c;
+    border: solid #607d8b 3px;
   }
 }
 /*# sourceMappingURL=Header.css.map */

@@ -11,12 +11,12 @@ const Header = () => {
         <div>
             { user ?
             <div className='header'>
-                <h1>Mood Tracker</h1>
+                <h1 className='mood-title'>MOOD<span className='ful-title'>FUL</span></h1>
                 <Link to='/' className='header-links'>Home</Link>
                 <Link to='/Main/CurrentMood' className='header-links'>Current Mood</Link>
                 <Link to='/Main/Team' className='header-links'>My Teams</Link>
                 <Link to='/Main/Chat' className='header-links'>Chat</Link>
-                <Link to='/Main/Notes' className='header-links'>View Notes</Link>
+                <Link to='/Main/Notes' className='header-links'>Notes</Link>
                 <button onClick={() => logout()} className='header-logout'>Logout</button>
             </div>
         : null }
