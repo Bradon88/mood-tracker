@@ -4,7 +4,6 @@ import {AuthContext} from './Context/AuthContext'
 import Register from './Components/Auth/Register';
 import Login from './Components/Auth/Login';
 import Main from './Components/Main/Main';
-import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs';
 import Home from './Components/Home/Home'
 
 
@@ -15,7 +14,7 @@ const Routes = (props) =>{
 
    return(
       <>
-         {/* <Breadcrumbs /> */}
+      
          <Switch>
             <Route exact path='/' component={Home}/>
             <Route path="/Register" component={Register} render={props => <Register {...props} />}/>

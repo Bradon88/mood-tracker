@@ -7,6 +7,7 @@ import Team from '../Team/Team'
 import Notes from '../Notes/Notes'
 import AddNotes from '../Notes/AddNotes'
 import Chart from '../Chart/Chart'
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
 
 
@@ -15,7 +16,7 @@ const Main = (props) => {
 
    return (
       <div>
-      {/* <Chart/> */}
+      <Breadcrumbs />
          <Switch>
             <Route exact path="/Main/Chart" component={Chart}/>
             <Route exact path="/Main/Chat/:room?" component={Chat}/>

@@ -75,11 +75,15 @@ massive({
          //    body.user.user-id,
          // ])
          
-         
-         console.log(body.message, "socket on server message")
-         console.log('-----user off body', body.user )
-         console.log('------team', body.teamMember)
+         console.log("---chat body from sockets", body)
+         // console.log(body.message, "socket on server message")
+         // console.log('-----user off body', body.user )
+         // console.log('------team', body.teamMember)
          io.in (socket.handshake.query.roomname).emit('receive-message', body)
+      })
+      socket.on('send-message-sync',(body)=>{
+         
+         io.in (socket.handshake.query.roomname).emit('receive-message-sync', body)
       })
    })
    httpServer.listen(SERVER_PORT, () => console.log(`Server running on port ${SERVER_PORT}`));

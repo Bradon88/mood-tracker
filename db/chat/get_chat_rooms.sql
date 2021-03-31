@@ -1,6 +1,8 @@
-SELECT cr.chat_room_name, 
+SELECT cr.chat_room_name,
+u.user_id, 
 u.first_name, 
-u.last_name, 
+u.last_name,
+admin.user_id as admin_user_id,
 admin.first_name as admin_first_name,
 admin.last_name as admin_last_name
 FROM chat_rooms cr
