@@ -1,6 +1,6 @@
 const jwt = require('express-jwt');
 
-const getTokenFromHeader = (req) => {
+const getTokenFromHeader = (req, res, next) => {
    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
       return req.headers.authorization.split(' ')[1];
    }
@@ -11,4 +11,4 @@ module.exports = jwt({
    requestProperty: 'session', // this is where the next middleware can find the encoded data generated in services/auth:generateToken
    // getToken: getTokenFromHeader,
    algorithms: ['HS256']
-}).unless({path: ['/auth/login', '/auth/register', '/']});
+}).unless({path: ['/auth/login', '/auth/register', '*']});
