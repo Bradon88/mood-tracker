@@ -36,8 +36,8 @@ export const TeamProvider=(props) => {
       .delete(`/api/team/${team_id}`)
       }
 
-   const addMember = async (member_id) => {
-      await axios
+   const addMember = (member_id) => {
+      axios
       .post(`/api/team_member/${member_id}`)
       .then((res) => {
          setTeamMemberList(res.data)
@@ -58,9 +58,7 @@ export const TeamProvider=(props) => {
    const deleteMember = async (member_id) => {
       axios
       .delete(`/api/team_member/${member_id}`)
-      .then((res) => {
-         setTeamMemberList(res.data)
-      })
+      
    }
 
    const getMyTeamName = () => {
