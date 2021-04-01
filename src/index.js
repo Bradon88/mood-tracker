@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {HashRouter as Router} from 'react-router-dom';
+import {HashRouter, BrowserRouter} from 'react-router-dom';
 import {AuthProvider} from './Context/AuthContext'
 import {ChatProvider} from './Context/ChatContext'
 import {TeamProvider} from './Context/TeamContext'
 import {Provider} from 'react-redux'
 import store from './redux/store'
 import axios from 'axios';
+
+const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRouter 
+
 
 axios.defaults.headers.common["Authorization"]= 'Bearer ' + localStorage.getItem('token')
 
