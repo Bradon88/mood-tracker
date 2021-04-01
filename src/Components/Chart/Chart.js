@@ -134,7 +134,7 @@ class Chart extends Component {
 
         
         return (
-            <div><h1 style={{textAlign: 'center'}}>Mood History</h1>
+            <div className='chart-parent'><h1 style={{textAlign: 'center'}}>Mood History</h1>
          
                 {/* <IconButton><SupervisedUserCircle style={{
                     // display: 'flex',
@@ -147,29 +147,35 @@ class Chart extends Component {
                     <li>member</li>
                 </ul>
                 </IconButton> */}
+            <div className='line-chart' >
             <Line
 
             data={lineChart}
-            width={200}
+            width={'100%'}
+            height={'100%'}
            
             />
-
+            </div>
             
             
-            <div>
-                <h3>Total Moods</h3>
-                <div>
-                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}}/> {moodOne}
-                <SentimentDissatisfied style={{color:'#ee8959' }}/> {moodTwo}
-                <SentimentSatisfiedIcon style={{color:'#efb366'}}/> {moodThree}
-                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}}/> {moodFour}
-                <SentimentVerySatisfiedIcon style={{color:'#babb74'}}/> {moodFive}
+            <div className='mood-container'>
+                <h3 className="total-moods">Total Moods</h3>
+                <div className="total-moods">
+                <SentimentVeryDissatisfiedIcon style={{ color:' #bf5c43'}} className="total-moods"/> {moodOne}
+                <SentimentDissatisfied style={{color:'#ee8959' }} className="total-moods"/> {moodTwo}
+                <SentimentSatisfiedIcon style={{color:'#efb366'}} className="total-moods"/> {moodThree}
+                <SentimentSatisfiedAltIcon style={{color:'#e9cf6a'}} className="total-moods"/> {moodFour}
+                <SentimentVerySatisfiedIcon style={{color:'#babb74'}} className="total-moods"/> {moodFive}
                 </div>
             </div>
 
+            <br></br>
+            <div className='pie-chart' >
             <Pie
             data={donutChart}
-            height={125}
+            height={'100%'}
+            width={'100%'}
+            
             options={
                 {
                     display: true,
@@ -180,6 +186,7 @@ class Chart extends Component {
                     
                 }
             }/>
+            </div>
 
             <Link to='/Main/CurrentMood'><button className='btn'
             style={{

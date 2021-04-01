@@ -14,7 +14,7 @@ const Main = (props) => {
    useHistory() 
 
    return (
-      <div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100vw'}}>
          <Switch>
             <Route exact path="/Main/Chart" component={Chart}/>
             <Route exact path="/Main/Chat/:room?" component={Chat}/>
