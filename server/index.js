@@ -93,13 +93,6 @@ massive({
    console.log(err)
 })
 
-//HOSTING
-app.use(express.static(__dirname + '/../build'))
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
-
 //Notes Endpoints
 app.get('/api/notes', notesCtrl.getNotes)
 app.post('/api/notes', notesCtrl.addNotes)
@@ -152,3 +145,10 @@ app.get('/api/chatrooms', chatCtrl.getMyChatRooms)
 //get chatrooms for your user id
 
 app.get('/api/member_mood', moodCtrl.getMemberMood);
+
+//HOSTING
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
