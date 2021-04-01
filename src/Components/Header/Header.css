@@ -23,7 +23,7 @@
             align-items: center;
     background-color: white;
     width: 100vw;
-    height: 80px;
+    height: 10vh;
     border-bottom: solid black 2px;
   }
   .mood-title {
