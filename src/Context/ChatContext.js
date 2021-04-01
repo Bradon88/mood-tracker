@@ -22,7 +22,7 @@ export const ChatProvider=(props) => {
          currentSocket.disconnect()
       }
       if(socketRoom) (
-         currentSocket = io('ws://localhost:3333', {
+         currentSocket = io('', {
             query: {
                "roomname": socketRoom
             }
