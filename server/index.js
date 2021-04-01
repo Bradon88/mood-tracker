@@ -13,6 +13,7 @@ const teamCtrl = require('./controllers/team');
 const memberCtrl = require('./controllers/members');
 const chatCtrl = require('./controllers/chat');
 
+
 //MIDDLEWARE
 const app = express();
 const httpServer = require("http").createServer(app);
@@ -42,45 +43,45 @@ massive({
    app.set('db', db);
    console.log('db connected');
    // const io = socketio(
-   //    httpServer,
-   //    // app.listen(SERVER_PORT, console.log(`Server listening on ${SERVER_PORT}`)),
-   //    {
-   //       cors: {
-   //          origin: true
-   //       }
-   //    }
-   // )
-   // Socket.io-client has an issue with when downdrading from websockets to polling
-   // that it wont send handshake query params to the server
-   app.set('io', io)
-   io.on('connection', (socket) => {
-      console.log(`${socket.id} connected`)
-      console.log(`${JSON.stringify(socket.handshake.query,2,2)} socket query`)
-      socket.join(socket.handshake.query.roomname)
-      socket.on('disconnect', () => {
-         console.log(`${socket.id} disconnected`)
-      })
-   
-      socket.on('send-message', (body) => {
-         //pass into database file create 
-         // db.chat.create_chat([
-         //    body.teamMember.member_id,
-         //    body.user.user-id,
-         //    body.date,
-         //    chat_content])
-
-         // //get all info from database
-         // db.chat.getChat([
-         //    body.teamMember.member_id,
-         //    body.user.user-id,
-         // ])
-         
-         console.log("---chat body from sockets", body)
-         // console.log(body.message, "socket on server message")
-         // console.log('-----user off body', body.user )
-         // console.log('------team', body.teamMember)
-         io.in (socket.handshake.query.roomname).emit('receive-message', body)
-      })
+      //    httpServer,
+      //    // app.listen(SERVER_PORT, console.log(`Server listening on ${SERVER_PORT}`)),
+      //    {
+         //       cors: {
+            //          origin: true
+            //       }
+            //    }
+            // )
+            // Socket.io-client has an issue with when downdrading from websockets to polling
+            // that it wont send handshake query params to the server
+            app.set('io', io)
+            io.on('connection', (socket) => {
+               console.log(`${socket.id} connected`)
+               console.log(`${JSON.stringify(socket.handshake.query,2,2)} socket query`)
+               socket.join(socket.handshake.query.roomname)
+               socket.on('disconnect', () => {
+                  console.log(`${socket.id} disconnected`)
+               })
+               
+               socket.on('send-message', (body) => {
+                  //pass into database file create 
+                  // db.chat.create_chat([
+                     //    body.teamMember.member_id,
+                     //    body.user.user-id,
+                     //    body.date,
+                     //    chat_content])
+                     
+                     // //get all info from database
+                     // db.chat.getChat([
+                        //    body.teamMember.member_id,
+                        //    body.user.user-id,
+                        // ])
+                        
+                        console.log("---chat body from sockets", body)
+                        // console.log(body.message, "socket on server message")
+                        // console.log('-----user off body', body.user )
+                        // console.log('------team', body.teamMember)
+                        io.in (socket.handshake.query.roomname).emit('receive-message', body)
+                     })
       socket.on('send-message-sync',(body)=>{
          
          io.in (socket.handshake.query.roomname).emit('receive-message-sync', body)
@@ -91,6 +92,12 @@ massive({
    console.log(err)
 })
 
+//HOSTING
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 //Notes Endpoints
 app.get('/api/notes', notesCtrl.getNotes)
