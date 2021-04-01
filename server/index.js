@@ -4,6 +4,7 @@ const session = require('express-session');
 const massive = require('massive');
 const socketio = require("socket.io");
 const auth = require("./middleware/auth");
+const path = require('path')
 
 //CONTROLLERS
 const authCtrl = require('./controllers/user');
