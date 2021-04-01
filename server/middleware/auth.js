@@ -11,4 +11,4 @@ module.exports = jwt({
    requestProperty: 'session', // this is where the next middleware can find the encoded data generated in services/auth:generateToken
    // getToken: getTokenFromHeader,
    algorithms: ['HS256']
-}).unless({path: ['/auth/login', '/auth/register']});
+}).unless({path: ['/auth/login', '/auth/register', '/']});
