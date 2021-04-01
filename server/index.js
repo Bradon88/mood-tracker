@@ -33,7 +33,7 @@ let {
 } = process.env;
 
 
-app.use(auth)
+// app.use(auth)
 
 
 //DATABASE CONNECTION
@@ -94,10 +94,10 @@ massive({
 })
 
 //Notes Endpoints
-app.get('/api/notes', notesCtrl.getNotes)
-app.post('/api/notes', notesCtrl.addNotes)
-app.put('/api/notes/:notes_id', notesCtrl.updateNotes)
-app.delete('/api/notes/:notes_id', notesCtrl.deleteNotes)
+app.get('/api/notes', auth, notesCtrl.getNotes)
+app.post('/api/notes', auth, notesCtrl.addNotes)
+app.put('/api/notes/:notes_id', auth, notesCtrl.updateNotes)
+app.delete('/api/notes/:notes_id', auth, notesCtrl.deleteNotes)
 
 //Auth Endpoints
 app.post('/auth/register', authCtrl.register);
@@ -111,40 +111,40 @@ app.get('/auth/updateToken', authCtrl.updateToken)
 
 //MOOD ENDPOINTS
 // user logs a single mood entry
-app.post('/api/mood', moodCtrl.addMood);
+app.post('/api/mood', auth, moodCtrl.addMood);
 // returns mood entries for one user, based on logged-in user
-app.get('/api/mood', moodCtrl.getMood);
+app.get('/api/mood', auth, moodCtrl.getMood);
 // returns mood entries for an entire team, based on logged-in user (as admin_id)
-app.get('/api/member_mood', moodCtrl.getMemberMood);
+app.get('/api/member_mood', auth, moodCtrl.getMemberMood);
 
 //TEAM ENDPOINTS
 // creates a new team
-app.post('/api/team', teamCtrl.addTeam);
+app.post('/api/team', auth, teamCtrl.addTeam);
 // returns team name and admin_id
-app.get('/api/team', teamCtrl.getTeam);
+app.get('/api/team', auth, teamCtrl.getTeam);
 // deletes entire team by admin_id
-app.delete('/api/team/:team_id', teamCtrl.deleteTeam)
+app.delete('/api/team/:team_id', auth, teamCtrl.deleteTeam)
 
 //TEAM MEMBERS ENDPOINTS
 // adds a member to logged-in user's existing team
-app.post('/api/team_member/:member_id', memberCtrl.addMember);
+app.post('/api/team_member/:member_id', auth, memberCtrl.addMember);
 // returns all team member information for logged-in user's existing team
-app.get('/api/team_member', memberCtrl.getMembers);
+app.get('/api/team_member', auth, memberCtrl.getMembers);
 // deletes an individual team member by team member user_id
-app.delete('/api/team_member/:member_id', memberCtrl.deleteMember);
-app.post('/api/search', memberCtrl.searchMembers)
-app.get('/api/my_team_name', memberCtrl.getMyTeamName)
+app.delete('/api/team_member/:member_id', auth, memberCtrl.deleteMember);
+app.post('/api/search', auth, memberCtrl.searchMembers)
+app.get('/api/my_team_name', auth, memberCtrl.getMyTeamName)
 //member can get their team name
 
 //CHAT ENDPOINTS
-app.post('/api/chat/:member_id', chatCtrl.addMessage);
+app.post('/api/chat/:member_id', auth, chatCtrl.addMessage);
 // adds message to chat table for user and team admin
-app.get('/api/chat/:member_id', chatCtrl.getChat);
+app.get('/api/chat/:member_id', auth, chatCtrl.getChat);
 // get messsages from chat table for Admin and user chat
-app.get('/api/chatrooms', chatCtrl.getMyChatRooms)
+app.get('/api/chatrooms', auth, chatCtrl.getMyChatRooms)
 //get chatrooms for your user id
 
-app.get('/api/member_mood', moodCtrl.getMemberMood);
+app.get('/api/member_mood', auth, moodCtrl.getMemberMood);
 
 //HOSTING
 app.use(express.static(__dirname + '/../build'))
